@@ -1,13 +1,24 @@
-import React from "react";
-import ReactSVGComponent from "Components/ReactSVGComponent/ReactSVGComponent";
-import "css/main.css";
-const App = () => (
-  <div>
-    <div className="container">
-      <h1>This is a heading</h1>
-      <p>This is a test</p>
-      <ReactSVGComponent />
-    </div>
-  </div>
-);
-export default App;
+import React, { Component } from 'react'
+import 'normalize.css'
+import '@blueprintjs/core/lib/css/blueprint.css'
+import '@blueprintjs/icons/lib/css/blueprint-icons.css'
+import LoginPage from 'Components/LoginPage/LoginPage'
+import { Button, Card, Elevation } from '@blueprintjs/core'
+// import ReactSVGComponent from 'Components/ReactSVGComponent/ReactSVGComponent'
+import 'css/main.css'
+import LoginPageContainer from './Components/LoginPage/LoginPageContainer'
+class App extends Component {
+  state = {
+    loading: true
+  }
+  render () {
+    return (
+      <div className='app-Container '>
+        <Card className='app-Conta-child'>
+          <LoginPageContainer />
+        </Card>
+      </div>
+    )
+  }
+}
+export default App

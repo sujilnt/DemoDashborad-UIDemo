@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import Loadable from 'react-loadable';
 import mess from "assets/mess.svg";
-
+const loader = `<div label="loading">Loading</div>`;
 const L1 = Loadable.Map({
-	loading: () => <div>Loading</div>,
+	loading: () =>loader ,
 	loader: {
 		reactsvgCoponent: ()=>import("react-svg"),
 	},
