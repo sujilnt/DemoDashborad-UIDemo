@@ -29,7 +29,7 @@ InputFormComponent.defaultProps = {
 	inpputPlaceholder: "UserName",
 	leftIcon: "filter",
 };
-InputFormComponent.prototypes = {
+InputFormComponent.propTypes = {
 	helperText: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	labelFor: PropTypes.string,
