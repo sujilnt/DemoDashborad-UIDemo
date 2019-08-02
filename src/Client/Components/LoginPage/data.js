@@ -93,7 +93,7 @@ const loginPageConfigSignUP = () => {
 		pageHeader: "Create an Account",
 		pageSelctionData: getDataforSigUPPage,
 		buttonSelectionData: ButtonForSignUp,
-		rowStyles: { flexDirection: "row-reverse", transition: "all 10s ease", transitionDelay: "2s" },
+		rowStyles: { flexDirection: "row-reverse" },
 		textNames: {
 			text: "have an account ? then ...",
 			buttonText: "Log In",
@@ -106,13 +106,46 @@ const loginPageConfigSignIN = () => {
 		pageHeader: "Login",
 		pageSelctionData: getDataforSignPage,
 		buttonSelectionData: ButtonForSignIn,
-		rowStyles: { flexDirection: "row", transition: "all 10s ease", transitionDelay: "2s" },
+		rowStyles: { flexDirection: "row" },
 		textNames: {
 			text: "Dont have an accont ? Create one now !",
 			buttonText: "Sign Up",
 		},
 	};
 };
+
+const ButtonForgetPassword = () => {
+	return {
+		text: "send mail",
+		intent: "primary",
+		large: "true",
+		className: "button-login",
+		rowStyles: { flexDirection: "row" },
+		textNames: {
+			text: "Dont have an accont ? Create one now !",
+			buttonText: "Sign Up",
+		},
+	};
+};
+
+const getDataforgetPassword = () => {
+	return {
+		label: "Email",
+		labelFor: "user-forget-page",
+		labelInfor: "(required)",
+		inpputPlaceholder: "Enter your email",
+		leftIcon: "user",
+		type: "text",
+	};
+};
+const forgetPasswordConfig = () => {
+	return {
+		pageHeader: "forgot password",
+		buttonSelectionData: ButtonForgetPassword,
+		pageSelctionData: getDataforgetPassword,
+	};
+};
+
 export {
 	loginPageConfigSignIN,
 	loginPageConfigSignUP,
@@ -120,4 +153,5 @@ export {
 	getDataforSigUPPage,
 	ButtonForSignUp,
 	ButtonForSignIn,
+	forgetPasswordConfig,
 };

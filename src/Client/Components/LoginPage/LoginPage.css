@@ -6,6 +6,8 @@
 	justify-content: space-around;
 	flex: 1;
 	height: 258px;
+	transition: all 10s ease;
+	transition-delay: 2s;
 }
 
 .text-information-button,

@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { Button, Card, Elevation } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent.js";
-import { loginPageConfigSignIN, loginPageConfigSignUP } from "./data.js";
+import { loginPageConfigSignIN, forgetPasswordConfig, loginPageConfigSignUP } from "./data.js";
 export default class LoginPageComponent extends Component {
 	state = {
 		loading: false,
 		signUp: false,
+		forgetPassword: false,
 	};
 
 	inputHandleChange = e => {
@@ -21,10 +22,20 @@ export default class LoginPageComponent extends Component {
 			signUp: !prevState.signUp,
 		}));
 	};
+	toggleForgetPassword = () => {
+		console.log("called toggle");
+		this.setState(prevState => ({
+			forgetPassword: !prevState.forgetPassword,
+		}));
+	};
 	static propTypes = {};
 	render() {
-		const { signUp } = this.state;
-		const configuration = signUp ? loginPageConfigSignUP() : loginPageConfigSignIN();
+		const { signUp, forgetPassword } = this.state;
+		const configuration = signUp
+			? loginPageConfigSignUP()
+			: forgetPassword
+			? forgetPasswordConfig()
+			: loginPageConfigSignIN();
 		const { pageSelctionData, pageHeader, buttonSelectionData, rowStyles, textNames } = configuration;
 		return (
 			<Card interactive className="LoginCardContainer" style={rowStyles} elevation={Elevation.TWO}>
@@ -39,6 +50,8 @@ export default class LoginPageComponent extends Component {
 						buttonHandleChange={this.buttonHandleChange}
 						buttondata={buttonSelectionData}
 						pageHeader={pageHeader}
+						forgetPassword={signUp}
+						handlechangepassword={this.toggleForgetPassword}
 					/>
 				</div>
 			</Card>
