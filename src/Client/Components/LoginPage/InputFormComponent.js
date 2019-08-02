@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 //import styled from "styled-components";
 import "./LoginPage.css";
 
-const NUMBER_2 = 2;
+const NUMBER_1 = 1;
 export default class InputFormComponent extends Component {
 	renderFormGroup = () => {
 		const finalFormGroupData = [];
 		const { dataProp, handlechange } = this.props;
 		const formdata = dataProp() || [];
-		if (formdata.length >= NUMBER_2) {
+		console.log(" form data length is ", formdata.length, NUMBER_1);
+		if (formdata.length >= NUMBER_1) {
 			formdata.map(r => {
 				const { inpputPlaceholder, leftIcon, type, helperText, label, labelFor, labelInfor } = r;
 				finalFormGroupData.push(
@@ -32,6 +33,7 @@ export default class InputFormComponent extends Component {
 	};
 	render() {
 		const { buttonHandleChange, buttondata, pageHeader, forgetPassword, handlechangepassword } = this.props;
+		console.log(this.props, "get all props");
 		const { text, intent, large } = buttondata();
 		return (
 			<div>
@@ -44,7 +46,7 @@ export default class InputFormComponent extends Component {
 						text={"forgetPassword"}
 						intent={intent}
 						large={large}
-						onClick={buttonHandleChange}
+						onClick={handlechangepassword}
 						className="button-login"
 					/>
 				) : (

@@ -129,20 +129,27 @@ const ButtonForgetPassword = () => {
 };
 
 const getDataforgetPassword = () => {
-	return {
-		label: "Email",
-		labelFor: "user-forget-page",
-		labelInfor: "(required)",
-		inpputPlaceholder: "Enter your email",
-		leftIcon: "user",
-		type: "text",
-	};
+	return [
+		{
+			label: "Email",
+			labelFor: "user-forget-page",
+			labelInfor: "(required)",
+			inpputPlaceholder: "Enter your email",
+			leftIcon: "user",
+			type: "text",
+		},
+	];
 };
 const forgetPasswordConfig = () => {
 	return {
 		pageHeader: "forgot password",
 		buttonSelectionData: ButtonForgetPassword,
 		pageSelctionData: getDataforgetPassword,
+		rowStyles: { flexDirection: "row" },
+		textNames: {
+			text: "Dont have an accont ? Create one now !",
+			buttonText: "Sign Up",
+		},
 	};
 };
 
