@@ -31,11 +31,11 @@ export default class InputFormComponent extends Component {
 		return finalFormGroupData;
 	};
 	render() {
-		const { buttonHandleChange, buttondata } = this.props;
+		const { buttonHandleChange, buttondata, pageHeader } = this.props;
 		const { text, intent, large } = buttondata();
 		return (
 			<div>
-				<h3>Login Page </h3>
+				<h3>{pageHeader}</h3>
 				<Divider vertical={"true"} />
 				{this.renderFormGroup()}
 				<Button text={text} intent={intent} large={large} onChange={buttonHandleChange} className="button-login" />
@@ -53,4 +53,5 @@ InputFormComponent.propTypes = {
 	buttonHandleChange: PropTypes.func.isRequired,
 	handlechange: PropTypes.func.isRequired,
 	buttondata: PropTypes.func.isRequired,
+	pageHeader: PropTypes.string.isRequired,
 };

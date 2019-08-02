@@ -49,7 +49,7 @@ const getDataforSigUPPage = () => {
 			type: "text",
 		},
 		{
-			label: "Passoword",
+			label: "Password",
 			labelFor: "user-signup-page",
 			labelInfor: "(required)",
 			inpputPlaceholder: "Enter your Password",
@@ -87,4 +87,37 @@ const ButtonForSignUp = () => {
 		className: "button-login",
 	};
 };
-export { getDataforSignPage, getDataforSigUPPage, ButtonForSignUp, ButtonForSignIn };
+
+const loginPageConfigSignUP = () => {
+	return {
+		pageHeader: "Create an Account",
+		pageSelctionData: getDataforSigUPPage,
+		buttonSelectionData: ButtonForSignUp,
+		rowStyles: { flexDirection: "row-reverse", transition: "all 10s ease", transitionDelay: "2s" },
+		textNames: {
+			text: "have an account ? then ...",
+			buttonText: "Log In",
+		},
+	};
+};
+
+const loginPageConfigSignIN = () => {
+	return {
+		pageHeader: "Login",
+		pageSelctionData: getDataforSignPage,
+		buttonSelectionData: ButtonForSignIn,
+		rowStyles: { flexDirection: "row", transition: "all 10s ease", transitionDelay: "2s" },
+		textNames: {
+			text: "Dont have an accont ? Create one now !",
+			buttonText: "Sign Up",
+		},
+	};
+};
+export {
+	loginPageConfigSignIN,
+	loginPageConfigSignUP,
+	getDataforSignPage,
+	getDataforSigUPPage,
+	ButtonForSignUp,
+	ButtonForSignIn,
+};
