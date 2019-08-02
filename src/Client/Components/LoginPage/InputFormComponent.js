@@ -1,40 +1,56 @@
 import React, { Component } from "react";
-import { Colors, InputGroup, FormGroup } from "@blueprintjs/core";
+import { Colors, InputGroup, FormGroup, Divider, Button } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 //import styled from "styled-components";
+import "./LoginPage.css";
 
+const NUMBER_2 = 2;
 export default class InputFormComponent extends Component {
+	renderFormGroup = () => {
+		const finalFormGroupData = [];
+		const { dataProp, handlechange } = this.props;
+		const formdata = dataProp() || [];
+		if (formdata.length >= NUMBER_2) {
+			formdata.map(r => {
+				const { inpputPlaceholder, leftIcon, type, helperText, label, labelFor, labelInfor } = r;
+				finalFormGroupData.push(
+					<FormGroup helperText={helperText} label={label} labelFor={labelFor} labelInfor={labelInfor}>
+						<InputGroup
+							disabled={false}
+							large={true}
+							onChange={handlechange}
+							placeholder={inpputPlaceholder}
+							leftIcon={leftIcon}
+							className="input-sign"
+							type={type}
+						/>
+					</FormGroup>
+				);
+			});
+		}
+		return finalFormGroupData;
+	};
 	render() {
-		const { helperText, leftIcon, label, labelFor, labelInfor, inpputPlaceholder, handlechange } = this.props;
+		const { buttonHandleChange, buttondata } = this.props;
+		const { text, intent, large } = buttondata();
 		return (
 			<div>
-				<FormGroup helperText={helperText} label={label} labelFor={labelFor} labelInfor={labelInfor}>
-					<InputGroup
-						disabled={false}
-						large={false}
-						onChange={handlechange}
-						placeholder={inpputPlaceholder}
-						leftIcon={leftIcon}
-					/>
-				</FormGroup>
+				<h3>Login Page </h3>
+				<Divider vertical={"true"} />
+				{this.renderFormGroup()}
+				<Button text={text} intent={intent} large={large} onChange={buttonHandleChange} className="button-login" />
 			</div>
 		);
 	}
 }
 InputFormComponent.defaultProps = {
-	helperText: " ",
-	label: "default prop name",
-	labelFor: "default prop for label",
-	labelInfor: "Default - Enter the label infor",
-	inpputPlaceholder: "UserName",
-	leftIcon: "filter",
+	dataProp: console.log("handle change function is not added"),
+	buttonHandleChange: console.log("Button onchange function not handled properly"),
+	handlechange: console.log("handle change function is not added"),
 };
 InputFormComponent.propTypes = {
-	helperText: PropTypes.string,
-	label: PropTypes.string.isRequired,
-	labelFor: PropTypes.string,
-	labelInfor: PropTypes.string,
-	inpputPlaceholder: PropTypes.string,
-	leftIcon: PropTypes.string,
+	dataProp: PropTypes.func.isRequired,
+	buttonHandleChange: PropTypes.func.isRequired,
 	handlechange: PropTypes.func.isRequired,
+	buttondata: PropTypes.func.isRequired,
 };
