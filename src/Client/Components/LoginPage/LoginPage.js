@@ -38,7 +38,7 @@ export default class LoginPageComponent extends Component {
 			? forgetPasswordConfig()
 			: loginPageConfigSignIN();
 		const { pageSelctionData, pageHeader, buttonSelectionData, rowStyles, textNames } = configuration;
-		console.log("configuration data", configuration, pageSelctionData());
+		console.log("configuration data", forgetPassword);
 		return (
 			<Card interactive className="LoginCardContainer" style={rowStyles} elevation={Elevation.TWO}>
 				<div className="text-information-button">
@@ -52,7 +52,7 @@ export default class LoginPageComponent extends Component {
 						buttonHandleChange={this.buttonHandleChange}
 						buttondata={buttonSelectionData}
 						pageHeader={pageHeader}
-						forgetPassword={signUp}
+						forgetPassword={forgetPassword}
 						handlechangepassword={this.toggleForgetPassword}
 					/>
 				</div>

@@ -33,7 +33,7 @@ export default class InputFormComponent extends Component {
 	};
 	render() {
 		const { buttonHandleChange, buttondata, pageHeader, forgetPassword, handlechangepassword } = this.props;
-		console.log(this.props, "get all props");
+		console.log(this.props.forgetPassword, "get all props");
 		const { text, intent, large } = buttondata();
 		return (
 			<div>
@@ -43,7 +43,7 @@ export default class InputFormComponent extends Component {
 				<Button text={text} intent={intent} large={large} onClick={buttonHandleChange} className="button-login" />
 				{!forgetPassword ? (
 					<Button
-						text={"forgetPassword"}
+						text={!forgetPassword ? "forgetPassword" : "Sign In"}
 						intent={intent}
 						large={large}
 						onClick={handlechangepassword}
