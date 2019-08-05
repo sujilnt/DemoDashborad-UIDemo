@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Colors, InputGroup, FormGroup, Divider, Button } from "@blueprintjs/core";
+import { InputGroup, FormGroup, Divider, Button } from "@blueprintjs/core";
 import PropTypes from "prop-types";
-//import styled from "styled-components";
 import "./LoginPage.css";
 
 const NUMBER_1 = 1;
@@ -10,12 +9,17 @@ export default class InputFormComponent extends Component {
 		const finalFormGroupData = [];
 		const { dataProp, handlechange } = this.props;
 		const formdata = dataProp() || [];
-		console.log(" form data length is ", formdata.length, NUMBER_1);
 		if (formdata.length >= NUMBER_1) {
-			formdata.map(r => {
+			formdata.map((r, key) => {
 				const { inpputPlaceholder, leftIcon, type, helperText, label, labelFor, labelInfor } = r;
 				finalFormGroupData.push(
-					<FormGroup helperText={helperText} label={label} labelFor={labelFor} labelInfor={labelInfor}>
+					<FormGroup
+						helperText={helperText}
+						label={label}
+						labelFor={labelFor}
+						labelInfor={labelInfor}
+						key={`formdata${key}`}
+					>
 						<InputGroup
 							disabled={false}
 							large={true}
@@ -32,7 +36,7 @@ export default class InputFormComponent extends Component {
 		return finalFormGroupData;
 	};
 	render() {
-		const { buttonHandleChange, buttondata, pageHeader, forgetPassword, handlechangepassword } = this.props;
+		const { buttonHandleChange, buttondata, pageHeader, forgetPassword, handlechangepassword, signUpProp } = this.props;
 		console.log(this.props.forgetPassword, "get all props");
 		const { text, intent, large } = buttondata();
 		return (
@@ -40,18 +44,23 @@ export default class InputFormComponent extends Component {
 				<h3>{pageHeader}</h3>
 				<Divider vertical={"true"} />
 				{this.renderFormGroup()}
-				<Button text={text} intent={intent} large={large} onClick={buttonHandleChange} className="button-login" />
-				{!forgetPassword ? (
-					<Button
-						text={!forgetPassword ? "forgetPassword" : "Sign In"}
-						intent={intent}
-						large={large}
-						onClick={handlechangepassword}
-						className="button-login"
-					/>
-				) : (
-					""
-				)}
+				<div>
+					<Button text={text} intent={intent} large={large} onClick={buttonHandleChange} className="button-login" />
+					{/**
+					Forget password button only display when signUp  and forgetpassword props is false  
+					*/}
+					{!forgetPassword && !signUpProp ? (
+						<Button
+							text={!forgetPassword ? "forgetPassword" : "Sign In"}
+							intent={intent}
+							large={large}
+							onClick={handlechangepassword}
+							className="button-login"
+						/>
+					) : (
+						""
+					)}
+				</div>
 			</div>
 		);
 	}
@@ -68,5 +77,6 @@ InputFormComponent.propTypes = {
 	buttondata: PropTypes.func.isRequired,
 	pageHeader: PropTypes.string.isRequired,
 	forgetPassword: PropTypes.bool.isRequired,
+	signUpProp: PropTypes.bool.isRequired,
 	handlechangepassword: PropTypes.func.isRequired,
 };

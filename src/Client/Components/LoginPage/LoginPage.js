@@ -3,6 +3,12 @@ import { Button, Card, Elevation } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent.js";
 import { loginPageConfigSignIN, forgetPasswordConfig, loginPageConfigSignUP } from "./data.js";
+/**
+	 Configuraton there are 2 types of configuration SignUp and SignIn. All configuartion can be seen in data.js . 
+	 Components : 
+		 InputFormComponent => InputFormComponent component render forms for signIn or SingUp based on data Configuration.
+		 { Card , Button } => Library components from React-Blueprint.js
+*/
 export default class LoginPageComponent extends Component {
 	state = {
 		loading: false,
@@ -17,14 +23,12 @@ export default class LoginPageComponent extends Component {
 		console.log("button  is clicked");
 	};
 	toggleStateSignUp = () => {
-		console.log("called toggle");
 		this.setState(prevState => ({
 			signUp: !prevState.signUp,
-			forgetPassword: true,
 		}));
 	};
 	toggleForgetPassword = () => {
-		console.log("called toggle");
+		console.log("called toggle Forgetpasword");
 		this.setState(prevState => ({
 			forgetPassword: !prevState.forgetPassword,
 		}));
@@ -32,15 +36,15 @@ export default class LoginPageComponent extends Component {
 	static propTypes = {};
 	render() {
 		const { signUp, forgetPassword } = this.state;
+		// data configuration for signIn or singUp.
 		const configuration = signUp
 			? loginPageConfigSignUP()
 			: forgetPassword
 			? forgetPasswordConfig()
 			: loginPageConfigSignIN();
 		const { pageSelctionData, pageHeader, buttonSelectionData, rowStyles, textNames } = configuration;
-		console.log("configuration data", forgetPassword);
 		return (
-			<Card interactive className="LoginCardContainer" style={rowStyles} elevation={Elevation.TWO}>
+			<Card interactive className="LoginCardContainer" style={rowStyles} elevation={Elevation.TWO} key={"0"}>
 				<div className="text-information-button">
 					<h1>{textNames.text}</h1>
 					<Button text={textNames.buttonText} intent="success" large={"true"} onClick={this.toggleStateSignUp} />
@@ -53,6 +57,7 @@ export default class LoginPageComponent extends Component {
 						buttondata={buttonSelectionData}
 						pageHeader={pageHeader}
 						forgetPassword={forgetPassword}
+						signUpProp={signUp}
 						handlechangepassword={this.toggleForgetPassword}
 					/>
 				</div>
@@ -69,4 +74,5 @@ LoginPageComponent.propTypes = {
 	signIn: PropTypes.bool,
 	signUp: PropTypes.bool,
 	forgetPassword: PropTypes.bool,
+	logIn: PropTypes.bool,
 };
