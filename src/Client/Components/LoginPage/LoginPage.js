@@ -18,7 +18,7 @@ export default class LoginPageComponent extends Component {
 	};
 
 	inputHandleChange = e => {
-		console.log("inputValue is changed", e.target.value);
+		console.log("inputValue is changeds", e.target.value);
 	};
 	buttonHandleChange = () => {
 		console.log("button  is clicked");
@@ -26,6 +26,7 @@ export default class LoginPageComponent extends Component {
 	toggleStateSignUp = () => {
 		this.setState(prevState => ({
 			signUp: !prevState.signUp,
+			forgetPassword: false,
 		}));
 	};
 	toggleForgetPassword = () => {
@@ -43,7 +44,7 @@ export default class LoginPageComponent extends Component {
 			: forgetPassword
 			? forgetPasswordConfig()
 			: loginPageConfigSignIN();
-		const { pageSelctionData, pageHeader, buttonSelectionData, classNames, rowStyles, textNames } = configuration;
+		const { pageSelctionData, pageHeader, buttonSelectionData, classNames, textNames } = configuration;
 		return (
 			<Card interactive className={classNames} elevation={Elevation.TWO} key={"0"}>
 				<div className="text-information-button">
