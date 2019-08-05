@@ -2,12 +2,40 @@
 	height: 400px;
 	background: #ebf1f5;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
 	flex: 1;
 	height: 258px;
-	transition: all 10s ease;
-	transition-delay: 2s;
+	animation: pulse2 1.2s ease-in-out forwards;
+}
+.LoginCardContainerInverse {
+	height: 400px;
+	background: #ebf1f5;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: space-around;
+	flex: 1;
+	height: 258px;
+	animation: pulse 1.2s ease forwards;
+}
+@keyframes pulse {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes pulse2 {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .text-information-button,

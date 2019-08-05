@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Card, Elevation } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent.js";
+import "./LoginPage.css";
 import { loginPageConfigSignIN, forgetPasswordConfig, loginPageConfigSignUP } from "./data.js";
 /**
 	 Configuraton there are 2 types of configuration SignUp and SignIn. All configuartion can be seen in data.js . 
@@ -42,9 +43,9 @@ export default class LoginPageComponent extends Component {
 			: forgetPassword
 			? forgetPasswordConfig()
 			: loginPageConfigSignIN();
-		const { pageSelctionData, pageHeader, buttonSelectionData, rowStyles, textNames } = configuration;
+		const { pageSelctionData, pageHeader, buttonSelectionData, classNames, rowStyles, textNames } = configuration;
 		return (
-			<Card interactive className="LoginCardContainer" style={rowStyles} elevation={Elevation.TWO} key={"0"}>
+			<Card interactive className={classNames} elevation={Elevation.TWO} key={"0"}>
 				<div className="text-information-button">
 					<h1>{textNames.text}</h1>
 					<Button text={textNames.buttonText} intent="success" large={"true"} onClick={this.toggleStateSignUp} />

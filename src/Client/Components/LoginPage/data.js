@@ -58,6 +58,24 @@ const getDataforSigUPPage = () => {
 		},
 	];
 };
+
+/**
+ * getDataforgetPassword => type -> function
+ * That returns form Input data like label,icon for forget passoword configuration
+ */
+
+const getDataforgetPassword = () => {
+	return [
+		{
+			label: "Email",
+			labelFor: "user-forget-page",
+			labelInfor: "(required)",
+			inpputPlaceholder: "Enter your email",
+			leftIcon: "user",
+			type: "text",
+		},
+	];
+};
 /**
  * ButtonForSignIn => type -> function
  * That returns form Button data like name,classname or other configurations,
@@ -88,32 +106,7 @@ const ButtonForSignUp = () => {
 	};
 };
 
-const loginPageConfigSignUP = () => {
-	return {
-		pageHeader: "Create an Account",
-		pageSelctionData: getDataforSigUPPage,
-		buttonSelectionData: ButtonForSignUp,
-		rowStyles: { flexDirection: "row-reverse" },
-		textNames: {
-			text: "have an account ? then ...",
-			buttonText: "Log In",
-		},
-	};
-};
-
-const loginPageConfigSignIN = () => {
-	return {
-		pageHeader: "Login",
-		pageSelctionData: getDataforSignPage,
-		buttonSelectionData: ButtonForSignIn,
-		rowStyles: { flexDirection: "row" },
-		textNames: {
-			text: "Dont have an accont ? Create one now !",
-			buttonText: "Sign Up",
-		},
-	};
-};
-
+// ButtonForgetPassword => Forget passowrd data configuration
 const ButtonForgetPassword = () => {
 	return {
 		text: "send mail",
@@ -128,24 +121,44 @@ const ButtonForgetPassword = () => {
 	};
 };
 
-const getDataforgetPassword = () => {
-	return [
-		{
-			label: "Email",
-			labelFor: "user-forget-page",
-			labelInfor: "(required)",
-			inpputPlaceholder: "Enter your email",
-			leftIcon: "user",
-			type: "text",
+// loginPageConfigSignUP => main configuartion  for the Signup page.
+const loginPageConfigSignUP = () => {
+	return {
+		pageHeader: "Create an Account", // header of the page
+		pageSelctionData: getDataforSigUPPage, // form data
+		buttonSelectionData: ButtonForSignUp, // button texts
+		rowStyles: { flexDirection: "row-reverse" },
+		classNames: "LoginCardContainerInverse",
+		textNames: {
+			text: "have an account ? then ...",
+			buttonText: "Log In",
 		},
-	];
+	};
 };
+
+// loginPageConfigSignUP => main configuartion for the login page.
+const loginPageConfigSignIN = () => {
+	return {
+		pageHeader: "Login",
+		pageSelctionData: getDataforSignPage,
+		buttonSelectionData: ButtonForSignIn,
+		rowStyles: { flexDirection: "row" },
+		classNames: "LoginCardContainer",
+		textNames: {
+			text: "Dont have an accont ? Create one now !",
+			buttonText: "Sign Up",
+		},
+	};
+};
+
+// loginPageConfigSignUP => main configuartion for the forget password page.
 const forgetPasswordConfig = () => {
 	return {
-		pageHeader: "forgot password",
+		pageHeader: "Forgot password",
 		buttonSelectionData: ButtonForgetPassword,
 		pageSelctionData: getDataforgetPassword,
 		rowStyles: { flexDirection: "row" },
+		classNames: "LoginCardContainer",
 		textNames: {
 			text: "Dont have an accont ? Create one now !",
 			buttonText: "Sign Up",
@@ -154,11 +167,11 @@ const forgetPasswordConfig = () => {
 };
 
 export {
+	ButtonForSignUp,
+	ButtonForSignIn,
 	loginPageConfigSignIN,
 	loginPageConfigSignUP,
 	getDataforSignPage,
 	getDataforSigUPPage,
-	ButtonForSignUp,
-	ButtonForSignIn,
 	forgetPasswordConfig,
 };
