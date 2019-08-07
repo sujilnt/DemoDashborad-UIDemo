@@ -10,7 +10,7 @@
 		"webpack": "webpack",
 		"covertimageWebP": "node utils/covertImgtoWebP.js",
 		"client-prod:build": "yarn run webpack --env.mode prod",
-		"client-prod:watch": "yarn run webpack --env.mode prod",
+		"client-prod:watch": "yarn run webpack --env.mode prod --watch",
 		"client-dev": "yarn run webpack --env.mode dev --watch",
 		"client-dev:watch": "yarn run webpack --env.mode dev && webpack-dev-server --env.mode dev --watch",
 		"bundle-analyzer:server-dev": "(yarn run generate-stats-server:dev) & (webpack-bundle-analyzer ./bundleAnalyser/stats-server-dev.json)",
