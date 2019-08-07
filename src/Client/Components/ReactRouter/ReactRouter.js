@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
-
+import Navbar from "../NavBar/NavBarComponent.js";
 import App from "../../App.js";
 
 export default class ReactRouter extends PureComponent {
@@ -13,7 +13,12 @@ export default class ReactRouter extends PureComponent {
 							exact
 							path="/"
 							render={props => {
-								return <div d={props}>Main page</div>;
+								return (
+									<div d={props}>
+										<Navbar />
+										this is a header
+									</div>
+								);
 							}}
 						/>
 						<Route

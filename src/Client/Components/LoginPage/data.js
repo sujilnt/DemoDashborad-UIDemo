@@ -130,7 +130,7 @@ const loginPageConfigSignUP = () => {
 		rowStyles: { flexDirection: "row-reverse" },
 		classNames: "LoginCardContainerInverse",
 		textNames: {
-			text: "have an account ? then ...",
+			text: "Have an account ? then ...",
 			buttonText: "Log In",
 		},
 	};

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { InputGroup, FormGroup, Divider, Button } from "@blueprintjs/core";
+import { InputGroup, FormGroup, Divider, Button, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import "./LoginPage.css";
 
@@ -41,7 +41,7 @@ export default class InputFormComponent extends Component {
 		const { text, intent, large } = buttondata();
 		return (
 			<div>
-				<h3>{pageHeader}</h3>
+				<H3>{pageHeader}</H3>
 				<Divider vertical={"true"} />
 				{this.renderFormGroup()}
 				<div>

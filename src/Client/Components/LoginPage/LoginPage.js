@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import { Button, Card, Elevation, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent.js";
 import "./LoginPage.css";
@@ -46,12 +46,12 @@ export default class LoginPageComponent extends Component {
 			: loginPageConfigSignIN();
 		const { pageSelctionData, pageHeader, buttonSelectionData, classNames, textNames } = configuration;
 		return (
-			<Card interactive className={classNames} elevation={Elevation.TWO} key={"0"}>
+			<Card className={classNames} elevation={Elevation.TWO} key={"0"}>
 				<div className="text-information-button">
-					<h1>{textNames.text}</h1>
+					<H3>{textNames.text}</H3>
 					<Button text={textNames.buttonText} intent="success" large={"true"} onClick={this.toggleStateSignUp} />
 				</div>
-				<div className="form-information-button">
+				<Card interactive={true} className="form-information-button" elevation={Elevation.THREE}>
 					<InputFormComponent
 						dataProp={pageSelctionData}
 						handlechange={this.inputHandleChange}
@@ -62,7 +62,7 @@ export default class LoginPageComponent extends Component {
 						signUpProp={signUp}
 						handlechangepassword={this.toggleForgetPassword}
 					/>
-				</div>
+				</Card>
 			</Card>
 		);
 	}
