@@ -3,11 +3,12 @@ import { NavbarGroup, NavbarHeading, NavbarDivider, Button, Navbar, Classes, Ali
 const NavbarComponent = () => (
 	<div>
 		<Navbar>
-			<NavbarGroup align={Alignment.LEFT}>
+			<NavbarGroup align={Alignment.RIGHT} className="main-page_nav">
 				<NavbarHeading>Blueprint</NavbarHeading>
-				<NavbarDivider />
-				<Button className={Classes.MINIMAL} icon="home" text="Home" />
-				<Button className={Classes.MINIMAL} icon="document" text="Files" />
+				<div>
+					<Button className={Classes.MINIMAL} icon="home" text="Home" />
+					<Button className={Classes.MINIMAL} icon="document" text="Files" />
+				</div>
 			</NavbarGroup>
 		</Navbar>
 	</div>

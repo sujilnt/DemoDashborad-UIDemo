@@ -16,7 +16,7 @@ export default class ReactRouter extends PureComponent {
 								return (
 									<div d={props}>
 										<Navbar />
-										this is a header
+										<App />
 									</div>
 								);
 							}}

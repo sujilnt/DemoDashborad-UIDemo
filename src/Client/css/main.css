@@ -16,5 +16,8 @@ h1 {
 }
 
 .app-Conta-child {
-	width: 100%;
+	width: 80%;
+	align-self: center;
+	box-shadow: none !important;
+	background: transparent !important;
 }
