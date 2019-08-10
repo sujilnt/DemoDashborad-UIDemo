@@ -34,7 +34,6 @@
 		"d3": "^5.9.7",
 		"express": "^4.17.1",
 		"express-static-gzip": "^1.1.3",
-		"graphql": "^14.4.2",
 		"mongodb": "^3.3.0-beta2",
 		"nodemon-webpack-plugin": "^4.0.8",
 		"path": "^0.12.7",
