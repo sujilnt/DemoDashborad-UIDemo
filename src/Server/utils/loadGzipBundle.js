@@ -15,7 +15,6 @@ export const loadGzipBundle = app => {
   }
   // app.use(expressStaticGzip('./ClientBundle', options)) OR
   app.get('/*', expressStaticGzip('./ClientBundle', options), (req, res) => {
-    console.log(app, req)
     res.send(req.body)
   })
 }
