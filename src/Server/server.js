@@ -1,28 +1,21 @@
 import express from 'express'
-import expressStaticGzip from 'express-static-gzip'
 import { connect } from './utils/db'
+import { loadGzipBundle } from './utils/loadGzipBundle'
+import userRouter from './Resources/Login-SignUP/User.route.js'
+const PORT_NUM = 9001
 
-const PORT_NUM = 9015
 const app = express()
-
-var options = {
-  enableBrotli: true,
-  orderPreference: ['br', 'gz'],
-  setHeaders: function (res) {
-    res.setHeader('Cache-Control', 'public, max-age=31536000')
-  }
-}
-
-app.get('/', expressStaticGzip('./ClientBundle', options), (req, res) => {
-  console.log(req.body)
-  res.send(req.body)
-})
-
-// app.use(expressStaticGzip('./ClientBundle', options))
-
+app.use('/api/login', userRouter)
+// loadGzipBundle func => loading all gzip client bundles
+loadGzipBundle(app)
+/**
+ * start => server starting asybchronous function.
+ * connect() => connecting to the database
+ * app is listening to Port number , default 9001
+ */
 export const start = async () => {
   try {
-    await connect()
+    await connect() // connecting to the database.
     app.listen(PORT_NUM, () => {
       console.log(`App staeted at port number ${PORT_NUM}`)
     })
