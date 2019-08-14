@@ -5,7 +5,7 @@ import userRouter from './Resources/Login-SignUP/User.route.js'
 const PORT_NUM = 9001
 
 const app = express()
-app.use('/api/login', userRouter)
+app.use('/api/signup', userRouter)
 // loadGzipBundle func => loading all gzip client bundles
 loadGzipBundle(app)
 /**

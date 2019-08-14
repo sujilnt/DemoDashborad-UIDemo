@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-const userschema = new mongoose.schema(
+
+const userschema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -13,5 +14,4 @@ const userschema = new mongoose.schema(
   },
   { timestamp: true }
 )
-
 export const User = mongoose.model('user', userschema)
