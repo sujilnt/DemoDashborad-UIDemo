@@ -1,11 +1,12 @@
-import { Router } from 'express'
+import { Router } from "express";
+import { CreateUser } from "./User.controller";
 const controller = (req, res) => {
-  res.send({ message: 'hello' })
-}
-const router = Router()
+	res.send({ message: "hello" });
+};
+const router = Router();
 router
-  .route('/')
-  .get(controller)
-  .post(controller)
+	.route("/")
+	.get(controller)
+	.post(CreateUser);
 
-export default router
+export default router;
