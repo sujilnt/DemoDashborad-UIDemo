@@ -21,3 +21,8 @@ export const CreateUser = async (request, response) => {
 		response.status(400).end();
 	}
 };
+/*
+ */
+export const getUser = async (request, response) => {
+	await console.log(request);
+};

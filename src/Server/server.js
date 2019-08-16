@@ -1,7 +1,7 @@
 import express from "express";
 import { connect } from "./utils/db";
 import { loadGzipBundle } from "./utils/loadGzipBundle";
-import userRouter from "./Resources/Login-SignUP/User.route.js";
+import userRouter from "./Resources/Login-SignUP/Sigup.route.js";
 import morgan from "morgan";
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
