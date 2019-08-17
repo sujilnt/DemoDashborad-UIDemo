@@ -1,7 +1,8 @@
 import express from "express";
 import { connect } from "./utils/db";
 import { loadGzipBundle } from "./utils/loadGzipBundle";
-import userRouter from "./Resources/Login-SignUP/Sigup.route.js";
+import signUPRouter from "./Resources/Login-SignUP/Sigup.route.js";
+import signInROuter from "./Resources/Login-SignUP/Login.route.js";
 import morgan from "morgan";
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
@@ -13,7 +14,8 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.use("/api/signup", userRouter);
+app.use("/api/signup", signUPRouter);
+app.use("api/user", signInROuter);
 // loadGzipBundle func => loading all gzip client bundles
 loadGzipBundle(app);
 /**

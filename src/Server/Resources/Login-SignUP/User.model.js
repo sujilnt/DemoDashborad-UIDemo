@@ -16,6 +16,7 @@ const userschema = new mongoose.Schema(
 		uid: {
 			type: String,
 			required: true,
+			trim: true,
 			unique: true,
 		},
 	},

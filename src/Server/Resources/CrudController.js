@@ -86,6 +86,7 @@ const updateOne = model => async (request, response) => {
 		response.status(400).end();
 	}
 };
+console.log(updateOne);
 
 export const Controller = model => ({
 	createOne: createOne(model),
