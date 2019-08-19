@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
-import { hash } from "bcryptjs";
+import { hash, compare } from "bcryptjs";
+
 const salt_number = 4;
+const validateEmail = function(email) {
+	let re = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+	return re.test(email);
+};
 const userschema = new mongoose.Schema(
 	{
 		email: {
@@ -8,6 +13,8 @@ const userschema = new mongoose.Schema(
 			unique: true,
 			required: true,
 			trim: true,
+			validate: [validateEmail, "Please fill a valid email address"],
+			match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, "Please fill a valid email address"],
 		},
 		password: {
 			type: String,
@@ -30,4 +37,17 @@ userschema.pre("save", async function(next) {
 	this.password = pass_hash;
 	next();
 });
+
+userschema.methods.checkPassword = function(password) {
+	const hash_password = this.password;
+	return new Promise((resolve, reject) => {
+		compare(password, hash_password, (err, match) => {
+			if (err) {
+				return reject(err);
+			}
+			console.log("match", true);
+			resolve(match);
+		});
+	});
+};
 export const User = mongoose.model("user", userschema);
