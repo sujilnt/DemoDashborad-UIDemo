@@ -5,6 +5,7 @@ const secrets = {
   jwt: DEV_jwt,
   jwtExp: DEV_jwtExp
 }
+
 export const newToken = user => {
   return jwt.sign({ uid: user.uid }, secrets.jwt, {
     expiresIn: secrets.jwtExp
@@ -32,15 +33,12 @@ export const protect = async (req, res, next) => {
   } catch (e) {
     return res.status(401).end()
   }
-  const user = await User.find({ uild: payload.uid })
-    .select('-password')
+  const user = await User.findOne({ uid: payload.uid })
     .lean()
     .exec()
-
   if (!user) {
     return res.status(401).end()
   }
-
   req.user = user
   next()
 }

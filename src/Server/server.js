@@ -17,8 +17,9 @@ app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
 app.use('/signup', signUP_Router)
+// app.use('/signin', signIn_Router)
 // protected route starts !
-app.use('/api/', protect)
+app.use('/api', protect)
 app.use('/api/user', signIn_Router)
 app.use('/api/sensor', sensor_Router)
 // loadGzipBundle func => loading all gzip client bundles
