@@ -1,58 +1,55 @@
-import { User } from "./User.model";
-import uniquid from "uniqid";
-import { newToken } from "../../utils/auth";
+import { User } from './User.model'
+import uniquid from 'uniqid'
+import { newToken } from '../../utils/auth'
 // CreateUser => A controller that creates user in the Database.
 export const CreateUser = async (request, response) => {
-	try {
-		const { email, password } = request.body;
-		let uid = uniquid();
-		if (email && password) {
-			let token = await newToken(uid);
-			console.log(uid, typeof uid, token);
-			let u = await User.create({
-				uid,
-				email,
-				password,
-			});
-			console.log(User.find({ email }));
-			response.status(200).json({ token, u });
-		} else {
-			response.status(400).json({ error: "user or password not passed !" });
-		}
-	} catch (e) {
-		console.log(e);
-		response.status(400).end();
-	}
-};
+  try {
+    const { email, password } = request.body
+    let uid = uniquid()
+    if (email && password) {
+      let u = await User.create({
+        uid,
+        email,
+        password
+      })
+      let token = await newToken({ ...u, uid })
+      response.status(200).json({ token, u })
+    } else {
+      response.status(400).json({ error: 'user or password not passed !' })
+    }
+  } catch (e) {
+    console.log(e)
+    response.status(400).end()
+  }
+}
 
 export const signIn = async (request, response) => {
-	console.log("called signin");
-	const invalid = { message: "Invalid email and passoword combination" };
-	try {
-		const { email, password } = request.body;
-		if (email && password) {
-			const user = await User.findOne({ email: email })
-				.select("email password")
-				.exec();
-			console.log(user);
-			if (!user) {
-				return response.status(400).send(invalid);
-			}
-			const match = user.checkPassword(password);
-			if (!match) {
-				return response.return(400).send(invalid);
-			}
-			const token = newToken(user);
-			return response.status(201).send({ token });
-		} else {
-			response.statu(400).send({ message: "cgeck your email and password" });
-		}
-	} catch (e) {
-		console.error(e);
-	}
-};
+  console.log('called signin')
+  const invalid = { message: 'Invalid email and passoword combination' }
+  try {
+    const { email, password } = request.body
+    if (email && password) {
+      const user = await User.findOne({ email: email })
+        .select('email password')
+        .exec()
+      if (!user) {
+        return response.status(400).send(invalid)
+      }
+      const match = user.checkPassword(password)
+      if (!match) {
+        return response.return(400).send(invalid)
+      }
+      const token = newToken(user)
+      return response.status(201).send({ token })
+    } else {
+      response.statu(400).send({ message: 'cgeck your email and password' })
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
 /*
  */
 export const getUser = async (request, response) => {
-	await console.log(request, response);
-};
+  await console.log(request, response)
+}
