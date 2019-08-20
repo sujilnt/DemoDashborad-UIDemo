@@ -1,7 +1,8 @@
 import { Router } from 'express'
 import SensorController from './Sensor.controller.js'
+
 const controller = async (request, response) => {
-  console.log('request value', request)
+  console.log('request value', request.user)
 }
 
 const router = Router()

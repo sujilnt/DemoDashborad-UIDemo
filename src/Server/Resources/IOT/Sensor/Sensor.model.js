@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const sensorSchema = new mongoose.Schema(
   {
-    id: {
+    uid: {
       type: String,
       required: true,
       trim: true,
@@ -10,15 +10,6 @@ const sensorSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true
-    },
-    tags: {
-      type: [mongoose.SchemaTypes.ObjectId],
-      ref: 'tag',
-      default: ['point']
-    },
-    events: {
-      type: [mongoose.SchemaTypes.ObjectId],
-      ref: 'event'
     },
     sensortype: {
       type: String,
@@ -29,9 +20,13 @@ const sensorSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'user',
       required: true
+    },
+    sensor: {
+      type: Boolean,
+      default: true
     }
   },
   { timetamp: true }
 )
-sensorSchema.index({ user: 1, id: 1 }, { unique: true })
-export const sensor = mongoose.model('sensor', sensorSchema)
+sensorSchema.index({ user: 1, uid: 1 }, { unique: true })
+export const Sensor = mongoose.model('sensor', sensorSchema)
