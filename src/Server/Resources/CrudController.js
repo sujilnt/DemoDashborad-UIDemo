@@ -8,7 +8,6 @@ import uniquid from 'uniqid'
 const createOne = model => async (request, response) => {
   try {
     const { data } = request.body
-    console.log(request.user)
     const createModel = await model.create({ ...data, createdBy: request.user._id, uid: uniquid() })
     response.status(200).json({ data: createModel })
   } catch (e) {
@@ -79,6 +78,7 @@ const findOne = model => async (request, response) => {
 }
 
 // Todo Need to fill this updateOne
+/*
 const updateOne = model => async (request, response) => {
   try {
     const updateOneModel = await model.updateOne({})
@@ -87,12 +87,48 @@ const updateOne = model => async (request, response) => {
     console.error(e)
     response.status(400).end()
   }
+} */
+
+// getMany => retrive many element at a time  from the database.
+export const getMany = model => async (request, response) => {
+  try {
+    const docs = await model
+      .find({ createdBy: request.user._id })
+      .lean()
+      .exec()
+
+    response.status(200).json({ data: docs })
+  } catch (e) {
+    console.error(e)
+    response.status(400).end()
+  }
 }
-console.log(updateOne)
+
+// getOne => retrive only one element at a time from the database.
+export const getOne = model => async (request, response) => {
+  try {
+    const { user, params } = request
+    const doc = await model
+      .findOne({ createdBy: user._id, uid: params.id })
+      .lean()
+      .exec()
+
+    if (!doc) {
+      return response.status(400).end()
+    }
+
+    response.status(200).json({ data: doc })
+  } catch (e) {
+    console.error(e)
+    response.status(400).end()
+  }
+}
 
 export const Controller = model => ({
   createOne: createOne(model),
   createMany: createMany(model),
   findOne: findOne(model),
-  find: find(model)
+  find: find(model),
+  getMany: getMany(model),
+  getOne: getOne(model)
 })

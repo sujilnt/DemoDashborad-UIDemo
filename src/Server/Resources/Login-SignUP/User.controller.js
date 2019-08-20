@@ -3,7 +3,6 @@ import uniquid from 'uniqid'
 import { newToken } from '../../utils/auth'
 // CreateUser => A controller that creates user in the Database.
 export const CreateUser = async (request, response) => {
-  console.log('called signUP', request.user)
   try {
     const { email, password } = request.body
     let uid = uniquid()
@@ -25,7 +24,6 @@ export const CreateUser = async (request, response) => {
 }
 
 export const signIn = async (request, response) => {
-  console.log('called signin', request.user)
   const invalid = { message: 'Invalid email and passoword combination' }
   try {
     const { email, password } = request.body
@@ -52,6 +50,5 @@ export const signIn = async (request, response) => {
 /*
  */
 export const getUser = async (request, response) => {
-  console.log('test', request.user)
   response.status(200).json({ data: request.user })
 }
