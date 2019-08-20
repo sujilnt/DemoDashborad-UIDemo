@@ -1,6 +1,13 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const router = Router();
-router.route("/sensor").post(() => console.log("sensor tag "));
+const controller = async (request, response) => {
+  console.log('request value', request)
+}
 
-export default router;
+const router = Router()
+router
+  .route('/')
+  .get(controller)
+  .post(controller)
+
+export default router
