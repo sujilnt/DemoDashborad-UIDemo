@@ -15,7 +15,7 @@ app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 app.use("/api/signup", signUPRouter);
-app.use("api/user", signInROuter);
+app.use("/api/user", signInROuter);
 // loadGzipBundle func => loading all gzip client bundles
 loadGzipBundle(app);
 /**
