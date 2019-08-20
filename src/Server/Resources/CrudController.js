@@ -77,18 +77,6 @@ const findOne = model => async (request, response) => {
   }
 }
 
-// Todo Need to fill this updateOne
-/*
-const updateOne = model => async (request, response) => {
-  try {
-    const updateOneModel = await model.updateOne({})
-    console.log('update needed', updateOneModel)
-  } catch (e) {
-    console.error(e)
-    response.status(400).end()
-  }
-} */
-
 // getMany => retrive many element at a time  from the database.
 export const getMany = model => async (request, response) => {
   try {
@@ -105,6 +93,7 @@ export const getMany = model => async (request, response) => {
 }
 
 // getOne => retrive only one element at a time from the database.
+
 export const getOne = model => async (request, response) => {
   try {
     const { user, params } = request
@@ -123,6 +112,51 @@ export const getOne = model => async (request, response) => {
     response.status(400).end()
   }
 }
+// updateOne => Updates only one element at a time from the database.
+export const updateOne = model => async (request, response) => {
+  try {
+    const { user, params, body } = request
+    const updatedDoc = await model
+      .findOneAndUpdate(
+        {
+          createdBy: user._id,
+          uid: params.id
+        },
+        body,
+        { new: true }
+      )
+      .lean()
+      .exec()
+
+    if (!updatedDoc) {
+      return response.status(400).end()
+    }
+
+    response.status(200).json({ data: updatedDoc })
+  } catch (e) {
+    console.error(e)
+    response.status(400).end()
+  }
+}
+// removeOne => removing one element at a time
+export const removeOne = model => async (request, response) => {
+  try {
+    const { user, params } = request
+    const removed = await model.findOneAndRemove({
+      createdBy: user._id,
+      uid: params.id
+    })
+
+    if (!removed) {
+      return response.status(400).end()
+    }
+
+    return response.status(200).json({ data: removed })
+  } catch (e) {
+    console.error(e)
+    response.status(400).end()
+  }
+}
 
 export const Controller = model => ({
   createOne: createOne(model),
@@ -130,5 +164,7 @@ export const Controller = model => ({
   findOne: findOne(model),
   find: find(model),
   getMany: getMany(model),
-  getOne: getOne(model)
+  getOne: getOne(model),
+  updateOne: updateOne(model),
+  removeOne: removeOne(model)
 })

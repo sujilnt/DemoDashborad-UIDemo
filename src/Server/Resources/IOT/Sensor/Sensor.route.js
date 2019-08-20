@@ -13,5 +13,7 @@ router
   .route('/:id')
   .get(SensorController.getOne)
   .post(SensorController.createOne)
+  .put(SensorController.updateOne)
+  .delete(SensorController.removeOne)
 
 export default router
