@@ -5,8 +5,8 @@ const router = Router()
 // pass object ID
 router
   .route('/:id')
-  .get(TagController.getMany)
-  .post(createManyTag)
-  .delete(() => console.log('data'))
+  .get(TagController.getMany) // sensor_id
+  .post(createManyTag) // sensor_id
+  .delete(TagController.removeOne) // use tag _id to delete a tag
 
 export default router

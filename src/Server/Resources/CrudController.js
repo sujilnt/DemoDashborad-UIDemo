@@ -155,7 +155,7 @@ export const removeOne = model => async (request, response) => {
       createdBy: user._id,
       _id: params.id
     })
-
+    console.log(removed)
     if (!removed) {
       return response.status(400).end()
     }
