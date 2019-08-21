@@ -3,15 +3,16 @@ import { Tag } from './Tag.model'
 
 export const createManyTag = async (request, response) => {
   try {
-    const { body, params, baseUrl } = request
+    const { body, params, user } = request
     const { data } = body || []
     if (data.length <= 0) {
       return response.status(500).end()
     }
-    const dataMap = data.map((row, index) => {
+    const dataMap = data.map(row => {
       return {
         name: row,
-        sensorId: params.id // Objectid
+        sensorId: params.id, // Objectid,
+        createdBy: user._id
       }
     })
     const createManyModel = await Tag.insertMany(dataMap)

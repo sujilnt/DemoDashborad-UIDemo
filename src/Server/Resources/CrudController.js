@@ -38,7 +38,6 @@ const createMany = model => async (request, response) => {
         createdBy: user._id
       }
     })
-    console.log(datawith_uid, request.user)
     const createManyModel = await model.insertMany(datawith_uid)
     response
       .status(200)
