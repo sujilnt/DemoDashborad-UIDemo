@@ -25,11 +25,21 @@ const createOne = model => async (request, response) => {
 
 const createMany = model => async (request, response) => {
   try {
-    const { data } = request.body || []
+    const { body, user } = request || []
+    const { data } = body
     if (data.length <= 0) {
       return response.status(500).end()
     }
-    const createManyModel = await model.createMany(data)
+    let datawith_uid = data.map(row => {
+      let uid = uniquid()
+      return {
+        ...row,
+        uid,
+        createdBy: user._id
+      }
+    })
+    console.log(datawith_uid, request.user)
+    const createManyModel = await model.insertMany(datawith_uid)
     response
       .status(200)
       .json({ data: createManyModel })
@@ -98,7 +108,7 @@ export const getOne = model => async (request, response) => {
   try {
     const { user, params } = request
     const doc = await model
-      .findOne({ createdBy: user._id, uid: params.id })
+      .findOne({ createdBy: user._id, _id: params.id })
       .lean()
       .exec()
 
@@ -120,7 +130,7 @@ export const updateOne = model => async (request, response) => {
       .findOneAndUpdate(
         {
           createdBy: user._id,
-          uid: params.id
+          _id: params.id
         },
         body,
         { new: true }
@@ -144,7 +154,7 @@ export const removeOne = model => async (request, response) => {
     const { user, params } = request
     const removed = await model.findOneAndRemove({
       createdBy: user._id,
-      uid: params.id
+      _id: params.id
     })
 
     if (!removed) {

@@ -1,15 +1,15 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const tagSchema = new mongoose.Schema({
-	name: {
-		type: String,
-		default: "point",
-	},
-	sid: {
-		type: mongoose.SchemaTypes.ObjectId,
-		ref: "sensor",
-		required: true,
-	},
-});
+  name: {
+    type: String,
+    default: 'point'
+  },
+  sensorId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'sensor',
+    required: true
+  }
+})
 
-export const Tag = mongoose.model("tag", tagSchema);
+export const Tag = mongoose.model('tag', tagSchema)

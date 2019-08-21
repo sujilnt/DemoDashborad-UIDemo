@@ -6,7 +6,7 @@ const router = Router()
 router
   .route('/')
   .get(SensorController.getMany)
-  .post(SensorController.createOne)
+  .post(SensorController.createMany)
 
 // for single sensors
 router

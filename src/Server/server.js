@@ -4,6 +4,7 @@ import { loadGzipBundle } from './utils/loadGzipBundle'
 import signUP_Router from './Resources/Login-SignUP/Sigup.route.js'
 import signIn_Router from './Resources/Login-SignUP/Login.route.js'
 import sensor_Router from './Resources/IOT/Sensor/Sensor.route'
+import tag_Router from './Resources/IOT/Tag/Tag.route'
 import morgan from 'morgan'
 import { json, urlencoded } from 'body-parser'
 import { protect } from './utils/auth'
@@ -22,6 +23,7 @@ app.use('/signup', signUP_Router)
 app.use('/api', protect)
 app.use('/api/user', signIn_Router)
 app.use('/api/sensor', sensor_Router)
+app.use('/api/sensor/tag/', tag_Router)
 // loadGzipBundle func => loading all gzip client bundles
 loadGzipBundle(app)
 /**
