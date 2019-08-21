@@ -8,6 +8,7 @@ import tag_Router from './Resources/IOT/Tag/Tag.route'
 import morgan from 'morgan'
 import { json, urlencoded } from 'body-parser'
 import { protect } from './utils/auth'
+import { realtime } from './utils/dtweet'
 import cors from 'cors'
 const PORT_NUM = 9001
 
@@ -37,6 +38,7 @@ export const start = async () => {
     app.listen(PORT_NUM, () => {
       console.log(`App started at port number ${PORT_NUM}`)
     })
+    realtime()
   } catch (e) {
     console.error(e)
   }
