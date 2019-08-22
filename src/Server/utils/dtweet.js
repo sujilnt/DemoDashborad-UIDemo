@@ -32,7 +32,7 @@ const addTemperature = async event => {
 	await createEvent({
 		time: data.updateTime,
 		value: data.value,
-		id: sensorid._id,
+		sid: sensorid._id,
 	});
 };
 
