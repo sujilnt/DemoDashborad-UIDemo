@@ -6,6 +6,6 @@ const router = Router();
 router
 	.route("/")
 	.get(getEvents)
-	.post(SensorController.createMany);
+	.post(EventController.createOne);
 
 export default router;

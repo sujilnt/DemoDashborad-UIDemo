@@ -7,7 +7,7 @@ const sensorSchema = new mongoose.Schema(
 		},
 		sensortype: {
 			type: String,
-			enum: ["Temperature", "Proximity", "Touch"],
+			enum: ["Temperature", "Proximity", "Touch", "Battery"],
 			required: true,
 		},
 		sensordt: {
