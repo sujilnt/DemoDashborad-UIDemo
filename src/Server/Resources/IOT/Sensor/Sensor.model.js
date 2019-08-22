@@ -10,6 +10,10 @@ const sensorSchema = new mongoose.Schema(
 			enum: ["Temperature", "Proximity", "Touch"],
 			required: true,
 		},
+		sensordt: {
+			type: String,
+			required: true,
+		},
 		createdBy: {
 			type: mongoose.SchemaTypes.ObjectId,
 			ref: "user",
@@ -22,5 +26,5 @@ const sensorSchema = new mongoose.Schema(
 	},
 	{ timetamp: true }
 );
-sensorSchema.index({ user: 1, _id: 1 }, { unique: true });
+sensorSchema.index({ user: 1, sensordt: 1 }, { unique: true });
 export const Sensor = mongoose.model("sensor", sensorSchema);
