@@ -68,7 +68,7 @@ Certain plugins like imagemin are also been used image compression based on sugg
 
 ## Testing
 
-Jest is a delightful JavaScript Testing Framework with a focus on simplicity. There is a **_mock_** folder inside **_src_** directory that is used for mock something like custom image etc. while writing automated test cases.
+Jest is a delightful JavaScript Testing Framework with a focus on simplicity. There is a **_mock_** folder inside **_src_** directory that is used for mock something like custom image etc. while writing automated test cases. 
 
 ##### For running all the test cases
 
