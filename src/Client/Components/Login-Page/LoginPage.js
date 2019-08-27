@@ -23,10 +23,10 @@ export default class LoginComponent extends Component {
 	buttonHandleChange = async () => {
 		const { email, password } = this.state;
 		try {
-			if (!email && !password) {
+			if (!email || !password) {
 				throw new Error(" form fields can't be empty");
 			}
-			console.log(email, password);
+			// fetch token from the local storgage
 			let body = await JSON.stringify({ email, password });
 			let USER_ID = await JSON.parse(localStorage.getItem("USER_ID"));
 			let response = await fetch(LOGIN_PATH, {
@@ -40,7 +40,13 @@ export default class LoginComponent extends Component {
 			});
 			// expecting a token from the server
 			let user = await response.json();
-			console.log(user);
+			localStorage.setItem(
+				"USER_ID",
+				JSON.stringify({
+					token: user.token,
+					name: USER_ID.name,
+				})
+			);
 			return user;
 		} catch (e) {
 			console.error(e);

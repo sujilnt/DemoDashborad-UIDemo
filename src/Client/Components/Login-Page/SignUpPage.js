@@ -22,34 +22,33 @@ export default class SignUP extends Component {
 	};
 	buttonHandleChange = async () => {
 		const { email, password, name } = this.state;
-		if (email && password && name) {
-			try {
-				let body = await JSON.stringify({ email, password, name });
-				let response = await fetch("http://localhost:9001/signup", {
-					method: "POST",
-					headers: {
-						"Accept": "application/json",
-						"Content-Type": "application/json",
-					},
-					body: [body],
-				});
-				// expecting a token from the server
-				let user = await response.json();
-				console.log(user);
-				localStorage.setItem(
-					"USER_ID",
-					JSON.stringify({
-						token: user.token,
-						name: "test",
-					})
-				);
-				return user;
-			} catch (e) {
-				console.error(e);
+		try {
+			if (!name || !email || !password) {
+				throw new Error("SignPage Form not Filled");
 			}
+			let body = await JSON.stringify({ email, password, name });
+			let response = await fetch("http://localhost:9001/signup", {
+				method: "POST",
+				headers: {
+					"Accept": "application/json",
+					"Content-Type": "application/json",
+				},
+				body: [body],
+			});
+			// expecting a token from the server
+			let user = await response.json();
+			console.log(user);
+			localStorage.setItem(
+				"USER_ID",
+				JSON.stringify({
+					token: user.token,
+					name: user.name,
+				})
+			);
+			return user;
+		} catch (e) {
+			console.error(e);
 		}
-
-		console.log("button is clicked");
 	};
 
 	static propTypes = {};
