@@ -3,7 +3,7 @@ import { Button, Card, Elevation, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent";
 import { loginPageConfigSignIN, forgetPasswordConfig, loginPageConfigSignUP } from "./data.js";
-export default class LoginPageComponent extends Component {
+export default class LoginComponent extends Component {
 	state = {
 		loading: false,
 		signIN: true,
@@ -52,10 +52,6 @@ export default class LoginPageComponent extends Component {
 	}
 }
 
-LoginPageComponent.defaultProps = {
-	logIn: true,
-	forgetPassword: false,
-};
-LoginPageComponent.propTypes = {
+LoginComponent.propTypes = {
 	togglelogin: PropTypes.func.isRequired,
 };

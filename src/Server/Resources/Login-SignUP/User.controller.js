@@ -5,6 +5,7 @@ import { newToken } from "../../utils/auth";
 export const CreateUser = async (request, response) => {
 	try {
 		const { email, password } = request.body;
+		console.log("request", email, password, request.body);
 		if (email && password) {
 			let u = await User.create({
 				email,

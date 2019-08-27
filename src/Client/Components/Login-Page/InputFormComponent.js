@@ -11,7 +11,7 @@ export default class InputFormComponent extends Component {
 		const formdata = dataProp() || [];
 		if (formdata.length >= NUMBER_1) {
 			formdata.map((r, key) => {
-				const { inpputPlaceholder, leftIcon, type, helperText, label, labelFor, labelInfor } = r;
+				const { inpputPlaceholder, leftIcon, type, helperText, label, labelFor, labelInfor, name } = r;
 				finalFormGroupData.push(
 					<FormGroup
 						helperText={helperText}
@@ -28,6 +28,7 @@ export default class InputFormComponent extends Component {
 							leftIcon={leftIcon}
 							className="input-sign"
 							type={type}
+							name={name}
 						/>
 					</FormGroup>
 				);

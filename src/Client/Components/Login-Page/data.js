@@ -8,6 +8,7 @@ const getDataforSignPage = () => {
 	return [
 		{
 			label: "Email",
+			name: "email",
 			labelFor: "user-login-page",
 			labelInfor: "(required)",
 			inpputPlaceholder: "Enter your Email",
@@ -16,6 +17,7 @@ const getDataforSignPage = () => {
 		},
 		{
 			label: "Password",
+			name: "password",
 			labelFor: "user-login-page",
 			labelInfor: "(required)",
 			inpputPlaceholder: "Enter your Password",
@@ -34,6 +36,7 @@ const getDataforSigUPPage = () => {
 	return [
 		{
 			label: "Name",
+			name: "name",
 			labelFor: "user-signup-page",
 			labelInfor: "(required)",
 			inpputPlaceholder: "Enter your Name",
@@ -42,6 +45,7 @@ const getDataforSigUPPage = () => {
 		},
 		{
 			label: "Email",
+			name: "email",
 			labelFor: "user-signup-page",
 			labelInfor: "(required)",
 			inpputPlaceholder: "Enter your Email",
@@ -50,6 +54,7 @@ const getDataforSigUPPage = () => {
 		},
 		{
 			label: "Password",
+			name: "password",
 			labelFor: "user-signup-page",
 			labelInfor: "(required)",
 			inpputPlaceholder: "Enter your Password",
