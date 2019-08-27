@@ -3,17 +3,48 @@ import { Button, Card, Elevation, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent";
 import { loginPageConfigSignIN, forgetPasswordConfig, loginPageConfigSignUP } from "./data.js";
+const LOGIN_PATH = "http://localhost:9001/api/user";
 export default class LoginComponent extends Component {
 	state = {
 		loading: false,
 		signIN: true,
 		forgetPassword: false,
+		email: "",
+		password: "",
 	};
 
 	inputHandleChange = e => {
+		const { name, value } = e.target;
+		this.setState(() => ({
+			[name]: value,
+		}));
 		console.log("inputValue is changeds", e.target.value);
 	};
-	buttonHandleChange = () => {
+	buttonHandleChange = async () => {
+		const { email, password } = this.state;
+		try {
+			if (!email && !password) {
+				throw new Error(" form fields can't be empty");
+			}
+			console.log(email, password);
+			let body = await JSON.stringify({ email, password });
+			let USER_ID = await JSON.parse(localStorage.getItem("USER_ID"));
+			let response = await fetch(LOGIN_PATH, {
+				method: "POST",
+				headers: {
+					"Accept": "application/json",
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${USER_ID.token}`,
+				},
+				body: [body],
+			});
+			// expecting a token from the server
+			let user = await response.json();
+			console.log(user);
+			return user;
+		} catch (e) {
+			console.error(e);
+		}
 		console.log("button is clicked");
 	};
 

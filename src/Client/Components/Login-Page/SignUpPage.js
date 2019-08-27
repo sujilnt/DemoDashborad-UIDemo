@@ -19,7 +19,6 @@ export default class SignUP extends Component {
 		this.setState(() => ({
 			[name]: value,
 		}));
-		console.log("inputValue is changeds", e.target.value, e.target.name, this.state);
 	};
 	buttonHandleChange = async () => {
 		const { email, password, name } = this.state;
