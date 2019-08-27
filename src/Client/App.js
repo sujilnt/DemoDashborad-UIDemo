@@ -5,7 +5,7 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import { Card } from "@blueprintjs/core";
 // import ReactSVGComponent from 'Components/ReactSVGComponent/ReactSVGComponent'
 import "css/main.css";
-import LoginPageContainer from "./Components/LoginPage/LoginPageContainer";
+import LoginPageContainer from "./Components/Login-Page/LoginPageContainer";
 class App extends Component {
 	state = {
 		loading: true,

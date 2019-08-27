@@ -26,7 +26,7 @@ app.use("/api", protect);
 app.use("/api/user", signIn_Router);
 app.use("/api/sensor", sensor_Router);
 app.use("/api/sensor/tag/", tag_Router);
-app.use("/api/sensor/:id/events", event_Router);
+app.use("/api/sensor/events/", event_Router); // sensorid
 // loadGzipBundle func => loading all gzip client bundles
 loadGzipBundle(app);
 /**

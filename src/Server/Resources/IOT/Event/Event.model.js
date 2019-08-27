@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 const eventSchema = new mongoose.Schema({
 	time: {
 		type: Date,
-		unique: true,
 	},
 	value: {
 		type: String,
@@ -13,5 +12,5 @@ const eventSchema = new mongoose.Schema({
 		required: true,
 	},
 });
-
+eventSchema.index({ sensor: 1, time: 1 }, { unique: true });
 export const Event = mongoose.model("event", eventSchema);

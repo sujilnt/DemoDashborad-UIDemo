@@ -5,6 +5,7 @@ const ONE = 1;
 const dweetio = new dweetClient();
 
 export const createEvent = async request => {
+	console.log(request);
 	await Event.create({
 		...request,
 	});
@@ -30,8 +31,8 @@ const addTemperature = async event => {
 	}
 	console.log("sensorid", sensorid, event);
 	await createEvent({
-		time: data.updateTime,
-		value: data.value,
+		time: data.temperature.updateTime,
+		value: data.temperature.value,
 		sid: sensorid._id,
 	});
 };
