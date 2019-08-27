@@ -10,7 +10,7 @@ const clientModeConfig = env => require(`./webpack/webpack.${env}.js`)(env);
 const serverModeConfig = (env = "prod") => require(`./webpack/webpack.server.${env}.js`)(env);
 
 module.exports = ({ mode, project } = { mode: "prod", project: "client" }) => {
-if (project === "server") {
+	if (project === "server") {
 		// bundling for sever projects
 		return merge(
 			{
@@ -78,4 +78,3 @@ if (project === "server") {
 		);
 	}
 };
-  

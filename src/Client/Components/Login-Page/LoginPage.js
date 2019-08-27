@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Card, Elevation, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent";
-import { loginPageConfigSignIN, forgetPasswordConfig, loginPageConfigSignUP } from "./data.js";
+import { loginPageConfigSignIN, forgetPasswordConfig } from "./data.js";
 const LOGIN_PATH = "http://localhost:9001/api/user";
 export default class LoginComponent extends Component {
 	state = {
