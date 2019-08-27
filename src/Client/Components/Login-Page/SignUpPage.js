@@ -9,8 +9,8 @@ export default class SignUP extends Component {
 	state = {
 		loading: false,
 		signUp: false,
-		email: "s3ccvdfvs@email.com",
-		password: "s23df3333222",
+		email: "",
+		password: "",
 		name: "",
 	};
 
@@ -22,10 +22,10 @@ export default class SignUP extends Component {
 		console.log("inputValue is changeds", e.target.value, e.target.name, this.state);
 	};
 	buttonHandleChange = async () => {
-		const { email, password } = this.state;
-		if (email && password) {
+		const { email, password, name } = this.state;
+		if (email && password && name) {
 			try {
-				let body = await JSON.stringify({ email, password });
+				let body = await JSON.stringify({ email, password, name });
 				let response = await fetch("http://localhost:9001/signup", {
 					method: "POST",
 					headers: {

@@ -3,13 +3,15 @@ import { User } from "./User.model";
 import { newToken } from "../../utils/auth";
 // CreateUser => A controller that creates user in the Database.
 export const CreateUser = async (request, response) => {
+	console.log(request.body);
 	try {
-		const { email, password } = request.body;
+		const { email, password, name } = request.body;
 		console.log("request", email, password, request.body);
-		if (email && password) {
+		if (email && password && name) {
 			let u = await User.create({
 				email,
 				password,
+				name,
 			});
 			let token = await newToken(u);
 			response.status(200).json({ token, u });
