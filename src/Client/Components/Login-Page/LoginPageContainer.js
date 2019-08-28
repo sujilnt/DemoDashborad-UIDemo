@@ -13,6 +13,7 @@ export default class LoginPageContainer extends Component {
 	};
 	static propTypes = {};
 	render() {
+		console.log("%c LoginPageContainer ", "background: #222; color: #bada55");
 		const { logIn } = this.state;
 		return (
 			<div>

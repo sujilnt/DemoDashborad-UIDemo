@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { InputGroup, FormGroup, Divider, Button, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import "./LoginPage.css";
 
 const NUMBER_1 = 1;
-export default class InputFormComponent extends Component {
+export default class InputFormComponent extends PureComponent {
 	renderFormGroup = () => {
 		const finalFormGroupData = [];
 		const { dataProp, handlechange } = this.props;
@@ -37,6 +37,7 @@ export default class InputFormComponent extends Component {
 		return finalFormGroupData;
 	};
 	render() {
+		console.log("%c inputFormComponent ", "background: #222; color: #bada55");
 		const { buttonHandleChange, buttondata, pageHeader, forgetPassword, handlechangepassword, signUpProp } = this.props;
 		console.log(this.props.forgetPassword, "get all props");
 		const { text, intent, large } = buttondata();
