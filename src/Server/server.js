@@ -23,7 +23,7 @@ app.use("/signup", signUP_Router);
 // app.use('/signin', signIn_Router)
 // protected route starts !
 app.use("/api", protect);
-app.use("/api/user", signIn_Router);
+app.use("/user", signIn_Router);
 app.use("/api/sensor", sensor_Router);
 app.use("/api/sensor/tag/", tag_Router);
 app.use("/api/sensor/events/", event_Router); // sensorid

@@ -3,7 +3,7 @@ import { Button, Card, Elevation, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent";
 import { loginPageConfigSignIN, forgetPasswordConfig } from "./data.js";
-const LOGIN_PATH = "http://localhost:9001/api/user";
+const LOGIN_PATH = "http://localhost:9001/user";
 export default class LoginComponent extends Component {
 	state = {
 		loading: false,
@@ -28,13 +28,11 @@ export default class LoginComponent extends Component {
 			}
 			// fetch token from the local storgage
 			let body = await JSON.stringify({ email, password });
-			let USER_ID = await JSON.parse(localStorage.getItem("USER_ID"));
 			let response = await fetch(LOGIN_PATH, {
 				method: "POST",
 				headers: {
 					"Accept": "application/json",
 					"Content-Type": "application/json",
-					"Authorization": `Bearer ${USER_ID.token}`,
 				},
 				body: [body],
 			});
@@ -44,7 +42,9 @@ export default class LoginComponent extends Component {
 				"USER_ID",
 				JSON.stringify({
 					token: user.token,
-					name: USER_ID.name,
+					name: user.name,
+					password,
+					email,
 				})
 			);
 			return user;

@@ -46,6 +46,7 @@ export default class SignUP extends Component {
 				})
 			);
 			return user;
+			
 		} catch (e) {
 			console.error(e);
 		}

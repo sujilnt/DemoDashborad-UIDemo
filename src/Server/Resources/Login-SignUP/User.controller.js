@@ -30,8 +30,9 @@ export const signIn = async (request, response) => {
 		const { email, password } = request.body;
 		if (email && password) {
 			const user = await User.findOne({ email: email })
-				.select("email password")
+				.select("email password name")
 				.exec();
+			let name = user._doc.name;
 			if (!user) {
 				return response.status(400).send(invalid);
 			}
@@ -40,7 +41,7 @@ export const signIn = async (request, response) => {
 				return response.return(400).send(invalid);
 			}
 			const token = newToken(user);
-			return response.status(201).send({ token });
+			return response.status(201).send({ token, name });
 		} else {
 			response.statu(400).send({ message: "cgeck your email and password" });
 		}
