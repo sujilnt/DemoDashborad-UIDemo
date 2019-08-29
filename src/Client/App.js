@@ -16,7 +16,7 @@ class App extends PureComponent {
 		return (
 			<div className="app-Container ">
 				<Card className="app-Conta-child">
-					<LoginPageContainer />
+					<LoginPageContainer/>
 				</Card>
 			</div>
 		);

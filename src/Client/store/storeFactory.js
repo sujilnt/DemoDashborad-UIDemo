@@ -3,6 +3,9 @@ import rootReducer from "./reducer";
 import thunk from "redux-thunk";
 //compose(applyMiddleware(thunk))
 // creation of store and implements of middleware and thunk.
-const storeFactory = () => createStore(rootReducer, compose(applyMiddleware(thunk)));
+const storeFactory = (persist_state) => {
+    return createStore(rootReducer, persist_state, compose(applyMiddleware(thunk)));
+};
 
-export default storeFactory;
+export default storeFactory
+

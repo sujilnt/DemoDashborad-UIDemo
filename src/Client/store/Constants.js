@@ -1,4 +1,7 @@
-export const C = {
+const C = {
 	ADD_USER_TOKEN: "ADD_USER_TOKEN",
 	ADD_USER: "ADD_USER",
+	IS_AUTHENTICATED: "IS_AUTHENTICATED"
 };
+
+export default C;

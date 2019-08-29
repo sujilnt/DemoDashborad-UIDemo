@@ -1,8 +1,11 @@
 const state = {
 	user: {
 		name: "",
-		authorization: "",
+		token: "",
+		email: "",
+		password: ""
 	},
+	isAuthenticated: false
 };
 
 export default state;

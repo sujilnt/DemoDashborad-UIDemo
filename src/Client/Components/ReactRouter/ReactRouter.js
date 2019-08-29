@@ -15,8 +15,8 @@ export default class ReactRouter extends PureComponent {
 							render={props => {
 								return (
 									<div d={props}>
-										<Navbar />
-										<App />
+										<Navbar/>
+										<App/>
 									</div>
 								);
 							}}
@@ -25,7 +25,7 @@ export default class ReactRouter extends PureComponent {
 							exact
 							path="/login"
 							render={() => {
-								return <App />;
+								return <App/>;
 							}}
 						/>
 					</Switch>

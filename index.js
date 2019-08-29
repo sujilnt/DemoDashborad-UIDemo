@@ -6,9 +6,11 @@ import { Provider } from "react-redux";
 import storeFactory from "./src/Client/store/storeFactory.js";
 import State from "./src/Client/store/intialstate";
 console.log(State, "import state");
-const store = storeFactory({});
+const user = JSON.parse(localStorage.getItem("USER_ID"));
+console.log(user);
+const store = storeFactory({user:user, isAuthenticated: false});
 
-console.log("This is a store", store.getState());
+console.log("This is a store", store);
 ReactDOM.render(
 	<Provider store={store}>
 		<ReactRouter />
