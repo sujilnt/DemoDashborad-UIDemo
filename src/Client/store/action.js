@@ -6,6 +6,7 @@ export const addUser = (data = {}) => ({
 });
 
 export const authenticate = (data = false) => (({
-	type: C.ADD_USER,
+	type: C.IS_AUTHENTICATED,
 	payload: data,
 }));
+

@@ -1,10 +1,13 @@
 import React, { PureComponent } from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Navbar from "../NavBar/NavBarComponent.js";
+import LoginPageContainer from "../Login-Page/LoginPageContainer";
 import App from "../../App.js";
 
 export default class ReactRouter extends PureComponent {
 	render() {
+		const {dispatchFunc} = this.props;
+		console.log("what is ",dispatchFunc);
 		return (
 			<div>
 				<HashRouter>
@@ -16,7 +19,6 @@ export default class ReactRouter extends PureComponent {
 								return (
 									<div d={props}>
 										<Navbar/>
-										<App/>
 									</div>
 								);
 							}}
@@ -24,8 +26,8 @@ export default class ReactRouter extends PureComponent {
 						<Route
 							exact
 							path="/login"
-							render={() => {
-								return <App/>;
+							render={(props) => {
+								return <LoginPageContainer dispatch ={dispatchFunc} routerprops={props} />;
 							}}
 						/>
 					</Switch>

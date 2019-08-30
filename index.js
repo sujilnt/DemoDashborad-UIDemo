@@ -1,19 +1,20 @@
 import "css/main.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactRouter from "Components/ReactRouter/ReactRouter.js";
 import { Provider } from "react-redux";
 import storeFactory from "./src/Client/store/storeFactory.js";
 import State from "./src/Client/store/intialstate";
+import ReactRouterContainer from "./src/Client/Components/ReactRouter/ReactRouterContainer";
 console.log(State, "import state");
-const user = JSON.parse(localStorage.getItem("USER_ID"));
-console.log(user);
-const store = storeFactory({user:user, isAuthenticated: false});
+const persisted_state = JSON.parse(localStorage.getItem("USER_ID"));
+const store = storeFactory(persisted_state);
+store.subscribe(()=>{
+    console.log('%c Store Data ', 'background: #222; color: white', store.getState());
+});
 
-console.log("This is a store", store);
 ReactDOM.render(
 	<Provider store={store}>
-		<ReactRouter />
+		<ReactRouterContainer />
 	</Provider>,
 	document.getElementById("root")
 );

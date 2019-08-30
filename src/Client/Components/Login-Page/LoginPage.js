@@ -38,15 +38,12 @@ export default class LoginComponent extends Component {
 			});
 			// expecting a token from the server
 			let user = await response.json();
-			localStorage.setItem(
-				"USER_ID",
-				JSON.stringify({
-					token: user.token,
-					name: user.name,
-					password,
-					email,
-				})
-			);
+			this.props.redirect({
+				token: user.token,
+				name: user.name,
+				password,
+				email,
+			});
 			return user;
 		} catch (e) {
 			console.error(e);
