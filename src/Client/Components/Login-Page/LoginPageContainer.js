@@ -1,9 +1,10 @@
 import React, {PureComponent, Fragment} from "react";
 //import PropTypes from 'prop-types'
 import LoginPage from "./LoginPage";
-import {authenticate} from "../../store/action";
+import {authenticate,addUser} from "../../store/action";
 import SignUP from "./SignUpPage";
 import { Redirect, Route } from "react-router-dom";
+import {Card} from "@blueprintjs/core";
 export default class LoginPageContainer extends PureComponent {
 	state = {
 		logIn: true,
@@ -21,6 +22,7 @@ export default class LoginPageContainer extends PureComponent {
 		);
 		// Redux Depatched to change the App change
 		this.props.dispatch(authenticate(true));
+		this.props.dispatch(addUser(user));
 	};
 
 	static propTypes = {};
@@ -34,12 +36,19 @@ export default class LoginPageContainer extends PureComponent {
 		console.log(this.props.dispatch,this.props.isAuthenticated,redirect,routerprops.location.state);
 		return !isAuthenticated ? (
 			<Fragment>
-				{/*
-                    login: true, shows login Component
-                    Login: false , loads signup Component
-                 */
-					logIn ? <LoginPage togglelogin={this.toggleStateSignUp} redirect={this.toggleRedirect}/> :
-						<SignUP toggleSignup={this.toggleStateSignUp}/>}
+				<div className="app-Container ">
+					<Card className="app-Conta-child">
+						{
+							/*
+                    		login: true, shows login Component
+                    		Login: false , loads signup Component
+                 			*/
+
+							logIn ? <LoginPage togglelogin={this.toggleStateSignUp} redirect={this.toggleRedirect}/> :
+								<SignUP toggleSignup={this.toggleStateSignUp}/>
+						}
+					</Card>
+				</div>
 			</Fragment>
 		) : (
 			<div>

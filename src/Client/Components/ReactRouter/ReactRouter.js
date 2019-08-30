@@ -13,24 +13,11 @@ export default class ReactRouter extends PureComponent {
 			<div>
 				<HashRouter>
 					<Switch>
-						<Route
-							exact
-							path="/"
-							render={props => {
-								return(
-									<ProtectedRoute
-										exact={true}
-										path="/"
-										isAuthenticated={isAuthenticated}
-										component={Navbar}
-									/>
-								)
-								return (
-									<div d={props}>
-										<Navbar/>
-									</div>
-								);
-							}}
+						<ProtectedRoute
+							exact={true}
+							path="/home"
+							isAuthenticated={isAuthenticated}
+							component={Navbar}
 						/>
 						<Route
 							exact
