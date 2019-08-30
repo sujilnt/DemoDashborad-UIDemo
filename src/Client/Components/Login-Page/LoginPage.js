@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Button, Card, Elevation, H3 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 import InputFormComponent from "./InputFormComponent";
 import { loginPageConfigSignIN, forgetPasswordConfig } from "./data.js";
 const LOGIN_PATH = "http://localhost:9001/user";
-export default class LoginComponent extends Component {
+export default class LoginComponent extends PureComponent {
 	state = {
 		loading: false,
 		signIN: true,

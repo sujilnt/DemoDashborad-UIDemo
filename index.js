@@ -5,13 +5,13 @@ import { Provider } from "react-redux";
 import storeFactory from "./src/Client/store/storeFactory.js";
 import State from "./src/Client/store/intialstate";
 import ReactRouterContainer from "./src/Client/Components/ReactRouter/ReactRouterContainer";
-console.log(State, "import state");
-const persisted_state = JSON.parse(localStorage.getItem("USER_ID"));
+import intialState from "./src/Client/store/intialstate";
+const persisted_state = JSON.parse(localStorage.getItem("USER_ID")) || intialState;
 const store = storeFactory(persisted_state);
 store.subscribe(()=>{
     console.log('%c Store Data ', 'background: #222; color: white', store.getState());
 });
-
+window.store=store;
 ReactDOM.render(
 	<Provider store={store}>
 		<ReactRouterContainer />

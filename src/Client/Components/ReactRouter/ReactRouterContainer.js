@@ -7,13 +7,14 @@ const updatedStore = (dispatcher, actionCreater) => {
     dispatcher(actionCreater);
 };
 const ReactRouterContainer = ()=>{
-    const intialState =  useSelector(state=> state);
-    const dispatch = useDispatch();
+    const intialState =  useSelector(state=> state),
+        {isAuthenticated} =intialState ,
+        dispatch = useDispatch();
     console.log("%c React-Router-Container ", "background: #222; color: #bada55");
     console.log("React Router State",intialState);
     return (
         <Fragment>
-            <ReactRouter dispatchFunc={(actionCreator)=> updatedStore(dispatch,actionCreator)} />
+            <ReactRouter dispatchFunc={(actionCreator)=> updatedStore(dispatch,actionCreator)} isAuthenticated={isAuthenticated} />
         </Fragment>
     );
 
