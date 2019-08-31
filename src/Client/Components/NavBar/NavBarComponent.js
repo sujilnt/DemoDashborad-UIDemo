@@ -3,8 +3,11 @@ import {} from "react-redux"
 import { NavbarGroup, NavbarHeading, NavbarDivider, Icon,Button, Navbar, Classes, Alignment } from "@blueprintjs/core";
 import {useSelector} from "react-redux";
 import SideBar from "../SideBar/SideBar";
+import TreeComponent from "../Tree/Tree";
+import TreeContainer from "../Tree/TreeContainer";
 
-const NavbarComponent = () =>{
+const NavbarComponent = (props) =>{
+	console.log("Navbar props",props);
 	const intialState =  useSelector(state=> state.user);
 	return (
 		<div>
@@ -24,7 +27,10 @@ const NavbarComponent = () =>{
 					<Button className={Classes.MINIMAL} icon="log-out" text="logout"/>
 				</NavbarGroup>
 			</Navbar>
-			<SideBar/>
+			<div style={{"width": 300}}>
+				<SideBar location = {props.location}/>
+			</div>
+
 		</div>
 	);
 };

@@ -21,3 +21,29 @@ h1 {
 	box-shadow: none !important;
 	background: transparent !important;
 }
+
+.space-between{
+	justify-content: space-between;
+}
+.flex{
+	display: flex;
+}
+.fullWidth{
+	width:100%;
+}
+.opactiy-mid{
+	opacity: 0.7;
+}
+.fontWeight{
+	font-weight: 500;
+}
+.captialize{
+	text-transform: capitalize;
+}
+
+.zeropadding{
+	padding: 0!important;
+}
+.fullHeight{
+	height:100vh;
+}
