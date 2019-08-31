@@ -47,3 +47,10 @@ h1 {
 .fullHeight{
 	height:100vh;
 }
+.contentCenter{
+	justify-content: center;
+}
+
+.alignCenter{
+	align-items: center;
+}
