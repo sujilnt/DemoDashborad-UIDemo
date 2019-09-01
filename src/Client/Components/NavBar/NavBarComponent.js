@@ -24,10 +24,6 @@ const NavbarComponent = (props) =>{
 					<Button className={Classes.MINIMAL} icon="log-out" text="logout"/>
 				</NavbarGroup>
 			</Navbar>
-			<div style={{"width": 300}}>
-				<SideBar location={props.location}/>
-			</div>
-
 		</div>
 	);
 };

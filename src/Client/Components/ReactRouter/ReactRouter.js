@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import Navbar from "../NavBar/NavBarComponent.js";
 import LoginPageContainer from "../Login-Page/LoginPageContainer";
 import ProtectedRoute from "./PrivateRoute/PrivateRoute";
+import Page from "../Page/Page";
 import App from "../../App.js";
 
 export default class ReactRouter extends PureComponent {
@@ -18,6 +19,12 @@ export default class ReactRouter extends PureComponent {
 							path="/home"
 							isAuthenticated={isAuthenticated}
 							component={Navbar}
+						/>
+						<ProtectedRoute
+							exact={true}
+							path="/"
+							isAuthenticated={isAuthenticated}
+							component={Page}
 						/>
 						<Route
 							exact

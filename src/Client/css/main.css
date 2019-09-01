@@ -2,9 +2,17 @@ body {
 	font-family: "Raleway", sans-serif;
 	font-weight: normal;
 }
+html,body {
+	height:100%;
+	position: relative;
+}
+body{
+	overflow: hidden;
+}
+/*
 h1 {
 	font-family: "Vidaloka", serif;
-}
+}*/
 .app-Container {
 	display: flex;
 	flex-wrap: wrap;
@@ -53,4 +61,8 @@ h1 {
 
 .alignCenter{
 	align-items: center;
+}
+
+.parentHeight{
+	height: 100%;
 }

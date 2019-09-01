@@ -76,7 +76,7 @@ class SideBar extends PureComponent {
     };
 
     render() {
-        return (<Card elevation={Elevation.ONE} className={"fullHeight zeropadding"}>
+        return (<Card elevation={Elevation.ONE} className={"parentHeight zeropadding"}>
             <Menu large={true} className={"zeropadding"}>
                 {this.renderMenu()}
             </Menu>
