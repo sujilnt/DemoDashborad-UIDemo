@@ -3,9 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import storeFactory from "./src/Client/store/storeFactory.js";
-import State from "./src/Client/store/intialstate";
+// importing css of blueprint library
+import "normalize.css";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 import ReactRouterContainer from "./src/Client/Components/ReactRouter/ReactRouterContainer";
 import intialState from "./src/Client/store/intialstate";
+import App from "./src/Client/App";
 const persisted_state = JSON.parse(localStorage.getItem("USER_ID")) || intialState;
 const store = storeFactory(persisted_state);
 store.subscribe(()=>{
@@ -14,10 +19,11 @@ store.subscribe(()=>{
 window.store=store;
 ReactDOM.render(
 	<Provider store={store}>
-		<ReactRouterContainer />
+		<App/>
 	</Provider>,
 	document.getElementById("root")
 );
+/*
 if ("serviceWorker" in navigator) {
 	window.addEventListener("load", async () => {
 		try {
@@ -26,4 +32,4 @@ if ("serviceWorker" in navigator) {
 			console.error("service not registered", e);
 		}
 	});
-}
+}*/
