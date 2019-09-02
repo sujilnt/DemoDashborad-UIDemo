@@ -17,7 +17,7 @@ h1 {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	background: linear-gradient(70deg, rgb(232, 241, 237), rgb(19, 124, 189));
+	/*background: linear-gradient(70deg, rgb(232, 241, 237), rgb(19, 124, 189));*/
 	/*background: linear-gradient(60deg, rgb(38, 133, 193), rgb(22, 155, 101) 50%);*/
 	flex-direction: column;
 	justify-content: center;
@@ -65,4 +65,10 @@ h1 {
 
 .parentHeight{
 	height: 100%;
+}
+.height80{
+	height:80%;
+}
+.width90{
+	width:90%;
 }

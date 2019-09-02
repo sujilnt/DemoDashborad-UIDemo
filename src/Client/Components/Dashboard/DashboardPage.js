@@ -1,10 +1,18 @@
 import React,{Component} from "react";
-import Page from "../Page/PageComponent";
+import Loader from "../Loader/Loader";
+import BasicChart from "../../Chart/BasicChart";
+import LineChart from "../../Chart/LineChart/LineChart";
 class DashboardPage extends Component {
-    state={};
+    state={
+        isloading: true
+    };
+
     render() {
-        return (
-            <div>This is a Dashboard page </div>
+        const {isloading}=this.state;
+       return !isloading ? (<Loader/>):(
+            <div>
+                <LineChart/>
+            </div>
         )
     }
 }
