@@ -1,0 +1,11 @@
+.chart-container{
+    width: 40%;
+    height: 300px;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+svg{
+    display: block;
+    position: relative;
+}
