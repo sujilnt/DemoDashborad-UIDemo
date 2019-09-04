@@ -15,18 +15,17 @@ class LineChart extends PureComponent{
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
 
-        const chartdata = linedataFunc();
+        const chartdata = this.props.data;
         console.log(chartdata);
         const svg = select("#lc-svg")
             .append("svg")
             .attr("width","100%")
             .attr("height","100%")
-            //.attr('viewBox','-0 -0 '+Math.min(width,height) +' '+Math.min(width,height))
             .attr('viewBox',`-25 10 ${Math.min(width,height)+0} ${Math.min(width,height)+5}`)
             .attr('preserveAspectRatio','xMinYMin meet')
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-            .attr("width",innerWidth).attr("height",innerHeight)
+            .attr("width", innerWidth).attr("height", innerHeight)
         ;
         const xextent = extent(chartdata, d=> {
             let date = new Date(timeParse(d.time));
@@ -92,7 +91,7 @@ class LineChart extends PureComponent{
 
     render(){
         return(
-            <div id={"lc-svg"} ></div>)
+            <div id={"lc-svg"}></div>)
     }
 }
 export default LineChart;
