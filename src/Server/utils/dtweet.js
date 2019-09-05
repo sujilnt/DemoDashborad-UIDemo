@@ -46,7 +46,6 @@ const addTemperature = async event => {
 		return;
 	}
 
-	//https://api.openweathermap.org/data/2.5/weather?lat=52.77&lon=-1.5&appid=90b386b01c2d8daceb88930d4305f085
 	console.log("sensorid", sensorid, event, "temperature oat",temp);
 	await createEvent({
 		time: data.temperature.updateTime,
