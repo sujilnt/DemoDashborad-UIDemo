@@ -47,7 +47,7 @@ export default class AreaRechart extends PureComponent {
                       fillOpacity={0.4}
                       fill="#0D8050"
                       strokeWidth={3}
-                      name={"outside Air temperature"} unit=" °C"
+                      name={"Outside Air temperature"} unit=" °C"
                       activeDot={{ strokeWidth: 2, r: 10 }}
                 />
                 <Area stackId="sid" key={"5d5eff729213560b5882acb"}

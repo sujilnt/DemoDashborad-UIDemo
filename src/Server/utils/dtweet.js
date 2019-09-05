@@ -2,6 +2,7 @@ import dweetClient from "node-dweetio";
 import { Event } from "../Resources/IOT/Event/Event.model";
 import { Sensor } from "../Resources/IOT/Sensor/Sensor.model";
 import fetch from "node-fetch";
+const WEATHER_URL ="https://api.openweathermap.org/data/2.5/weather?lat=52.77&lon=-1.5&appid=90b386b01c2d8daceb88930d4305f085&units=metric";
 const ONE = 1;
 const dweetio = new dweetClient();
 
@@ -13,7 +14,7 @@ export const createEvent = async request => {
 
 export const weatherData = async () => {
 	try{
-		const response = await fetch("https://fcc-weather-api.glitch.me/api/current?lat=52.746590&lon=-1.473730");
+		const response = await fetch(WEATHER_URL);
 		if (response.status === 200) {
 			return response.json();
 		}
@@ -44,12 +45,14 @@ const addTemperature = async event => {
 	if (!sensorid) {
 		return;
 	}
+
+	//https://api.openweathermap.org/data/2.5/weather?lat=52.77&lon=-1.5&appid=90b386b01c2d8daceb88930d4305f085
 	console.log("sensorid", sensorid, event, "temperature oat",temp);
 	await createEvent({
 		time: data.temperature.updateTime,
 		value: data.temperature.value,
 		sid: sensorid._id,
-		oat: temp,
+		oat: temp
 	});
 };
 

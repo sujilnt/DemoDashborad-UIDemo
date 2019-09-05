@@ -5,6 +5,7 @@ import "./Dashboard.css";
 
 import LineChart from "../../Chart/LineChart/LineChart";
 import Temperature from "./Temperature/Temperature";
+import { Button, Card, Elevation } from "@blueprintjs/core";
 import LineRecharts from "./Temperature/LineRecharts";
 class DashboardPage extends Component {
     state={
@@ -15,9 +16,9 @@ class DashboardPage extends Component {
         const {isloading}=this.state;
        return !isloading ? (<Loader/>):(
            <Fragment>
-               <div className={"chart-container"}>
+               <Card interactive={true} elevation={Elevation.TWo} className={"chart-container"}>
                    <Temperature containerclassName={"chart-container"}/>
-               </div>
+               </Card>
            </Fragment>
 
         )
