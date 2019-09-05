@@ -6,6 +6,10 @@ const eventSchema = new mongoose.Schema({
 	value: {
 		type: String,
 	},
+	oat:{
+		type:String,
+		default: "10"
+	},
 	sid: {
 		type: mongoose.SchemaTypes.ObjectId,
 		ref: "sensor",

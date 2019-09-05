@@ -39,7 +39,7 @@ export const sensorsList = [
 	},
 	{
 		sensordt: "bfuj9fpo5b7g0093bdqg",
-		name: "My desk sesnor",
+		name: "My desk sensor",
 		sensor: true,
 		sensortype: "Temperature",
 	},

@@ -32,11 +32,10 @@ class Temperature extends Component{
                     "Authorization": `Bearer ${token}`
                 }
             });
-            console.log(response);
             if(response.status === 200){
                 const d = await response.json();
                 console.log(d, "response");
-                this.setState((prevstate,_)=>{
+                this.setState((prevstate)=>{
                     let datalength = prevstate.data.length;
                    return{
                        data: (datalength ? [] : (datalength ? [prevstate.data,...d]: d)),

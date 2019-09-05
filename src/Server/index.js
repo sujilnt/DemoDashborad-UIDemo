@@ -1,3 +1,3 @@
 import { start } from './server'
 
-start() // app starting
+start(); // app starting

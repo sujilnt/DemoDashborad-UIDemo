@@ -42,6 +42,7 @@
 		"mongoose": "^5.6.9",
 		"morgan": "^1.9.1",
 		"node-dweetio": "^0.0.11",
+		"node-fetch": "^2.6.0",
 		"nodemon-webpack-plugin": "^4.0.8",
 		"path": "^0.12.7",
 		"prop-types": "^15.7.2",
