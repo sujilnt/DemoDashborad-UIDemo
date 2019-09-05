@@ -14,9 +14,9 @@ class LineChart extends PureComponent{
         let margin = {top: 10, right: 0, bottom: 20, left: 30};
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
-
-        const chartdata = this.props.data;
-        console.log(chartdata);
+        console.log(this.props.props);
+        const chartdata = [...this.props.data];
+        console.log("chardata",chartdata);
         const svg = select("#lc-svg")
             .append("svg")
             .attr("width","100%")

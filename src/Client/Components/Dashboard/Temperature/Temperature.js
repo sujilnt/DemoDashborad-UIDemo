@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
 import LineChart from "../../../Chart/LineChart/LineChart";
+import AreaRechart from "./AreaRechart";
 const API_URL = "http://localhost:9001/api/sensor/events/";
 const apiDate = ()=>{
     const today = new Date();
@@ -51,12 +52,16 @@ class Temperature extends Component{
     }
    }
    render(){
-       const {loading} = this.state;
+       const {loading,data} = this.state;
        const {containerclassName}=this.props;
+       /*
+       *  {} <LineChart data={data} containerclassName={"chart-container"}/>
+       * */
+       /*{}*/
        console.log(this.state.data, "Temperature");
        return !loading?<div>loading.....</div>:(
            <Fragment>
-               <LineChart data={this.state.data} containerclassName={"chart-container"}/>
+               <AreaRechart data={this.state.data} />
            </Fragment>
        )
    }
