@@ -90,7 +90,20 @@ export const getMany = model => async (request, response) => {
 			.find({ createdBy: request.user._id })
 			.lean()
 			.exec();
-
+        console.log(request.user._id,request.user);
+		response.status(200).json({ data: docs });
+	} catch (e) {
+		console.error(e);
+		response.status(400).end();
+	}
+};
+export const getManySensor = model => async (request, response) => {
+	try {
+		const docs = await model
+			.find({ sensor:true })
+			.lean()
+			.exec();
+		console.log(request.user._id,request.user);
 		response.status(200).json({ data: docs });
 	} catch (e) {
 		console.error(e);
@@ -173,4 +186,5 @@ export const Controller = model => ({
 	getOne: getOne(model),
 	updateOne: updateOne(model),
 	removeOne: removeOne(model),
+	getManySensor:getManySensor(model)
 });

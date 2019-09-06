@@ -5,8 +5,8 @@ const router = Router()
 // for many sensors
 router
   .route('/')
-  .get(SensorController.getMany)
-  .post(SensorController.createMany)
+  .get(SensorController.getManySensor)
+  .post(SensorController.createMany);
 
 // for single sensors
 router
@@ -14,6 +14,6 @@ router
   .get(SensorController.getOne)
   .post(SensorController.createOne)
   .put(SensorController.updateOne)
-  .delete(SensorController.removeOne)
+  .delete(SensorController.removeOne);
 
 export default router

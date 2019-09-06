@@ -9,7 +9,7 @@ import DashboardContainer from "../Dashboard/DashboardContainer";
 
 export default class ReactRouter extends PureComponent {
 	render() {
-		const {dispatchFunc,isAuthenticated} = this.props;
+		const {dispatchFunc,isAuthenticated,store} = this.props;
 		console.log("what is ",dispatchFunc,isAuthenticated);
 		return (
 			<div>
@@ -25,7 +25,7 @@ export default class ReactRouter extends PureComponent {
 							exact={true}
 							path="/"
 							isAuthenticated={isAuthenticated}
-							component={DashboardContainer}
+							component={(props)=> <DashboardContainer store={store} routerprops={props}/>}
 						/>
 						<Route
 							exact

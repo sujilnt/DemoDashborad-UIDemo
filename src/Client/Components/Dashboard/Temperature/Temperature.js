@@ -17,34 +17,30 @@ class Temperature extends Component{
        data: []
    };
    componentDidMount(){
-       const dataArray =[];
        const sensors = ["5d5eff729213560b5882acb4"];
        const {from,to}= apiDate();
+       const {token} = this.props.store.user;
     try{
-        const token = getToken();
+        const _token_ = token ||getToken();
         sensors.forEach(async (sensorid,i)=>{
             const response = await fetch(`${API_URL}${sensorid}?start=${from}&end=${to}`,{
                 method: "GET",
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${_token_}`
                 }
             });
             if(response.status === 200){
                 const d = await response.json();
-                console.log(d, "response");
-                this.setState((prevstate)=>{
-                    let datalength = prevstate.data.length;
+                this.setState(()=>{
                    return{
-                       data: (datalength ? [] : (datalength ? [prevstate.data,...d]: d)),
+                       data: d,
                        loading: true
                    }
                 });
-                return dataArray.push(1);
             }
         });
-        console.log(dataArray,"data Array");
     }catch(e){
         console.log("API Failed", e);
     }

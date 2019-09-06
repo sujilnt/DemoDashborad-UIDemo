@@ -2,11 +2,11 @@ import React from "react";
 import Page from "../Page/PageComponent";
 import DashboardPage from "./DashboardPage";
 
-const DashboardContainer = ()=>{
-    console.log("dashboard page is called");
+const DashboardContainer = (props)=>{
+    console.log("dashboard page is called",props);
     return (
         <Page icon={"dashboard"} pageHeader={"Dashboard"}>
-            <DashboardPage/>
+            <DashboardPage store={props.store}/>
         </Page>);
 };
 export default DashboardContainer;

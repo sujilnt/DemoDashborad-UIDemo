@@ -1,7 +1,7 @@
 import React, {Fragment, PureComponent} from "react";
 import styled from "styled-components";
 import NavbarComponent from "../NavBar/NavBarComponent";
-import {Icon,Intent} from "@blueprintjs/core";
+import {Icon,Intent,H3} from "@blueprintjs/core";
 import SideBar from "../SideBar/SideBar";
 import "../../css/main.css"
 import PropTypes from 'prop-types';
@@ -43,7 +43,7 @@ overflow: auto;
 `;
 
 const Header = styled.div`
-padding: 0 20px;
+padding: 20px;
 display:flex;
 flex-direction: row;
 align-items: center;
@@ -79,8 +79,10 @@ class PageComponent extends PureComponent{
                         </Part1>
                         <Part2>
                             <Header>
-                                <Icon icon={set_icon} iconSize={"18"} intent={Intent.NONE}/>
-                                <h2 style={{"marginLeft": "10px"}}>{set_pageHeader}</h2>
+                                <Icon icon={set_icon} iconSize={"26"} intent={Intent.NONE}/>
+                                <h2 className={"bp3-heading"} style={{"marginLeft": "10px",marginTop: "10px"}}>
+                                    {set_pageHeader}
+                                </h2>
                             </Header>
                             <Component>
                                 {set_children}
