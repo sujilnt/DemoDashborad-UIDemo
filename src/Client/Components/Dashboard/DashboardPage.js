@@ -1,15 +1,18 @@
 import React, {Component, Fragment} from "react";
 import Loader from "../Loader/Loader";
 import "./Dashboard.css";
-import { Select,ItemRenderer,ItemPredicate } from "@blueprintjs/select";
+
 import Temperature from "./Temperature/Temperature";
-import { Button, Card, Elevation ,H3,IconSelect,IntentSelect } from "@blueprintjs/core";
+import { Button, Card, Elevation ,H3,H4,IconSelect,IntentSelect } from "@blueprintjs/core";
 import {getToken} from "../../client-utils/utils";
+import SelectComponent from "./SelectComponent";
 const API_URL = "http://localhost:9001/api/sensor/";
 class DashboardPage extends Component {
     state={
         isloading: true,
-        sensorinformation: []
+        sensorinformation: [],
+        temperatureinformation:[],
+        sensorid: "5d5efe039213560b5882acae" //meeting temperature
     };
     async componentDidMount() {
         const {token}=this.props.store.user;
@@ -30,10 +33,12 @@ class DashboardPage extends Component {
             });
             if(response.status===200){
                 const d = await response.json();
-                console.log("data....",response,d);
                 this.setState(()=>{
+                    let filtedDataTemperature = d.data.filter(row=>row.sensortype==="Temperature");
                     return{
                         sensorinformation: d,
+                        temperatureinformation:filtedDataTemperature,
+                        isloading:false
                     }
                 });
             }
@@ -42,18 +47,26 @@ class DashboardPage extends Component {
         }
     }
 
-    handleIconNameChange=()=>{
+    currentsensorInformation=(e)=>{
+        console.log(e);
+        this.setState(()=>({
+            sensorid: e._id
+        }));
+
     };
     render() {
-        const {isloading}=this.state;
+        const {isloading,sensorinformation,sensorid}=this.state;
         console.log("page Error" ,this.state);
         const {store}=this.props;
-       return !isloading ? (<Loader/>):(
+       return isloading ? (<Loader/>):(
            <Fragment>
                <Card >
-                   <H3>Temperature Reading</H3>
+                   <div className={"flex alignCenter"}>
+                       <H4>Temperature Reading for the sensor</H4>
+                       <SelectComponent sensorinformation={this.state.temperatureinformation} selectSensor={this.currentsensorInformation}/>
+                   </div>
                    <Card interactive={true} elevation={Elevation.TWO}  className={"chart-container"}>
-                       <Temperature containerclassName={"chart-container"} store={store}/>
+                       <Temperature containerclassName={"chart-container"} store={store} sensorid={sensorid} />
                    </Card>
                </Card>
            </Fragment>
