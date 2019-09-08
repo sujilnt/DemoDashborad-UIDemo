@@ -23,7 +23,7 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById("root")
 );
-
+/*
 if ("serviceWorker" in navigator) {
 	window.addEventListener("load", async () => {
 		try {
@@ -32,4 +32,4 @@ if ("serviceWorker" in navigator) {
 			console.error("service not registered", e);
 		}
 	});
-}
+}*/

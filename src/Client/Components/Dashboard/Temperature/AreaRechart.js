@@ -29,7 +29,7 @@ export default class AreaRechart extends PureComponent {
                     stroke-width={2}
                 />
                 <YAxis
-                    dataKey="oat"
+                    dataKey="value"
                     axisLine={{strokeWidth: "2"}}
                     label={{value: "Temperature",position:"insideTopRight",offset:-20,style:{fontWeight: "bold"}}}
                 />
@@ -39,17 +39,6 @@ export default class AreaRechart extends PureComponent {
                     return formatTime(new Date(time)) ;
 
                 }}/>
-
-                <Area
-                      type="monotone"
-                      dataKey="oat"
-                      stroke="#0D8050"
-                      fillOpacity={0.4}
-                      fill="#0D8050"
-                      strokeWidth={3}
-                      name={"Outside Air temperature"} unit=" °C"
-                      activeDot={{ strokeWidth: 2, r: 10 }}
-                />
                 <Area stackId="sid" key={"5d5eff729213560b5882acb"}
                       type="monotone"
                       dataKey="value"
@@ -59,6 +48,16 @@ export default class AreaRechart extends PureComponent {
                       strokeWidth={3}
                       name={"temperature"} unit=" °C"
                       activeDot={{ strokeWidth: 2, r: 10 }}
+                />
+                <Area
+                    type="monotone"
+                    dataKey="oat"
+                    stroke="#0D8050"
+                    fillOpacity={0.4}
+                    fill="#0D8050"
+                    strokeWidth={3}
+                    name={"Outside Air temperature"} unit=" °C"
+                    activeDot={{ strokeWidth: 2, r: 10 }}
                 />
 
             </AreaChart>
