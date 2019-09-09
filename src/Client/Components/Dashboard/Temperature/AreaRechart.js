@@ -30,6 +30,7 @@ export default class AreaRechart extends PureComponent {
                 />
                 <YAxis
                     dataKey="value"
+                    domain={[0 ,35]}
                     axisLine={{strokeWidth: "2"}}
                     label={{value: "Temperature",position:"insideTopRight",offset:-20,style:{fontWeight: "bold"}}}
                 />

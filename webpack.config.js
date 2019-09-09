@@ -72,6 +72,10 @@ module.exports = ({ mode, project } = { mode: "prod", project: "client" }) => {
 							collapseWhitespace: true,
 						},
 					}),
+					new webpack.ContextReplacementPlugin(
+						/moment[\/\\]locale$/,
+						/de|en/
+					)
 				],
 			},
 			clientModeConfig(mode)

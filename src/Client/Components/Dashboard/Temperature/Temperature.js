@@ -1,16 +1,14 @@
 import React, {Component, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
 import AreaRechart from "./AreaRechart";
+import moment from "moment";
 const API_URL = "http://localhost:9001/api/sensor/events/";
 
 const apiDate = ()=>{
-    const today = new Date();
-    let year = today.getFullYear(), month = today.getMonth() , day =today.getDay();
     return {
-        from: (new Date(year,month,day-7).toISOString()),
-        to: (today.toISOString())
+        from: (moment().subtract(7,"days").toISOString()),
+        to: (moment().toISOString())
     }
-
 };
 class Temperature extends Component{
    state={
