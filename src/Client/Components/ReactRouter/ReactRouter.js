@@ -6,6 +6,7 @@ import ProtectedRoute from "./PrivateRoute/PrivateRoute";
 import Page from "../Page/PageComponent";
 import SideBar from "../SideBar/SideBar";
 import DashboardContainer from "../Dashboard/DashboardContainer";
+import AnalysisContainer from "../Analysis/AnalysisContainer";
 
 export default class ReactRouter extends PureComponent {
 	render() {
@@ -19,7 +20,7 @@ export default class ReactRouter extends PureComponent {
 							exact={true}
 							path="/home"
 							isAuthenticated={isAuthenticated}
-							component={Navbar}
+							component={(props)=><AnalysisContainer/>}
 						/>
 						<ProtectedRoute
 							exact={true}

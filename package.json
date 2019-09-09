@@ -30,6 +30,7 @@
 	},
 	"dependencies": {
 		"@blueprintjs/core": "^3.17.1",
+		"@blueprintjs/datetime": "^3.9.2",
 		"@blueprintjs/icons": "^3.9.1",
 		"@blueprintjs/select": "^3.10.0",
 		"bcryptjs": "^2.4.3",

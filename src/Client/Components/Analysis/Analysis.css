@@ -1,0 +1,12 @@
+.dateRangeInput{
+    position: relative;
+}
+.popover_date{
+   position: relative;
+}
+.dataRangeProp{
+    min-width: 230px;
+}
+.dataRangeProp input{
+    text-overflow: ellipsis;
+}
