@@ -46,7 +46,7 @@ export default class AreaRechart extends PureComponent {
                       fillOpacity={0.2}
                       fill="#137cbd"
                       strokeWidth={3}
-                      name={"temperature"} unit=" °C"
+                      name={"Temperature"} unit=" °C"
                       activeDot={{ strokeWidth: 2, r: 10 }}
                 />
                 <Area
@@ -56,7 +56,7 @@ export default class AreaRechart extends PureComponent {
                     fillOpacity={0.4}
                     fill="#0D8050"
                     strokeWidth={3}
-                    name={"Outside Air temperature"} unit=" °C"
+                    name={"Outside Air Temperature"} unit=" °C"
                     activeDot={{ strokeWidth: 2, r: 10 }}
                 />
 

@@ -1,4 +1,4 @@
-const version = new Date();
+const version = new Date().toISOString();
 // precaching the all ss
 workbox.precaching.precacheAndRoute(self.__precacheManifest,{
     ignoreURLParametersMatching: [/.*/]

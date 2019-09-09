@@ -31,6 +31,10 @@ class Temperature extends Component{
                    "Authorization": `Bearer ${_token_}`
                }
            });
+           let storeresponse = response.clone();
+           let cache = await caches.open("sujil");
+           let url = `${API_URL}${sensorid}`;
+           await cache.put(url, storeresponse);
            if(response.status === 200){
                const d = await response.json();
                this.setState(()=>{
@@ -41,6 +45,18 @@ class Temperature extends Component{
                });
            }
        }catch(e){
+           let cacheddata = await caches.match(
+               `${API_URL}${sensorid}`,
+               {cacheName: "sujil",ignoreSearch:true}
+               );
+           let d = await cacheddata.json();
+           console.log("d",d,`${API_URL}${sensorid}`);
+           this.setState(()=>{
+               return{
+                   data: d,
+                   loading: true
+               }
+           });
            console.log("API Failed", e);
        }
    };
