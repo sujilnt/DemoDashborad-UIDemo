@@ -5,7 +5,7 @@
    position: relative;
 }
 .dataRangeProp{
-    min-width: 230px;
+    min-width: 256px;
 }
 .dataRangeProp input{
     text-overflow: ellipsis;

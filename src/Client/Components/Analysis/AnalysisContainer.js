@@ -42,14 +42,16 @@ class AnalysisContainer extends PureComponent{
                         showArrowButtons={true}
                         startInputProps={{
                             className: "dataRangeProp",
-                            large:true
+                            large:true,
+                            leftIcon:"calendar"
                         }}
                         endInputProps={{
                             className: "dataRangeProp",
-                           large:true
+                            large:true,
+                            leftIcon:"calendar"
                         }}
                         timePickerProps={{
-                                showArrowButton: true
+                            showArrowButtons: true
                             }}
                         onChange={this.handleRangeChange}
                         parseDate={str => new Date(str)}
