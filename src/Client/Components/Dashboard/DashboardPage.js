@@ -27,7 +27,7 @@ class DashboardPage extends Component {
                     "ignoreCache": "true",
                     "Authorization": `Bearer ${_token_}`,
                     "body":{
-                        "senosr":"true"
+                        "sensor":"true"
                     }
                 }
             });
@@ -56,14 +56,17 @@ class DashboardPage extends Component {
     };
     render() {
         const {isloading,sensorinformation,sensorid}=this.state;
-        console.log("page Error" ,this.state);
         const {store}=this.props;
        return isloading ? (<Loader/>):(
            <Fragment>
                <Card >
                    <div className={"flex alignCenter"}>
                        <H4>Temperature Reading for the sensor</H4>
-                       <SelectComponent sensorinformation={this.state.temperatureinformation} selectSensor={this.currentsensorInformation}/>
+                       <SelectComponent
+                           sensorinformation={this.state.temperatureinformation}
+                           selectSensor={this.currentsensorInformation}
+                           large={false}
+                       />
                    </div>
                    <Card interactive={true} elevation={Elevation.TWO}  className={"chart-container"}>
                        <Temperature containerclassName={"chart-container"} store={store} sensorid={sensorid} />

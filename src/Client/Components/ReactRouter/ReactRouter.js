@@ -20,7 +20,7 @@ export default class ReactRouter extends PureComponent {
 							exact={true}
 							path="/home"
 							isAuthenticated={isAuthenticated}
-							component={(props)=><AnalysisContainer/>}
+							component={(props)=><AnalysisContainer store={store} routerprops={props}/>}
 						/>
 						<ProtectedRoute
 							exact={true}

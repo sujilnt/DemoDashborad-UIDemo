@@ -1,0 +1,44 @@
+import React, {Fragment,PureComponent} from "react";
+import "@blueprintjs/datetime/lib/css/blueprint-datetime.css";
+import { DateRangeInput } from "@blueprintjs/datetime";
+import "./Analysis.css";
+
+const DateTimeRange = (props) => {
+    const {startDate,endDate,getDate}=props;
+    return (
+        <Fragment>
+            <DateRangeInput
+                formatDate={date => date}
+                shortcuts={true}
+                className={"dateRangeInput"}
+                popoverProps={{
+                    popoverClassName: "popover_date"
+                }}
+                large={true}
+                allowSingleDayRange={true}
+                closeOnSelection={true}
+                selectAllOnFocus={true}
+                timePrecision={"minute"}
+                showArrowButtons={true}
+                startInputProps={{
+                    className: "dataRangeProp",
+                    large: true,
+                    leftIcon: "calendar"
+                }}
+                endInputProps={{
+                    className: "dataRangeProp",
+                    large: true,
+                    leftIcon: "calendar"
+                }}
+                timePickerProps={{
+                    showArrowButtons: true
+                }}
+                onChange={getDate}
+                parseDate={str => new Date(str)}
+                value={[startDate, endDate]}
+            />
+        </Fragment>
+    );
+};
+
+export default DateTimeRange;
