@@ -6,6 +6,7 @@ module.exports = () => ({
 		rules: [
 			{
 				test: /\.(js)$/,
+				exclude: [/node_modules/, /webpack/,"/src/Client/"],
 				use: [
 					"babel-loader",
 					{
