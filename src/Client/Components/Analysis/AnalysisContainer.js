@@ -1,11 +1,12 @@
 import React, {PureComponent} from "react";
 import Page from "../Page/PageComponent";
 import "./Analysis.css";
-import { Button, Card,Classes,Intent} from "@blueprintjs/core";
+import {Button, Card, Classes, Elevation, Intent} from "@blueprintjs/core";
 import DateTimeRange from "./DataTimeRange";
 import SelectComponent from "../Dashboard/SelectComponent";
 import {getToken} from "../../client-utils/utils";
 import Loader from "../Loader/Loader";
+import Temperature from "../Dashboard/Temperature/Temperature";
 const API_URL = "http://localhost:9001/api/sensor/";
 class AnalysisContainer extends PureComponent{
     state={
@@ -70,8 +71,8 @@ class AnalysisContainer extends PureComponent{
     };
     renderChartAndTable=()=>{
         return(
-            <Card className={"marginTopBottom"}>
-                <div> this is a div</div>
+            <Card interactive={true} elevation={Elevation.TWO}  className={"chart-container marginTopBottom"}>
+                <Temperature containerclassName={"chart-container"} store={this.props.store} sensorid={this.state.sensorid} />
             </Card>
         );
     };
