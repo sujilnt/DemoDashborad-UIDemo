@@ -69,15 +69,26 @@ class AnalysisContainer extends PureComponent{
         }
     };
     renderChartAndTable=()=>{
-        return(<div>this is a chart and Table </div>);
-    }
+        return(
+            <Card className={"marginTopBottom"}>
+                <div> this is a div</div>
+            </Card>
+        );
+    };
+    getChart= ()=>{
+        console.log("clicked man");
+        this.setState(()=>({
+            loadingChart:false
+        }));
+    };
     render(){
         const {isloading,sensorinformation,temperatureinformation,sensorid,startDate,endDate,loadingChart}=this.state;
         console.log("Analysis component",this.state.endDate,this.state.startDate);
         return isloading ? (<Loader/>) : (
             <div>
                 <Page icon={"dashboard"} pageHeader={"Analysis"}>
-                    <Card className={"flex fullWidth alignCenter"}>
+                    <Card className={"flex fullWidth alignCenter space-between"}>
+                        <div className={"flex alignCenter"}>
                         <DateTimeRange
                             startDate={startDate}
                             endDate={endDate}
@@ -89,13 +100,15 @@ class AnalysisContainer extends PureComponent{
                             selectSensor={this.currentsensorInformation}
                             large={true}
                         />
+                        </div>
                         <Button icon={"clipboard"}
                                 text={"Sensor Information"}
                                 large={true}
                                 intent={Intent.PRIMARY}
+                                onClick={this.getChart}
                         />
                     </Card>
-                    {!loadingChart ? this.renderChartAndTable : ""}
+                    {!loadingChart ? this.renderChartAndTable() : ""}
                 </Page>
             </div>
         );

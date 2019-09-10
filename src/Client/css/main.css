@@ -9,6 +9,9 @@ html,body {
 body{
 	overflow: hidden;
 }
+.marginTopBottom{
+	margin: 25px 0;
+}
 /*
 h1 {
 	font-family: "Vidaloka", serif;

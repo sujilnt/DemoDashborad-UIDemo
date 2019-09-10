@@ -1,6 +1,7 @@
 import React,{Component} from "react";
-import {Select, ItemPredicate, renderFilteredItems } from "@blueprintjs/select";
-import { Classes,Button, Icon, Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
+import {Select} from "@blueprintjs/select";
+import { Button, Menu, MenuItem } from "@blueprintjs/core";
+
 class SelectComponent extends Component{
     itemProp = this.props.sensorinformation;
     state={
@@ -31,7 +32,7 @@ class SelectComponent extends Component{
     };
     menuRender=(item)=>{
         return(
-            <Menu>
+            <Menu large={this.props.large}>
                 <MenuItem
                 active={this.state.activeItem === item.name}
                 key={item._id}
@@ -43,6 +44,7 @@ class SelectComponent extends Component{
     };
     render(){
         const { itemList } =this.state;
+        const {large} =this.props;
         const data = itemList;
         const name = this.state.activeItem;
         console.log(itemList,this.state.activeItem,"namesss");
@@ -58,7 +60,7 @@ class SelectComponent extends Component{
                     onQueryChange={this.handleQueryChange}
                     resetOnClose={true}
                 >
-                    <Button text={name} rightIcon="double-caret-vertical" />
+                    <Button text={name} rightIcon="double-caret-vertical" large={large}/>
                 </Select>
             </div>
         )
