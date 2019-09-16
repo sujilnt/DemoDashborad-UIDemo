@@ -1,7 +1,8 @@
 import React, {Fragment, PureComponent} from "react";
 import styled from "styled-components";
 import NavbarComponent from "../NavBar/NavBarComponent";
-import {Icon,Intent,H3} from "@blueprintjs/core";
+//import {Icon,Intent,H3} from "@blueprintjs/core";
+import {  Position, Classes , Toaster, Icon, Intent } from "@blueprintjs/core";
 import SideBar from "../SideBar/SideBar";
 import "../../css/main.css"
 import PropTypes from 'prop-types';
@@ -63,13 +64,20 @@ const Component = styled.div`
 `;
 class PageComponent extends PureComponent{
     state={
-        loading: false
+        loading: false,
     };
     componentDidMount() {
-
+        if(navigator.onLine=== true){
+            console.log(navigator.onLine,"Offline");
+            this.toaster.show({ message: "App in offline Mode !", intent:Intent.DANGER,icon: "issue" });
+        }
     }
+    refHandlers = {
+        toaster: (ref) => this.toaster = ref,
+    };
 
     render(){
+        console.log(this.state,"Page");
         const {icon, pageHeader,children} =this.props;
         let set_icon = icon ? icon : "chart";
         let set_pageHeader = pageHeader ? pageHeader : "pageHeader prop not passed";
@@ -77,6 +85,10 @@ class PageComponent extends PureComponent{
         return (
             <Fragment>
                 <Container>
+                    <Toaster
+                        position={Position.TOP}
+                        ref={this.refHandlers.toaster}
+                    />
                     <NavbarComponent/>
                     <Child>
                         <Part1>
