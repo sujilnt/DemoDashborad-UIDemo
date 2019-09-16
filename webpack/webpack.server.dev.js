@@ -1,4 +1,5 @@
 const NodemonPlugin = require("nodemon-webpack-plugin");
+const { InjectManifest } = require("workbox-webpack-plugin");
 const path = require("path");
 module.exports = () => ({
 	mode: "development",
@@ -24,6 +25,10 @@ module.exports = () => ({
 			watch: path.resolve("./ServerBundle"),
 			script: "./ServerBundle/server.bundle.js",
 			verbose: true,
+		}),
+		new InjectManifest({
+			swSrc: "./src/src-sw.js",
+			swDest: "sw.js",
 		}),
 	],
 });

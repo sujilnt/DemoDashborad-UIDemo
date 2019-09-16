@@ -58,7 +58,8 @@ const Footer = styled.div`
 `;
 const Component = styled.div`
  padding: 0 20px;
- height: 100vh;
+ min-height: 100vh;
+
 `;
 class PageComponent extends PureComponent{
     state={

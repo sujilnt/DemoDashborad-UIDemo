@@ -7,6 +7,7 @@ export const sideBarData = [
         item: [{
             name: "home",
             icon: "chart",
+            href:"#/home",
             key: "item-menu"
         }]
     }, {

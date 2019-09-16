@@ -90,7 +90,6 @@ export const getMany = model => async (request, response) => {
 			.find({ createdBy: request.user._id })
 			.lean()
 			.exec();
-        console.log(request.user._id,request.user);
 		response.status(200).json({ data: docs });
 	} catch (e) {
 		console.error(e);
@@ -103,7 +102,7 @@ export const getManySensor = model => async (request, response) => {
 			.find({ sensor:true })
 			.lean()
 			.exec();
-		console.log(request.user._id,request.user);
+
 		response.status(200).json({ data: docs });
 	} catch (e) {
 		console.error(e);

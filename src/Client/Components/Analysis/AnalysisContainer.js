@@ -6,7 +6,7 @@ import DateTimeRange from "./DataTimeRange";
 import SelectComponent from "../Dashboard/SelectComponent";
 import {getToken} from "../../client-utils/utils";
 import Loader from "../Loader/Loader";
-import Temperature from "../Dashboard/Temperature/Temperature";
+import Temperature from "./Temperature/Temperature";
 const API_URL = "http://localhost:9001/api/sensor/";
 class AnalysisContainer extends PureComponent{
     state={
@@ -70,8 +70,9 @@ class AnalysisContainer extends PureComponent{
         }
     };
     renderChartAndTable=()=>{
+        console.log("AreaContainer",this.props);
         return(
-            <Card interactive={true} elevation={Elevation.TWO}  className={"chart-container marginTopBottom"}>
+            <Card interactive={true} elevation={Elevation.TWO}  className={"marginTopBottom fullheight"}>
                 <Temperature containerclassName={"chart-container"} store={this.props.store} sensorid={this.state.sensorid} />
             </Card>
         );

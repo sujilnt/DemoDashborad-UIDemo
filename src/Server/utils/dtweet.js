@@ -41,7 +41,6 @@ const addTemperature = async event => {
 	const sensorid = await getsensorID(targetName);
 	const {main} = await weatherData();
 	let {temp} = main;
-	//console.log(weather);
 	if (!sensorid) {
 		return;
 	}
@@ -67,7 +66,7 @@ export const realtime = () => {
 				console.log("battery Status", event.eventType);
 				break;
 			default:
-				console.log(event.data);
+				console.log("default",event.data);
 		}
 		//console.log("dweet.io is called ", dweet, "background: #222; color: #bada55");
 	});
