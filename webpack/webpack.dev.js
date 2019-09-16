@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const CompressionPlugin = require('compression-webpack-plugin')
 const { InjectManifest } = require("workbox-webpack-plugin");
-
+const AggressiveMergingPlugin =require("webpack").optimize.AggressiveMergingPlugin;
 module.exports = () => ({
 	mode: "development",
 	devtool: "eval-source-map",
@@ -86,4 +86,18 @@ module.exports = () => ({
 			swDest: "sw-dev.js",
 		}),
 	],
+	optimization: {
+		minimize: true,
+		mangleWasmImports: true,
+		removeEmptyChunks: true,
+		mergeDuplicateChunks: true,
+		minimizer:[
+			new AggressiveMergingPlugin({
+				minSize: 30000, // 字节，分割点。默认：30720
+				maxSize: 50000, // 字节，每个文件最大字节。默认：51200
+				chunkOverhead: 0, // 默认：0
+				entryChunkMultiplicator: 1, // 默认：1
+			})
+		]
+	}
 });

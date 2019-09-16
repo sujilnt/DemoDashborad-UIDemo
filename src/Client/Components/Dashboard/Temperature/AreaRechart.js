@@ -30,7 +30,7 @@ export default class AreaRechart extends PureComponent {
                 />
                 <YAxis
                     dataKey="value"
-                    domain={[0 ,35]}
+                    domain={[0, dataMax => (Math.abs(dataMax) + 3)]}
                     axisLine={{strokeWidth: "1.5"}}
                     label={{value: "Temperature",position:"insideTopRight",offset:-20,style:{fontWeight: "bold"}}}
                 />

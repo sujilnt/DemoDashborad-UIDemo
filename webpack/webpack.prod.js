@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const { InjectManifest } = require("workbox-webpack-plugin");
-
+const AggressiveMergingPlugin =require("webpack").optimize.AggressiveMergingPlugin;
 module.exports = () => ({
 	mode: "production",
 	output: {
@@ -105,6 +105,12 @@ module.exports = () => ({
 				filename: "[name].css",
 				chunkFilename: "[id].css",
 			}),
+			new AggressiveMergingPlugin({
+					minSize: 30000, // 字节，分割点。默认：30720
+					maxSize: 50000, // 字节，每个文件最大字节。默认：51200
+					chunkOverhead: 0, // 默认：0
+					entryChunkMultiplicator: 1, // 默认：1
+				})
 		],
 	},
 	plugins: [
