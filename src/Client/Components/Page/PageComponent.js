@@ -65,6 +65,10 @@ class PageComponent extends PureComponent{
     state={
         loading: false
     };
+    componentDidMount() {
+
+    }
+
     render(){
         const {icon, pageHeader,children} =this.props;
         let set_icon = icon ? icon : "chart";

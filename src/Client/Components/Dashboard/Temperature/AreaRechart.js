@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {timeFormat} from "d3-time-format"
-import {AreaChart, Area, Legend,XAxis, YAxis, CartesianGrid, Tooltip,ResponsiveContainer} from 'recharts';
+import {AreaChart, Area, Legend,XAxis, YAxis, CartesianGrid, Tooltip,ResponsiveContainer,Brush} from 'recharts';
 
 export default class AreaRechart extends PureComponent {
     formatDate(date){
@@ -60,8 +60,22 @@ export default class AreaRechart extends PureComponent {
                     name={"Outside Air Temperature"} unit=" °C"
                     activeDot={{ strokeWidth: 2, r: 10 }}
                 />
+                <Brush
+                    dataKey='name'
+                    height={50}
+                    stroke="#000000"
+                    y={310}
+                    startIndex={0}
+                    endIndex={216}>
 
+                    <AreaChart>
+                        <Area dataKey="value" fill="#137cbd" stackId="a" />
+                        <Area dataKey="oat" fill="#0D8050" stackId="a" />
+                    </AreaChart>
+
+                </Brush>
             </AreaChart>
+
             </ResponsiveContainer>
         );
     }

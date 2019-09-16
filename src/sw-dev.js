@@ -11,7 +11,7 @@ workbox.routing.registerRoute(
 
 // caching all the sensor informating in the cache
 workbox.routing.registerRoute(
-    "http://localhost:9001/api/sensor/" ,(new workbox.strategies.NetworkFirst())
+    "http://localhost:9001/api/sensor/" ,(new workbox.strategies.StaleWhileRevalidate())
 );
 /*
 const matchCb =({url,event})=>{

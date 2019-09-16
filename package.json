@@ -22,6 +22,7 @@
 		"project": "npm-run-all --parallel client-dev:watch server-dev",
 		"server-prod:build": "yarn run client-prod:build --env.project server",
 		"server-dev": "yarn run client-dev --env.project server --watch",
+		"prod-serve": "serve ./ClientBundle",
 		"test:coverage": "jest --coverage",
 		"generate-stats-server:dev": "webpack --env.project server --env.mode dev --profile --json > ./bundleAnalyser/stats-server-dev.json",
 		"generate-stats-server:prod": "webpack --env.project server --env.mode prod --profile --json > ./bundleAnalyser/stats-server-prod.json",
