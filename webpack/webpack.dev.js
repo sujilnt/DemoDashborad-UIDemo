@@ -83,7 +83,7 @@ module.exports = () => ({
 		new MiniCssExtractPlugin(),
 		new InjectManifest({
 			swSrc: "./src/sw-dev.js",
-			swDest: "sw-dev.js",
+			swDest: "sw.js"
 		}),
 	],
 	optimization: {
