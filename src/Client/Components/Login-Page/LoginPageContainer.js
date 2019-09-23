@@ -1,5 +1,5 @@
 import React, {PureComponent, Fragment} from "react";
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import LoginPage from "./LoginPage";
 import {authenticate,addUser} from "../../store/action";
 import SignUP from "./SignUpPage";
@@ -32,8 +32,7 @@ export default class LoginPageContainer extends PureComponent {
 		console.log("LoginPageContainer state",this.state,this.props);
 		const {routerprops,isAuthenticated} =this.props;
 		const PATH_URL = routerprops.location.state ?  routerprops.location.state.from : "/";
-		const {logIn,redirect} = this.state;
-		console.log(this.props.dispatch,this.props.isAuthenticated,redirect,routerprops.location.state);
+		const {logIn} = this.state;
 		return !isAuthenticated ? (
 			<Fragment>
 				<div className="app-Container ">
@@ -63,3 +62,13 @@ export default class LoginPageContainer extends PureComponent {
 		);
 	}
 }
+LoginPageContainer.defaultProps={
+	routerprops:{},
+	isAuthenticated:{}
+};
+
+LoginPageContainer.propTypes={
+	dispatch: PropTypes.func,
+	routerprops: PropTypes.object,
+	isAuthenticated: PropTypes.object
+};

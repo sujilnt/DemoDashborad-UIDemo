@@ -1,18 +1,11 @@
 import React, {Fragment, PureComponent} from "react";
 import styled from "styled-components";
 import NavbarComponent from "../NavBar/NavBarComponent";
-//import {Icon,Intent,H3} from "@blueprintjs/core";
-import {  Position, Classes , Toaster, Icon, Intent } from "@blueprintjs/core";
+import {  Position , Toaster, Icon, Intent } from "@blueprintjs/core";
 import SideBar from "../SideBar/SideBar";
 import "../../css/main.css"
 import PropTypes from 'prop-types';
 
-const sticky = styled.div`
-position: sticky;
-top: 0;
-background: white;
-z-index: 100;
-`;
 const Container = styled.div`
 display: flex;
 flex-direction:column;
@@ -67,7 +60,7 @@ class PageComponent extends PureComponent{
         loading: false,
     };
     componentDidMount() {
-        if(navigator.onLine=== true){
+        if(navigator.onLine=== false){
             console.log(navigator.onLine,"Offline");
             this.toaster.show({ message: "App in offline Mode !", intent:Intent.DANGER,icon: "issue" });
         }
@@ -112,5 +105,10 @@ class PageComponent extends PureComponent{
         );
     }
 }
+PageComponent.propTypes={
+    icon: PropTypes.string,
+    pageHeader: PropTypes.string,
+    children:PropTypes.node.isRequired,
+};
 
 export default PageComponent;

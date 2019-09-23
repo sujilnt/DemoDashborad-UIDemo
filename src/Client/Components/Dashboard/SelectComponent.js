@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {Select} from "@blueprintjs/select";
 import { Button, Menu, MenuItem } from "@blueprintjs/core";
+import PropTypes from "prop-types";
 
 class SelectComponent extends Component{
     itemProp = this.props.sensorinformation;
@@ -66,4 +67,10 @@ class SelectComponent extends Component{
         )
     }
 }
+
+SelectComponent.propTypes={
+   large: PropTypes.bool,
+    selectSensor: PropTypes.string,
+    sensorinformation: PropTypes.object
+};
 export default  SelectComponent;

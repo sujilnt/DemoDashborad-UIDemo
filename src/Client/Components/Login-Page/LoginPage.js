@@ -87,5 +87,6 @@ export default class LoginComponent extends PureComponent {
 }
 
 LoginComponent.propTypes = {
-	togglelogin: PropTypes.func.isRequired,
+	redirect: PropTypes.func.isRequired,
+	togglelogin: PropTypes.func.isRequired
 };

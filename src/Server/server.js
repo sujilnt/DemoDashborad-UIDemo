@@ -27,8 +27,10 @@ app.use("/user", signIn_Router);
 app.use("/api/sensor", sensor_Router);
 app.use("/api/sensor/tag/", tag_Router);
 app.use("/api/sensor/events/", event_Router); // sensorid
+
 // loadGzipBundle func => loading all gzip client bundles
 loadGzipBundle(app);
+
 /**
  * start => server starting asybchronous function.
  * connect() => connecting to the database

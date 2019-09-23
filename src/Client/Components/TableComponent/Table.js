@@ -1,5 +1,6 @@
-import React, {Fragment, PureComponent} from "react";
+import React, {PureComponent} from "react";
 import '@blueprintjs/table/lib/css/table.css';
+import PropTypes from "prop-types";
 import {Card} from "@blueprintjs/core";
 import { Column,Cell, Table } from "@blueprintjs/table";
 import "./Table.css";
@@ -20,8 +21,6 @@ class TableComponent extends PureComponent{
         ); // eslint-disable-line
     };
     render(){
-        console.log(this.props.data,"table Component");
-        let total =this.props.data.length || 5;
         return(
             <Card className={"tableContainer"}>
                 <Table numRows={this.props.data.length} >
@@ -40,4 +39,7 @@ class TableComponent extends PureComponent{
         );
     }
 }
+TableComponent.propTypes={
+    data: PropTypes.array.isRequired
+};
 export default TableComponent;

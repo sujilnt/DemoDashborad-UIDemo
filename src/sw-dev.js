@@ -6,7 +6,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest,{
 
 // caching all the data
 workbox.routing.registerRoute(
-    /\.(?:js|css|html)$/,  (new workbox.strategies.NetworkFirst())
+    /\.(?:js|css|html)$/,  (new workbox.strategies.StaleWhileRevalidate())
 );
 
 // caching all the sensor informating in the cache

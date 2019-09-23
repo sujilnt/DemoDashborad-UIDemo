@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from "react";
 import Loader from "../Loader/Loader";
-import "./Dashboard.css";
-
 import Temperature from "./Temperature/Temperature";
-import { Button, Card, Elevation ,H3,H4,IconSelect,IntentSelect } from "@blueprintjs/core";
+import {Card, Elevation,H4} from "@blueprintjs/core";
 import {getToken} from "../../client-utils/utils";
 import SelectComponent from "./SelectComponent";
+import PropTypes from "prop-types";
+import "./Dashboard.css";
 const API_URL = "http://localhost:9001/api/sensor/";
 class DashboardPage extends Component {
     state={
@@ -55,7 +55,7 @@ class DashboardPage extends Component {
 
     };
     render() {
-        const {isloading,sensorinformation,sensorid}=this.state;
+        const {isloading,sensorid}=this.state;
         const {store}=this.props;
        return isloading ? (<Loader/>):(
            <Fragment>
@@ -77,4 +77,8 @@ class DashboardPage extends Component {
         )
     }
 }
+
+DashboardPage.propTypes={
+  store: PropTypes.object
+};
 export default DashboardPage;

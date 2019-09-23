@@ -1,10 +1,6 @@
 import React, { PureComponent } from "react";
-
-import { Card } from "@blueprintjs/core";
-// import ReactSVGComponent from 'Components/ReactSVGComponent/ReactSVGComponent'
-import LoginPageContainer from "./Components/Login-Page/LoginPageContainer";
-import "css/main.css";
 import ReactRouterContainer from "./Components/ReactRouter/ReactRouterContainer";
+import "css/main.css";
 
 class App extends PureComponent {
 	state = {

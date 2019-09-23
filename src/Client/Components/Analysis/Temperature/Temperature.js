@@ -34,10 +34,10 @@ class Temperature extends Component{
                    "Authorization": `Bearer ${_token_}`
                }
            });
-           //let storeresponse = response.clone();
-           //let cache = await caches.open("sujil");
-           //let url = `${API_URL}${sensorid}`;
-           //await cache.put(url, storeresponse);
+           let storeresponse = response.clone();
+           let cache = await caches.open("sujil");
+           let url = `${API_URL}${sensorid}`;
+           await cache.put(url, storeresponse);
            if(response.status === 200){
                const d = await response.json();
                this.setState(()=>{
@@ -48,7 +48,7 @@ class Temperature extends Component{
                });
            }
        }catch(e){
-                /*
+
                let cacheddata = await caches.match(
                `${API_URL}${sensorid}`,
                {cacheName: "sujil",ignoreSearch:true}
@@ -60,7 +60,7 @@ class Temperature extends Component{
                    data: d,
                    loading: true
                }
-           });*/
+           });
            console.log("API Failed", e);
        }
    };

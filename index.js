@@ -22,15 +22,14 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById("root")
 );
-/*
+
 if ("serviceWorker" in navigator) {
 	window.addEventListener("load", async () => {
 		try {
-			await navigator.serviceWorker.register("./sw-dev.js");
+			await navigator.serviceWorker.register("./sw.js");
 		} catch (e) {
 			console.error("service not registered", e);
 		}
 	});
 }
 
-*/
