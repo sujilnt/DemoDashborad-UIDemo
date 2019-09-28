@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import {timeFormat} from "d3-time-format"
 import {AreaChart, Area, Legend,XAxis, YAxis, CartesianGrid, Tooltip,ResponsiveContainer,Brush} from 'recharts';
+import PropTypes from "prop-types";
 
 export default class AreaRechart extends PureComponent {
     formatDate(date){
@@ -9,10 +10,11 @@ export default class AreaRechart extends PureComponent {
 
     }
     render() {
+        const {data} = this.props;
         return (
             <ResponsiveContainer>
             <AreaChart
-                data={this.props.data}
+                data={data}
                 margin={{
                     top: 10, right: 30, left: 10, bottom: 20,
                 }}
@@ -35,7 +37,7 @@ export default class AreaRechart extends PureComponent {
                     label={{value: "Temperature",position:"insideTopRight",offset:-20,style:{fontWeight: "bold"}}}
                 />
                 <Legend verticalAlign="top" height={36}/>
-                <Tooltip labelFormatter={(time,value,props)=> {
+                <Tooltip labelFormatter={(time)=> {
                     let formatTime = timeFormat("%B %d, %Y %H:%M %p");
                     return formatTime(new Date(time)) ;
 
@@ -80,3 +82,10 @@ export default class AreaRechart extends PureComponent {
         );
     }
 }
+AreaRechart.defaultProps={
+    data:[]
+};
+
+AreaRechart.propTypes={
+    data:PropTypes.array.isRequired
+};

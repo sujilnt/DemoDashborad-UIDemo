@@ -11,7 +11,7 @@ class SideBar extends PureComponent {
         e.stopPropagation();
         e.preventDefault();
         const name = e.target.getAttribute("id");
-        this.setState((prevState, props) => {
+        this.setState((prevState) => {
             return {
                 isOpen: !prevState.isOpen,
                 menuName: name

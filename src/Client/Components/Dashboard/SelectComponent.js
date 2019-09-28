@@ -69,7 +69,7 @@ class SelectComponent extends Component{
 }
 
 SelectComponent.propTypes={
-   large: PropTypes.bool,
+    large: PropTypes.bool,
     selectSensor: PropTypes.string,
     sensorinformation: PropTypes.object
 };

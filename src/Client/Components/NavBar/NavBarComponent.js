@@ -1,10 +1,9 @@
 import React from "react";
 import { NavbarGroup,NavbarHeading, NavbarDivider, Icon,Button, Navbar, Classes, Alignment } from "@blueprintjs/core";
 import {useSelector} from "react-redux";
-import SideBar from "../SideBar/SideBar";
 
-const NavbarComponent = (props) =>{
-	console.log("Navbar props",props);
+
+const NavbarComponent = () =>{
 	const intialState =  useSelector(state=> state.user);
 	return (
 		<div>
