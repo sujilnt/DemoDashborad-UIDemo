@@ -1,6 +1,6 @@
 # Offline featured IOT analytics tool
 
-Offline featured IOT analytics tool is A Full stack **React and Node.js** Boilerplate that is developed using **React , Express.js Webpack4, Babel,EsLint and Jest**.
+Offline featured IOT analytics tool is A Full stack **React and Node.js** Boilerplate that is developed using **React , Express.js Webpack4, Babel,EsLint and Jest**. The sesnors are taken from Distruptive Technologies.
 
 ## Install
 
