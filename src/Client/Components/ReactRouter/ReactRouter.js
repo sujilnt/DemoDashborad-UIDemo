@@ -19,7 +19,8 @@ const Login = Loadable({
 
 export default class ReactRouter extends PureComponent {
 	render() {
-		const {dispatchFunc,isAuthenticated,store} = this.props;
+		const {dispatchFunc,store} = this.props;
+		const auth_prop = this.props.isAuthenticated;
 		return (
 			<div>
 				<HashRouter>
@@ -27,20 +28,23 @@ export default class ReactRouter extends PureComponent {
 						<ProtectedRoute
 							exact={true}
 							path="/home"
-							isAuthenticated={isAuthenticated}
+							isAuthenticated={auth_prop}
 							component={(props)=><Home store={store} routerprops={props}/>}
 						/>
 						<ProtectedRoute
 							exact={true}
 							path="/"
-							isAuthenticated={isAuthenticated}
+							isAuthenticated={auth_prop}
 							component={(props)=> <DashboardContainer store={store} routerprops={props}/>}
 						/>
 						<Route
 							exact
 							path="/login"
 							render={(props) => {
-								return <Login dispatch ={dispatchFunc} routerprops={props} isAuthenticated={isAuthenticated}/>;
+								return <Login
+									dispatch ={dispatchFunc}
+									routerprops={props}
+									isAuthenticated={auth_prop}/>;
 							}}
 						/>
 					</Switch>

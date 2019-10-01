@@ -14,7 +14,11 @@ const ReactRouterContainer = ()=>{
     console.log("React Router State",intialState);
     return (
         <Fragment>
-            <ReactRouter dispatchFunc={(actionCreator)=> updatedStore(dispatch,actionCreator)} isAuthenticated={isAuthenticated} store={intialState}/>
+            <ReactRouter
+                dispatchFunc={(actionCreator)=> updatedStore(dispatch,actionCreator)}
+                isAuthenticated={isAuthenticated}
+                store={intialState}
+            />
         </Fragment>
     );
 

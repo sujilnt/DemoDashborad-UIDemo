@@ -78,4 +78,3 @@ class Temperature extends Component{
 }
 export default Temperature;
 
-()=>a+b;

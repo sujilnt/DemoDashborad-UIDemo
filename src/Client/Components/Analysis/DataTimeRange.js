@@ -1,10 +1,13 @@
-import React, {Fragment,PureComponent} from "react";
+import React, {Fragment} from "react";
 import "@blueprintjs/datetime/lib/css/blueprint-datetime.css";
 import { DateRangeInput } from "@blueprintjs/datetime";
+import PropTypes from 'prop-types';
 import "./Analysis.css";
 
 const DateTimeRange = (props) => {
     const {startDate,endDate,getDate}=props;
+    console.log("daterange", startDate,endDate,getDate);
+    console.log("daterange  ", typeof(startDate),typeof(endDate),typeof(getDate));
     return (
         <Fragment>
             <DateRangeInput
@@ -42,3 +45,8 @@ const DateTimeRange = (props) => {
 };
 
 export default DateTimeRange;
+/*
+DateTimeRange.propTypes={
+    startDate: ,
+    endDate,getDate
+};*/

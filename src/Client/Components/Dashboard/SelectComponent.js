@@ -67,10 +67,12 @@ class SelectComponent extends Component{
         )
     }
 }
-
+SelectComponent.defaultProps={
+    sensorinformation: []
+};
 SelectComponent.propTypes={
     large: PropTypes.bool,
-    selectSensor: PropTypes.string,
-    sensorinformation: PropTypes.object
+    selectSensor: PropTypes.func,
+    sensorinformation: PropTypes.array
 };
 export default  SelectComponent;

@@ -1,12 +1,14 @@
 import React, {PureComponent} from "react";
 import Page from "../Page/PageComponent";
 import "./Analysis.css";
-import {Button, Card, Classes, Elevation, Intent} from "@blueprintjs/core";
+import {Button, Card, Elevation, Intent} from "@blueprintjs/core";
 import DateTimeRange from "./DataTimeRange";
 import SelectComponent from "../Dashboard/SelectComponent";
 import {getToken} from "../../client-utils/utils";
 import Loader from "../Loader/Loader";
 import Temperature from "./Temperature/Temperature";
+import PropTypes from 'prop-types';
+
 const API_URL = "http://localhost:9001/api/sensor/";
 class AnalysisContainer extends PureComponent{
     state={
@@ -27,8 +29,10 @@ class AnalysisContainer extends PureComponent{
     };
 
     async componentDidMount() {
-        const {token}=this.props.store.user;
-        try{
+        const {store}=this.props;
+        const {user}= store;
+        const token=user.token;
+        try {
             const _token_ = token || getToken() ;
             const response = await fetch(API_URL,{
                 method: "GET",
@@ -84,7 +88,7 @@ class AnalysisContainer extends PureComponent{
         }));
     };
     render(){
-        const {isloading,sensorinformation,temperatureinformation,sensorid,startDate,endDate,loadingChart}=this.state;
+        const {isloading,temperatureinformation,startDate,endDate,loadingChart}=this.state;
         console.log("Analysis component",this.state.endDate,this.state.startDate);
         return isloading ? (<Loader/>) : (
             <div>
@@ -118,3 +122,10 @@ class AnalysisContainer extends PureComponent{
 }
 
 export default AnalysisContainer;
+AnalysisContainer.defaultProps={
+    store:{}
+};
+
+AnalysisContainer.propTypes={
+    store:PropTypes.object
+};
