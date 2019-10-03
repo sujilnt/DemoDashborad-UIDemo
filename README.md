@@ -1,6 +1,6 @@
 # Offline featured IOT analytics tool
 
-Offline featured IOT analytics tool is A Full stack **React and Node.js** Boilerplate that is developed using **React , Express.js Webpack4, Babel,EsLint and Jest**. The sesnors are taken from Distruptive Technologies.
+Offline featured IOT analytics tool is A Full stack **React and Node.js** Boilerplate that is developed using **React , Express.js Webpack4, Babel,EsLint and Jest**. The sesnors are taken from Distruptive Technologies. The sensor that is used is from disruptive technologies . 
 
 ## Install
 
@@ -77,3 +77,5 @@ Jest is a delightful JavaScript Testing Framework with a focus on simplicity. Th
 ## License
 
 The code is available under the [MIT license](License.txt).
+
+
