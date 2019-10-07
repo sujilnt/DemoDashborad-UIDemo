@@ -2,6 +2,7 @@ import React, {Component, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
 import AreaRechart from "./AreaRechart";
 import moment from "moment";
+import PropTypes from "prop-types";
 const API_URL = "http://localhost:9001/api/sensor/events/";
 
 const apiDate = ()=>{
@@ -10,7 +11,7 @@ const apiDate = ()=>{
         to: (moment().toISOString())
     }
 };
-class Temperature extends Component{
+class DashBoardTemperature extends Component{
    state={
        loading: false,
        data: []
@@ -68,8 +69,7 @@ class Temperature extends Component{
    }
    render(){
         console.log("temperature",this.state);
-       const {loading,data} = this.state;
-       const {containerclassName}=this.props;
+       const {loading} = this.state;
        return !loading?<div>loading.....</div>:(
            <Fragment>
                <AreaRechart data={this.state.data} />
@@ -77,5 +77,13 @@ class Temperature extends Component{
        )
    }
 }
-export default Temperature;
+export default DashBoardTemperature;
 
+DashBoardTemperature.defaultProps={
+    store: {},
+    sensorid: ""
+};
+DashBoardTemperature.propTypes={
+    store: PropTypes.object,
+    sensorid:PropTypes.string,
+};

@@ -83,9 +83,11 @@ class AnalysisTemperature extends PureComponent{
 }
 export default AnalysisTemperature;
 AnalysisTemperature.defaultProps={
-
+    store: {},
+    sensorid: ""
 };
 AnalysisTemperature.propTypes={
+    containerclassName: PropTypes.string,
     store: PropTypes.object,
     sensorid:PropTypes.string,
     from: PropTypes.object,
