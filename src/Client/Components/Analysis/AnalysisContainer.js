@@ -18,7 +18,7 @@ class AnalysisContainer extends PureComponent{
         loadingChart:true,
         sensorinformation: [],
         temperatureinformation:[],
-        sensorid: "5d5efe039213560b5882acae"
+        sensorid: "5d9683bfe99a86e42d3c5f0e"
     };
 
     currentsensorInformation=(e)=>{
@@ -77,7 +77,13 @@ class AnalysisContainer extends PureComponent{
         console.log("AreaContainer",this.props);
         return(
             <Card interactive={true} elevation={Elevation.TWO}  className={"marginTopBottom fullheight"}>
-                <Temperature containerclassName={"chart-container"} store={this.props.store} sensorid={this.state.sensorid} />
+                <Temperature
+                    containerclassName={"chart-container"}
+                    store={this.props.store}
+                    sensorid={this.state.sensorid}
+                    from={this.state.startDate}
+                    to={this.state.endDate}
+                />
             </Card>
         );
     };

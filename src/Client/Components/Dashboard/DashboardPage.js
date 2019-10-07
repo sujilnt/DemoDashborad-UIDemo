@@ -12,7 +12,7 @@ class DashboardPage extends Component {
         isloading: true,
         sensorinformation: [],
         temperatureinformation:[],
-        sensorid: "5d5efe039213560b5882acae" //meeting temperature
+        sensorid: "5d9683bfe99a86e42d3c5f0e" //meeting temperature
     };
     async componentDidMount() {
         const {token}=this.props.store.user;

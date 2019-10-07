@@ -1,20 +1,12 @@
-import React, {Component, Fragment} from "react";
+import React, {PureComponent, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
 import {Card} from "@blueprintjs/core";
 import AreaRechart from "./AreaRechart";
-
-import moment from "moment";
+import PropTypes from 'prop-types';
 import TableComponent from "../../TableComponent/Table";
 
 const API_URL = "http://localhost:9001/api/sensor/events/";
-
-const apiDate = ()=>{
-    return {
-        from: (moment().subtract(7,"days").toISOString()),
-        to: (moment().toISOString())
-    }
-};
-class Temperature extends Component{
+class AnalysisTemperature extends PureComponent{
    state={
        loading: false,
        data: []
@@ -22,10 +14,11 @@ class Temperature extends Component{
    };
    retrieveData = async ()=>{
        let sensorid= this.props.sensorid;
-       const {from,to}= apiDate();
+       const {from,to}= this.props;
        const {token} = this.props.store.user;
        try{
            const _token_ = token ||getToken();
+           console.log(`${API_URL}${sensorid}?start=${from.toISOString()}&end=${to.toISOString()}`);
            const response = await fetch(`${API_URL}${sensorid}?start=${from}&end=${to}`,{
                method: "GET",
                headers: {
@@ -72,13 +65,13 @@ class Temperature extends Component{
        await this.retrieveData();
    }
    render(){
-        console.log("temperature",this.state);
+       console.log("props analysis",this.state,this.props,this.props.from.toUTCString(),typeof(this.props.from.toUTCString()));
        const {loading,data} = this.state;
        const {containerclassName}=this.props;
        return !loading?<div>loading.....</div>:(
            <Fragment>
                <Card className={containerclassName}>
-               <AreaRechart data={this.state.data} />
+               <AreaRechart data={data} />
                </Card>
                <div className={"marginTopBottom"} >
                    <TableComponent data={this.state.data}/>
@@ -88,4 +81,13 @@ class Temperature extends Component{
        )
    }
 }
-export default Temperature;
+export default AnalysisTemperature;
+AnalysisTemperature.defaultProps={
+
+};
+AnalysisTemperature.propTypes={
+    store: PropTypes.object,
+    sensorid:PropTypes.string,
+    from: PropTypes.object,
+    to:PropTypes.object
+};

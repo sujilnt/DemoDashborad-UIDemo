@@ -68,7 +68,7 @@ export default class AreaRechart extends PureComponent {
                     stroke="#000000"
                     y={310}
                     startIndex={0}
-                    endIndex={100}>
+                    endIndex={20}>
 
                     <AreaChart>
                         <Area dataKey="value" fill="#137cbd" stackId="a" />

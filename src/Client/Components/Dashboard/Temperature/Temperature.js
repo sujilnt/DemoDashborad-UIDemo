@@ -35,6 +35,7 @@ class Temperature extends Component{
            await cache.put(url, storeresponse);
            if(response.status === 200){
                const d = await response.json();
+               console.log("inside lopp",d);
                this.setState(()=>{
                    return{
                        data: d,
