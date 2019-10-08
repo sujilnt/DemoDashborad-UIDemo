@@ -69,14 +69,17 @@ class AnalysisContainer extends PureComponent{
         if(!checknull){
             this.setState(()=>({
                 startDate,
-                endDate
+                endDate,
+                loadingChart:true
             }));
         }
     };
     renderChartAndTable=()=>{
         console.log("AreaContainer",this.props);
         return(
-            <Card interactive={true} elevation={Elevation.TWO}  className={"marginTopBottom fullheight"}>
+            <Card interactive={true}
+                  elevation={Elevation.TWO}
+                  className={"marginTopBottom fullheight"}>
                 <Temperature
                     containerclassName={"chart-container"}
                     store={this.props.store}
@@ -88,14 +91,13 @@ class AnalysisContainer extends PureComponent{
         );
     };
     getChart= ()=>{
-        console.log("clicked man");
-        this.setState(()=>({
+        this.setState((prevstate)=>({
             loadingChart:false
         }));
     };
     render(){
         const {isloading,temperatureinformation,startDate,endDate,loadingChart}=this.state;
-        console.log("Analysis component",this.state.endDate,this.state.startDate);
+        console.log("Analysis component",this.state);
         return isloading ? (<Loader/>) : (
             <div>
                 <Page icon={"dashboard"} pageHeader={"Analysis"}>

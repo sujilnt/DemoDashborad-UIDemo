@@ -1,4 +1,10 @@
 .tableContainer{
-    height: 300px;
+    height: 100%;
     overflow: auto;
+}
+.date-row{
+    min-width: 100px;
+}
+.large-column{
+    width: 300px;
 }
