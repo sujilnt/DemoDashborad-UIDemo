@@ -2,9 +2,12 @@
     height: 100%;
     overflow: auto;
 }
-.date-row{
-    min-width: 100px;
+.large-column,
+.normal-row{
+    font-size:14px;
+    display: flex;
+    align-items: center;
 }
-.large-column{
-    width: 300px;
+.temperature-unit{
+    font-style: oblique;
 }
