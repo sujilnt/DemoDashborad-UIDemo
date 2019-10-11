@@ -41,12 +41,11 @@ class AnalysisTemperature extends PureComponent{
                });
            }
        }catch(e){
-
-               let cacheddata = await caches.match(
+           let cacheddata = await caches.match(
                `${API_URL}${sensorid}`,
                {cacheName: "sujil",ignoreSearch:true}
                );
-           let d = await cacheddata.json();
+           let d = await cacheddata.json() || {};
            console.log("d",d,`${API_URL}${sensorid}`);
            this.setState(()=>{
                return{
@@ -71,10 +70,12 @@ class AnalysisTemperature extends PureComponent{
        return !loading?<div>loading.....</div>:(
            <Fragment>
                <Card className={containerclassName}>
-               <AreaRechart data={data} />
+                <AreaRechart data={data} />
                </Card>
                <div className={"marginTopBottom"} >
-                   <TableComponent data={this.state.data}/>
+                   <TableComponent
+                       data={data}
+                   />
                </div>
 
            </Fragment>
