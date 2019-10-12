@@ -2,7 +2,7 @@ import React, {Component,Fragment} from "react";
 import '@blueprintjs/table/lib/css/table.css';
 import PropTypes from "prop-types";
 import {Card} from "@blueprintjs/core";
-import { Column,Cell, Table,Utils,TableLoadingOption,SelectionModes} from "@blueprintjs/table";
+import { Column,Cell, Table,Utils,TableLoadingOption,SelectionModes,RenderMode} from "@blueprintjs/table";
 import "./Table.css";
 import ReactPaginate from 'react-paginate';
 
@@ -17,33 +17,48 @@ class TableComponent extends Component{
         columnWidth: [250, 100, 100, 300],
         isloading: true,
         start:0,
-        end: 50
+        end: 50,
+        numberOfRows: 50,
+        pageCount: 0,
     };
 
     componentDidMount() {
+        let pagecount = Math.ceil(this.props.data.length/50);
         let columns = this.columns();
         this.setState({
-            columnData: columns
+            columnData: columns,
+            pageCount:pagecount
         })
     }
 
+    componentDidUpdate(prevprops,prevstate){
+        return prevstate.start === this.state.start;
+        //console.log("component did mount ", prevstate,this.props.data);
+    }
     handlePageClick=(e)=>{
         console.log("clicked",e,this.state);
-        const {selected}=e;
-        const FIFTY=50;
-        let vstart= FIFTY * selected - FIFTY || 0;
-        let vend =FIFTY*selected;
-        console.log(vstart,vend,selected);
+        const FIFTY=50,
+            {selected}=e;
+        let vstart= FIFTY * selected; // [0,50]
+        let vend =FIFTY*selected + FIFTY; //[50,100]
+        let numberOfRows = selected === this.state.pageCount-1 ? this.props.data.length % 50 : 50;
+        console.log(numberOfRows  ,this.state.pageCount, "numberof rows", selected,selected -1 === this.state.pageCount);
+        console.log("start to end",vstart,vend,selected);
         this.setState({
             start:vstart,
-            end:vend
+            end:vend,
+            numberOfRows
         });
     };
 
     renderCell = (rowIndex, columnIndex) => {  // eslint-disable-line
         let data = this.getdate(this.state.start,this.state.end);
-        let row =data[rowIndex] ,column = this.state.columnData[columnIndex];
-        let value = row[columnheader[Number(column.key)]], columnName = column.props.name;
+        console.log("render cell",rowIndex,columnIndex);
+
+        let row =data[rowIndex] ,
+            column = this.state.columnData[columnIndex],
+            value = row[columnheader[Number(column.key)]],
+            columnName = column.props.name;
 
         if(columnName !== "time"){
             return columnName === "sid" ? (
@@ -109,14 +124,14 @@ class TableComponent extends Component{
         }));
     };
     render(){
-        let pagecount = Math.ceil(this.props.data.length/50);
+        console.log("component rerender",this.state, this.props.data.length%50,this.props.data);
         return(
             <Card className={"tableContainer"}>
                 {
                     this.state.columnData.length >=2 ? (<div>
                         <Table
                             selectionModes={SelectionModes.ALL}
-                            numRows={50}
+                            numRows={this.state.numberOfRows}
                             enableColumnReordering={true}
                             enableFocusedCell={true}
                             defaultRowHeight={30}
@@ -132,6 +147,7 @@ class TableComponent extends Component{
                             truncated={true}
                             wrapText={true}
                             minColumnWidth={100}
+                            renderMode={RenderMode.BATCH}
                         >
                             {this.state.columnData}
                         </Table>
@@ -140,7 +156,7 @@ class TableComponent extends Component{
                             nextLabel={'next'}
                             breakLabel={'...'}
                             breakClassName={'break-me'}
-                            pageCount={pagecount}
+                            pageCount={this.state.pageCount}
                             marginPagesDisplayed={2}
                             pageRangeDisplayed={5}
                             onPageChange={this.handlePageClick}
