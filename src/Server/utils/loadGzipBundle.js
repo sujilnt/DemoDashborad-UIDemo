@@ -12,9 +12,9 @@ export const loadGzipBundle = app => {
     setHeaders: function (res) {
       res.setHeader('Cache-Control', 'public, max-age=31536000')
     }
-  }
+  };
   // app.use(expressStaticGzip('./ClientBundle', options)) OR
   app.get('/*', expressStaticGzip('./ClientBundle', options), (req, res) => {
     res.send(req.body)
   })
-}
+};

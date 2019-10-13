@@ -24,7 +24,7 @@ export const weatherData = async () => {
 
 };
 
-const getsensorID = async targetName => {
+export const getsensorID = async targetName => {
 	const splittargetName = targetName.split("/");
 	const devicesIndex = splittargetName.indexOf("devices") + ONE;
 	const sensorInformation = await Sensor.findOne({
@@ -36,7 +36,7 @@ const getsensorID = async targetName => {
 	return sensorInformation;
 };
 
-const addTemperature = async event => {
+export const addTemperature = async event => {
 	const { data, targetName } = event;
 	const sensorid = await getsensorID(targetName);
 	const {main} = await weatherData();

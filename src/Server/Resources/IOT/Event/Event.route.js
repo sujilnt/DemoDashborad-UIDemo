@@ -8,4 +8,6 @@ router
 	.get(getEvents)
 	.post(EventController.createOne);
 
+router.route("/many/:sensorid")
+	.post(EventController.createMany);
 export default router;
