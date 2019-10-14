@@ -20,6 +20,8 @@ class TableComponent extends Component{
         end: 50,
         numberOfRows: 50,
         pageCount: 0,
+        rowData: [],
+        update: false,
     };
 
     componentDidMount() {
@@ -31,30 +33,26 @@ class TableComponent extends Component{
         })
     }
 
-    componentDidUpdate(prevprops,prevstate){
-        return prevstate.start === this.state.start;
-        //console.log("component did mount ", prevstate,this.props.data);
-    }
+
     handlePageClick=(e)=>{
-        console.log("clicked",e,this.state);
         const FIFTY=50,
             {selected}=e;
         let vstart= FIFTY * selected; // [0,50]
         let vend =FIFTY*selected + FIFTY; //[50,100]
-        let numberOfRows = selected === this.state.pageCount-1 ? this.props.data.length % 50 : 50;
-        console.log(numberOfRows  ,this.state.pageCount, "numberof rows", selected,selected -1 === this.state.pageCount);
-        console.log("start to end",vstart,vend,selected);
-        this.setState({
+        console.log("clicked page",vstart,vend,selected);
+        let numberOfRows = selected === this.state.pageCount-1 ? this.props.data.length % FIFTY : FIFTY;
+        console.log("clicked page",vstart,vend,selected,numberOfRows);
+        this.setState(()=>({
             start:vstart,
             end:vend,
+            update:true,
             numberOfRows
-        });
+        }));
+        this.forceUpdate();
     };
 
     renderCell = (rowIndex, columnIndex) => {  // eslint-disable-line
         let data = this.getdate(this.state.start,this.state.end);
-        console.log("render cell",rowIndex,columnIndex);
-
         let row =data[rowIndex] ,
             column = this.state.columnData[columnIndex],
             value = row[columnheader[Number(column.key)]],
@@ -92,16 +90,17 @@ class TableComponent extends Component{
     }
     columns = ()=>{
         return [
-            <Column key="0" name={"sid"}  cellRenderer={this.cellRenderFunction}  className={"large-column"} />,
-            <Column key="1" name={"value"} cellRenderer={this.cellRenderFunction} />,
-            <Column key="2" name={"oat"} cellRenderer={this.cellRenderFunction} />,
-            <Column key="3" name={"time"} className={"large-column"}  cellRenderer={this.cellRenderFunction} />
+            <Column key="0" name={"sid"}  id={"sid"} cellRenderer={this.cellRenderFunction}  className={"large-column"} />,
+            <Column key="1" name={"value"} id={"value"} cellRenderer={this.cellRenderFunction} />,
+            <Column key="2" name={"oat"} id={"oat"} cellRenderer={this.cellRenderFunction} />,
+            <Column key="3" name={"time"} id={"time"} className={"large-column"}  cellRenderer={this.cellRenderFunction} />
         ];
     };
     getdate=(start,end)=>{
         let tabledata=[];
         for(let i = start;i<=end;i++){
-            tabledata.push(this.props.data[i]);
+            let value = this.props.data[i];
+            value ? tabledata.push(value): "";
         }
         return tabledata;
     };
@@ -114,7 +113,6 @@ class TableComponent extends Component{
         this.setState({
             columnData: nextChildren
         });
-        console.log(oldIndex,newIndex,nextChildren,Utils.reorderArray,"table reordering");
     };
     onWidthChanged = (index,size)=>{
         let columnWidth_new = this.state.columnWidth;
@@ -122,6 +120,13 @@ class TableComponent extends Component{
         this.setState(()=>({
             columnWidth: columnWidth_new
         }));
+    };
+    OncomnpleteRender = ()=>{
+        if(this.state.update){
+            this.setState(()=>({
+                update: false
+            }));
+        }
     };
     render(){
         console.log("component rerender",this.state, this.props.data.length%50,this.props.data);
@@ -142,11 +147,14 @@ class TableComponent extends Component{
                             enableMultipleSelection={true}
                             enableRowResizing={true}
                             enableColumnResizing={true}
+                            forceRerenderOnSelectionChange={true}
                             onColumnWidthChanged={this.onWidthChanged}
                             maxColumnWidth={250}
                             truncated={true}
                             wrapText={true}
                             minColumnWidth={100}
+                            enableGhostCells={true}
+                            onCompleteRender={this.OncomnpleteRender}
                             renderMode={RenderMode.BATCH}
                         >
                             {this.state.columnData}
