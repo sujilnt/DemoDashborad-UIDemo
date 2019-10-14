@@ -5,8 +5,9 @@ import DashboardContainer from "../Dashboard/DashboardContainer";
 import Loadable from "react-loadable";
 import Loader from "../Loader/Loader";
 import PropTypes from "prop-types";
+import SearchContanier from "../Search/SearchContainer";
 // splitting the bundle
-const Home = Loadable({
+const Analysis = Loadable({
 	loader:()=>import("../Analysis/AnalysisContainer"),
 	loading: Loader
 
@@ -14,6 +15,11 @@ const Home = Loadable({
 // splitting the bundle
 const Login = Loadable({
 	loader: ()=>import("../Login-Page/LoginPageContainer"),
+	loading:Loader
+});
+
+const Search = Loadable({
+	loader:()=>import("../Search/SearchContainer"),
 	loading:Loader
 });
 
@@ -29,13 +35,19 @@ export default class ReactRouter extends PureComponent {
 							exact={true}
 							path="/home"
 							isAuthenticated={auth_prop}
-							component={(props)=><Home store={store} routerprops={props}/>}
+							component={(props)=><Analysis store={store} routerprops={props}/>}
 						/>
 						<ProtectedRoute
 							exact={true}
 							path="/"
 							isAuthenticated={auth_prop}
 							component={(props)=> <DashboardContainer store={store} routerprops={props}/>}
+						/>
+						<ProtectedRoute
+							exact={true}
+							path="/search"
+							isAuthenticated={auth_prop}
+							component={(props)=> <Search store={store} routerprops={props}/>}
 						/>
 						<Route
 							exact
