@@ -159,19 +159,25 @@ class TableComponent extends Component{
                         >
                             {this.state.columnData}
                         </Table>
-                        <ReactPaginate
-                            previousLabel={'previous'}
-                            nextLabel={'next'}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={this.state.pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={this.handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
-                        />
+                        <div id="react-paginate">
+                            <ReactPaginate
+                                previousLabel={'<'}
+                                nextLabel={'>'}
+                                breakLabel={'.....'}
+                                breakClassName={'break-me'}
+                                pageCount={this.state.pageCount}
+                                marginPagesDisplayed={2}
+                                pageRangeDisplayed={5}
+                                onPageChange={this.handlePageClick}
+                                containerClassName={'pagination'}
+                                pageClassName={"single-page"}
+                                nextClassName={"next-page"}
+                                previousClassName={"previous-page"}
+                                subContainerClassName={'pages pagination'}
+                                activeClassName={'active-page'}
+                            />
+                        </div>
+
                     </div>) : (
                         <Table
                             loadingOptions={

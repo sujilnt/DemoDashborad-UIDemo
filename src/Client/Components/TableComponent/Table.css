@@ -11,3 +11,29 @@
 .temperature-unit{
     font-style: oblique;
 }
+.pagination{
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    align-content: center;
+}
+.single-page,
+.next-page,
+.previous-page{
+    background: #137bbd;
+    color: white;
+    padding: 5px 11px;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+.active-page{
+    background: #00436f;
+}
+.single-page a,
+.next-page a ,
+.previous-page a{
+    color:white;
+}
+.break-me{
+    padding: 0 8px;
+}
