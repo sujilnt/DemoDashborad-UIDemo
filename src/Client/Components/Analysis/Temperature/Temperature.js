@@ -1,6 +1,6 @@
 import React, {PureComponent, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
-import {Card} from "@blueprintjs/core";
+import {Card,Callout,Intent} from "@blueprintjs/core";
 import AreaRechart from "./AreaRechart";
 import PropTypes from 'prop-types';
 import TableComponent from "../../TableComponent/Table";
@@ -63,20 +63,34 @@ class AnalysisTemperature extends PureComponent{
     async componentDidMount(){
        await this.retrieveData();
    }
+    renderCallout=()=>{
+       let message = `The data for the particular sensor(id: ${this.props.sensorid}) is not available `;
+        return (<Callout
+            title={"Error"}
+            intent={Intent.PRIMARY}
+        >
+            <p className={"bold"}>{message}</p>
+        </Callout>);
+    };
    render(){
        console.log("props analysis",this.state,this.props,this.props.from.toUTCString(),typeof(this.props.from.toUTCString()));
        const {loading,data} = this.state;
        const {containerclassName}=this.props;
        return !loading?<div>loading.....</div>:(
            <Fragment>
-               <Card className={containerclassName}>
-                <AreaRechart data={data} />
-               </Card>
-               <div className={"marginTopBottom"} >
-                   <TableComponent
-                       data={data}
-                   />
-               </div>
+               {
+                   data.length > 0? (
+                       <Fragment>
+                           <Card className={containerclassName}>
+                               <AreaRechart data={data} />
+                           </Card>
+                           <div className={"marginTopBottom"} >
+                               <TableComponent data={data}/>
+                           </div>
+                       </Fragment>
+                       ): this.renderCallout()
+               }
+
 
            </Fragment>
        )

@@ -75,3 +75,7 @@ h1 {
 .width90{
 	width:90%;
 }
+.bold{
+	font-size: 15px;
+	font-weight: bold;
+}

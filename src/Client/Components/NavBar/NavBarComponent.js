@@ -1,8 +1,13 @@
 import React from "react";
 import { NavbarGroup,NavbarHeading, NavbarDivider, Icon,Button, Navbar, Classes, Alignment } from "@blueprintjs/core";
 import {useSelector} from "react-redux";
+import {Link}  from "react-router-dom";
 
 
+const logOut = ()=>{
+	window.location.href = '/';
+	window.localStorage.clear();
+};
 const NavbarComponent = () =>{
 	const intialState =  useSelector(state=> state.user);
 	return (
@@ -20,7 +25,7 @@ const NavbarComponent = () =>{
 					<NavbarHeading>Welcome {intialState.name}!</NavbarHeading>
 					<NavbarDivider/>
 					<Button className={Classes.MINIMAL} icon="notifications" text="Notifications"/>
-					<Button className={Classes.MINIMAL} icon="log-out" text="logout"/>
+					<Button className={Classes.MINIMAL} icon="log-out" text="logout" onClick={logOut}/>
 				</NavbarGroup>
 			</Navbar>
 		</div>
