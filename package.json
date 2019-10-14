@@ -52,6 +52,7 @@
 		"path": "^0.12.7",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.6",
+		"react-csv": "^1.1.1",
 		"react-dom": "^16.8.6",
 		"react-loadable": "^5.5.0",
 		"react-paginate": "^6.3.0",

@@ -1,11 +1,18 @@
 import React, {PureComponent, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
-import {Card,Callout,Intent} from "@blueprintjs/core";
+import {Card,Callout,Intent,Button,Icon} from "@blueprintjs/core";
 import AreaRechart from "./AreaRechart";
+import { CSVLink, CSVDownload } from "react-csv";
 import PropTypes from 'prop-types';
 import TableComponent from "../../TableComponent/Table";
 
 const API_URL = "http://localhost:9001/api/sensor/events/";
+let headers = [
+    { label: "Event ID", key: "_id" },
+    { label: "Outside Air Temperature (°C)", key: "oat" },
+    { label: "Time", key: "time" },
+    { label: "Temperature Readings (°C)", key: "value" }
+];
 class AnalysisTemperature extends PureComponent{
    state={
        loading: false,
@@ -73,7 +80,6 @@ class AnalysisTemperature extends PureComponent{
         </Callout>);
     };
    render(){
-       console.log("props analysis",this.state,this.props,this.props.from.toUTCString(),typeof(this.props.from.toUTCString()));
        const {loading,data} = this.state;
        const {containerclassName}=this.props;
        return !loading?<div>loading.....</div>:(
@@ -84,14 +90,27 @@ class AnalysisTemperature extends PureComponent{
                            <Card className={containerclassName}>
                                <AreaRechart data={data} />
                            </Card>
+                           <div className={"marginTopBottom flex"} style={{justifyContent:"flex-end"}}>
+                               <CSVLink
+                                   data={this.state.data}
+                                   headers={headers}
+                                   filename={"temperature.csv"}
+                               >
+                                   <Icon icon={"compressed"}
+                                         iconSize={"20"}
+                                         intent={Intent.PRIMARY}
+                                         htmlTitle={"csv export Button"}
+                                         title={"csv export"}
+                                   />
+                               </CSVLink>
+                           </div>
+
                            <div className={"marginTopBottom"} >
                                <TableComponent data={data}/>
                            </div>
                        </Fragment>
                        ): this.renderCallout()
                }
-
-
            </Fragment>
        )
    }

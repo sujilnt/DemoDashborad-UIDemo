@@ -2,7 +2,7 @@ export const sideBarData = [
     {
         name: "Dashboard",
         text: "Dashboard",
-        icon: "dashboard",
+        icon: "new-grid-item",
         key: "menu",
         item: [
             {
@@ -13,7 +13,7 @@ export const sideBarData = [
             },
             {
             name: "Analysis Report",
-            icon: "chart",
+            icon: "timeline-area-chart",
             href:"#/home",
             key: "item-menu"
             },
