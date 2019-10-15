@@ -1,8 +1,8 @@
 import React, {PureComponent, Fragment} from "react";
 import {getToken} from "../../../client-utils/utils";
-import {Card,Callout,Intent,Button,Icon} from "@blueprintjs/core";
+import {Card,Callout,Intent,Icon} from "@blueprintjs/core";
 import AreaRechart from "./AreaRechart";
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import PropTypes from 'prop-types';
 import TableComponent from "../../TableComponent/Table";
 

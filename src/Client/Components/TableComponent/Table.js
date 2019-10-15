@@ -3,7 +3,7 @@ import '@blueprintjs/table/lib/css/table.css';
 import PropTypes from "prop-types";
 import {Card} from "@blueprintjs/core";
 import { Column,Cell, Table,Utils,TableLoadingOption,SelectionModes,RenderMode} from "@blueprintjs/table";
-import "./Table.css";
+import "../TableComponent/Table.css";
 import ReactPaginate from 'react-paginate';
 
 const columnheader=["sid","value","oat","time"];
