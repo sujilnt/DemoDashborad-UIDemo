@@ -5,7 +5,7 @@ import DashboardContainer from "../Dashboard/DashboardContainer";
 import Loadable from "react-loadable";
 import Loader from "../Loader/Loader";
 import PropTypes from "prop-types";
-import SearchContanier from "../Search/SearchContainer";
+
 // splitting the bundle
 const Analysis = Loadable({
 	loader:()=>import("../Analysis/AnalysisContainer"),
@@ -13,11 +13,12 @@ const Analysis = Loadable({
 
 });
 // splitting the bundle
+//Login - Seperate bundle for login bundling.
 const Login = Loadable({
 	loader: ()=>import("../Login-Page/LoginPageContainer"),
 	loading:Loader
 });
-
+// Search - Seperate bundle for Search Component
 const Search = Loadable({
 	loader:()=>import("../Search/SearchContainer"),
 	loading:Loader

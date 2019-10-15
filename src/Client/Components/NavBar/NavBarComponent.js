@@ -1,8 +1,6 @@
 import React from "react";
 import { NavbarGroup,NavbarHeading, NavbarDivider, Icon,Button, Navbar, Classes, Alignment } from "@blueprintjs/core";
 import {useSelector} from "react-redux";
-import {Link}  from "react-router-dom";
-
 
 const logOut = ()=>{
 	window.location.href = '/';

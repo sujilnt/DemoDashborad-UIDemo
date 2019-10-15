@@ -1,7 +1,7 @@
 import React, {Component,Fragment} from "react";
 import '@blueprintjs/table/lib/css/table.css';
 import { Column,Cell, Table,SelectionModes, RenderMode} from "@blueprintjs/table";
-
+import "./Table.css";
 const columnsHeader = ["_id","name","sensordt"];
 class sensorInformationTable extends Component{
     state={

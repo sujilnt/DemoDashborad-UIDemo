@@ -91,7 +91,7 @@ class AnalysisContainer extends PureComponent{
         );
     };
     getChart= ()=>{
-        this.setState((prevstate)=>({
+        this.setState(()=>({
             loadingChart:false
         }));
     };

@@ -12,6 +12,8 @@
 .temperature-unit{
     font-style: oblique;
 }
+
+/*styles for pagination */
 .pagination{
     display: flex;
     list-style: none;
