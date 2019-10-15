@@ -2,7 +2,7 @@ import React, {Component,Fragment} from "react";
 import '@blueprintjs/table/lib/css/table.css';
 import { Column,Cell, Table,SelectionModes, RenderMode} from "@blueprintjs/table";
 import "./Table.css";
-const columnsHeader = ["_id","name","sensordt"];
+const columnsHeader = ["_id","name","sensordt","sensortype","createdBy"];
 class sensorInformationTable extends Component{
     state={
         loading: false,
@@ -15,7 +15,7 @@ class sensorInformationTable extends Component{
         this.setState(()=>{
             return {
                 columnData: columns,
-                columnWidths: [250,250,250]
+                columnWidths: [230, 340, 198, 112, 243]
             }
         })
     }
@@ -66,7 +66,18 @@ class sensorInformationTable extends Component{
                     name={"sensordt"}
                     id={"sensordt"}
                     cellRenderer={this.cellRender}
+            />,
+            <Column key="3"
+                    name={"sensortype"}
+                    id={"sensortype"}
+                    cellRenderer={this.cellRender}
+            />,
+            <Column key="4"
+                    name={"createdBy"}
+                    id={"createdBy"}
+                    cellRenderer={this.cellRender}
             />
+
         ];
     };
 
@@ -86,7 +97,7 @@ class sensorInformationTable extends Component{
                     enableRowResizing={true}
                     enableColumnResizing={true}
                     forceRerenderOnSelectionChange={true}
-                    maxColumnWidth={250}
+                    maxColumnWidth={340}
                     truncated={true}
                     wrapText={true}
                     minColumnWidth={100}
