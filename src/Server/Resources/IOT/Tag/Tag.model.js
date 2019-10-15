@@ -10,11 +10,10 @@ const tagSchema = new mongoose.Schema({
     ref: 'sensor',
     required: true
   },
-  createdBy: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'user',
-    required: true
+  tag:{
+    type: Boolean,
+    default: true,
   }
-})
-tagSchema.index({ sensor: 1, name: 1 }, { unique: true })
-export const Tag = mongoose.model('tag', tagSchema)
+});
+//tagSchema.index({ sensor: 1, name: 1 }, { unique: true });
+export const Tag = mongoose.model('tag', tagSchema);

@@ -1,6 +1,30 @@
 import { Controller } from "../../CrudController.js";
 import { Tag } from "./Tag.model";
 
+export const getAllTags = async (request, response) => {
+	try {
+		const docs = await Tag
+			.find({ tag:true })
+			.lean()
+			.exec();
+		response.status(200).json({ data: docs });
+	} catch (e) {
+		console.error(e);
+		response.status(400).end();
+	}
+};
+export const getTagofEachSensor = async(request,response)=>{
+	console.log("id", request.params.id);
+  try{
+      const docs = await Tag
+          .find({tag:true, sensorId: request.params.id})
+          .lean()
+          .exec();
+      response.status(200).json({ data:docs });
+  }  catch (e) {
+      response.status(400).end();
+  }
+};
 export const createManyTag = async (request, response) => {
 	try {
 		const { body, params, user } = request;
@@ -9,10 +33,10 @@ export const createManyTag = async (request, response) => {
 			return response.status(500).end();
 		}
 		const dataMap = data.map(row => {
+			console.log(row, "this is a row",params);
 			return {
 				name: row,
 				sensorId: params.id, // Objectid,
-				createdBy: user._id,
 			};
 		});
 		const createManyModel = await Tag.insertMany(dataMap);
@@ -31,7 +55,6 @@ export const removeOneTag = async (request, response) => {
 	try {
 		const { user, params, body } = request;
 		const removed = await Tag.findOneAndRemove({
-			createdBy: user._id,
 			sensorId: params.id,
 			name: body.data,
 		})
