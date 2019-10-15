@@ -100,7 +100,7 @@ class AnalysisContainer extends PureComponent{
         console.log("Analysis component",this.state);
         return isloading ? (<Loader/>) : (
             <div>
-                <Page icon={"dashboard"} pageHeader={"Analysis"}>
+                <Page icon={"timeline-area-chart"} pageHeader={"Analysis Report"}>
                     <Card className={"flex fullWidth alignCenter space-between"}>
                         <div className={"flex alignCenter"}>
                         <DateTimeRange

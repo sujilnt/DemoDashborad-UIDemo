@@ -8,7 +8,7 @@ class SearchContainer extends PureComponent{
     render(){
         let value= 2, setValue=()=>console.log("hello");
         return(
-            <Page icon={"search"} pageHeader={"query sensors"}>
+            <Page icon={"search-template"} pageHeader={"Sensor Information"}>
                 <Suggest
                     inputValueRenderer={item => item.toString()}
                     items={items}

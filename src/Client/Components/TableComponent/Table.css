@@ -26,6 +26,12 @@
     border: 1px solid white;
     border-radius: 2px;
 }
+.single-page:hover,
+.next-page:hover,
+.previous-page:hover{
+    background: #00436f;
+    opacity: 0.8;
+}
 .active-page{
     background: #00436f;
 }

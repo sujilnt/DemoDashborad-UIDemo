@@ -89,8 +89,8 @@ class PageComponent extends PureComponent{
                         </Part1>
                         <Part2>
                             <Header>
-                                <Icon icon={set_icon} iconSize={"24"} intent={Intent.NONE}/>
-                                <h2 className={"bp3-heading"} style={{"marginLeft": "10px",marginTop: "10px"}}>
+                                <Icon icon={set_icon} iconSize={"28"} intent={Intent.NONE} className={"icon-color"}/>
+                                <h2 className={"bp3-heading page-color"} style={{"marginLeft": "10px",marginTop: "10px"}}>
                                     {set_pageHeader}
                                 </h2>
                             </Header>
