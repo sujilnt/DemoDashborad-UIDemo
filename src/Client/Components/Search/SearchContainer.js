@@ -4,17 +4,20 @@ import {getToken} from "../../client-utils/utils";
 import TableComponent from "./table/Table";
 import {Icon, Intent} from "@blueprintjs/core";
 import {CSVLink} from "react-csv";
+// headers for csv
 let headers = [
     { label: "Sensor ID", key: "_id" },
     { label: "Sensor Name", key: "name" },
     { label: "sensor - Serial N0", key: "sensordt" },
     { label: "Sensor Type ", key: "sensortype" }
 ];
+// API_URL: Sensor API - calling list of sensors .
 const API_URL ="http://localhost:9001/api/sensor/";
 class SearchContainer extends PureComponent{
     state={
         sensors: []
     };
+
     async componentDidMount() {
         try{
             const {store}=this.props;
@@ -41,15 +44,17 @@ class SearchContainer extends PureComponent{
     }
 
     render(){
-        console.log("props search component",this.props,this.state);
         return(
             <Page icon={"search-template"} pageHeader={"Sensor Information"}>
                 {
                     this.state.sensors.length > 0 ?
                         <Fragment>
                             <div
-                                className={"marginTopBottom flex"}
-                                 style={{justifyContent:"flex-end",margin: "20px 0"}}
+                                className={"flex"}
+                                 style={{
+                                     justifyContent:"flex-end",
+                                     marginTop: "-20",
+                                     marginBottom: "20px"}}
                             >
                             <CSVLink
                                 data={this.state.sensors}
