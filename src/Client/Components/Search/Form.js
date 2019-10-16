@@ -1,6 +1,7 @@
 import React, {Fragment, PureComponent} from "react";
-import {Button, Divider,FormGroup, InputGroup, Intent} from "@blueprintjs/core";
+import {Button,FormGroup, InputGroup, Intent} from "@blueprintjs/core";
 import {getToken} from "../../client-utils/utils";
+import PropTypes from "prop-types";
 
 const API_URL = "http://localhost:9001/api/sensor/";
 
@@ -25,7 +26,7 @@ class SensorInformationForm extends PureComponent{
         console.log("sensor is added ",this.state);
         try{
             const _token_ = user.token || getToken();
-            const postrequest_sensors = await fetch(API_URL,{
+            await fetch(API_URL,{
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
@@ -127,3 +128,8 @@ class SensorInformationForm extends PureComponent{
     }
 }
 export default SensorInformationForm;
+SensorInformationForm.propTypes= {
+    store:PropTypes.object,
+    forceUpdate: PropTypes.func,
+    handleClose :PropTypes.func,
+};

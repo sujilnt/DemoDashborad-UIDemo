@@ -1,7 +1,9 @@
 import React, {Component,Fragment} from "react";
 import '@blueprintjs/table/lib/css/table.css';
 import { Column,Cell, Table,SelectionModes, RenderMode} from "@blueprintjs/table";
+import PropTypes from "prop-types";
 import "./Table.css";
+
 const columnsHeader = ["_id","name","sensordt","sensortype","createdBy"];
 class sensorInformationTable extends Component{
     state={
@@ -113,5 +115,8 @@ class sensorInformationTable extends Component{
         )
 
     }
-};
+}
 export default sensorInformationTable;
+sensorInformationTable.propTypes={
+    data: PropTypes.array,
+};
