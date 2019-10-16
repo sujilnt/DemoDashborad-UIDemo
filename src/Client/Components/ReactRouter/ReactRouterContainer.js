@@ -11,7 +11,6 @@ const ReactRouterContainer = ()=>{
         {isAuthenticated} =intialState ,
         dispatch = useDispatch();
     console.log("%c React-Router-Container ", "background: #222; color: #bada55");
-    console.log("React Router State",intialState);
     return (
         <Fragment>
             <ReactRouter

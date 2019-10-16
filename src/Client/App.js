@@ -10,9 +10,7 @@ class App extends PureComponent {
 		console.log("%c APP ", "background: #222; color: #bada55");
 		return (
 			<div className="app-Container ">
-				<div>
-					<ReactRouterContainer />
-				</div>
+				<ReactRouterContainer />
 			</div>
 		);
 	}

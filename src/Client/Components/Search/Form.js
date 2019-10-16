@@ -37,6 +37,8 @@ class SensorInformationForm extends PureComponent{
         }catch (e) {
             console.log(e);
         }
+        this.props.handleClose();
+        this.props.forceUpdate();
     };
     reset=()=>{
         this.setState({

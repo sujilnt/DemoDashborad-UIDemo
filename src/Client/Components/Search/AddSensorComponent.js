@@ -39,7 +39,11 @@ class AddSensorComponent extends PureComponent{
                                    Enter the sensor information Details to the Form
                                 </strong>
                             </h3>
-                            <SensorInformationForm store ={this.props.store}/>
+                            <SensorInformationForm
+                                store ={this.props.store}
+                                forceUpdate={this.props.forceUpdate}
+                                handleClose ={this.handleClose}
+                            />
                         </div>
                     </div>
                     <div className={Classes.DRAWER_FOOTER}>Footer</div>

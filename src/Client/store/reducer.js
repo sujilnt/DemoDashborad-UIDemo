@@ -3,7 +3,6 @@ import  C from "./Constants.js";
 import State from "./intialstate";
 
 const user = (state = State, action) => {
-	console.log("user",state,action);
 	if (action.type === C.ADD_USER) {
 		return action.payload;
 	} else {
@@ -12,7 +11,6 @@ const user = (state = State, action) => {
 };
 
 const isAuthenticated = (state = State, action) => {
-	console.log("isAuthenticated",state);
 	if (action.type === C.IS_AUTHENTICATED) {
 		return action.payload || {};
 	} else {

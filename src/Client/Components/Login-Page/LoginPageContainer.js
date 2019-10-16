@@ -35,7 +35,7 @@ export default class LoginPageContainer extends PureComponent {
 		const {logIn} = this.state;
 		return !isAuthenticated ? (
 			<Fragment>
-				<div className="app-Container ">
+				<div className="login-app-Container">
 					<Card className="app-Conta-child">
 						{
 							/*

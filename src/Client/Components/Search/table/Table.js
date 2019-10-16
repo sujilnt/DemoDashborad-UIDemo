@@ -82,7 +82,6 @@ class sensorInformationTable extends Component{
     };
 
     render() {
-        console.log(this.state, "what is this state");
         return (
             <Fragment>
                 <Table

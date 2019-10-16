@@ -17,36 +17,36 @@ let headers = [
 const API_URL ="http://localhost:9001/api/sensor/";
 class SearchContainer extends PureComponent{
     state={
-        sensors: []
+        sensors: [],
     };
-
-    async componentDidMount() {
-        try{
-            const {store}=this.props;
-            const {user}= store;
-            const token=user.token;
-            const _token = token || getToken();
-            const response = await fetch(API_URL,{
-                method: "GET",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${_token}`
-                }
-            });
-            if(response.status===200){
-                const d = await response.json();
-                this.setState({
-                    sensors: d.data
-                })
+    getSensorInformation = async ()=>{
+    try{
+    const {store}=this.props;
+    const {user}= store;
+    const token=user.token;
+    const _token = token || getToken();
+    const response = await fetch(API_URL,{
+        method: "GET",
+        headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${_token}`
             }
-        }catch (e) {
-            console.log(e);
-        }
+        });
+    if(response.status===200){
+        const d = await response.json();
+        this.setState({
+            sensors: d.data
+        });
+    }}catch (e) {
+    console.log(e);
+}
+    };
+     componentDidMount() {
+        this.getSensorInformation();
     }
-
     render(){
-        console.log("rpp",this.props);
+        console.log("rerendering the sensor",this.props);
         return(
             <Page icon={"search-template"} pageHeader={"Sensor Information"}>
                 {
@@ -61,7 +61,10 @@ class SearchContainer extends PureComponent{
                                      marginBottom: "20px"}}
                             >
                                 <div style={{marginRight: "20px"}}>
-                                    <AddSensorComponent store={this.props.store} />
+                                    <AddSensorComponent
+                                        store={this.props.store}
+                                        forceUpdate={this.getSensorInformation}
+                                    />
                                 </div>
                             <CSVLink
                                 data={this.state.sensors}
