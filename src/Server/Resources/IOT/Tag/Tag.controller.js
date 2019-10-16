@@ -27,7 +27,7 @@ export const getTagofEachSensor = async(request,response)=>{
 };
 export const createManyTag = async (request, response) => {
 	try {
-		const { body, params, user } = request;
+		const { body, params } = request;
 		const { data } = body || [];
 		if (data.length <= 0) {
 			return response.status(500).end();
@@ -53,7 +53,7 @@ export const createManyTag = async (request, response) => {
 export const removeOneTag = async (request, response) => {
 	console.log("called");
 	try {
-		const { user, params, body } = request;
+		const {  params, body } = request;
 		const removed = await Tag.findOneAndRemove({
 			sensorId: params.id,
 			name: body.data,

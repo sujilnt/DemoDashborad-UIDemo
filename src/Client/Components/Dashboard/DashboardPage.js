@@ -48,7 +48,7 @@ class DashboardPage extends Component {
     }
 
     currentsensorInformation=(e)=>{
-        console.log(e);
+        //console.log(e);
         this.setState(()=>({
             sensorid: e._id
         }));

@@ -42,7 +42,7 @@ export const start = async () => {
 		app.listen(PORT_NUM, () => {
 			console.log(`App started at port number ${PORT_NUM}`);
 		});
-		//realtime();
+		realtime();
 	} catch (e) {
 		console.error(e);
 	}
