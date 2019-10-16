@@ -8,7 +8,7 @@ const updatedStore = (dispatcher, actionCreater) => {
 };
 const ReactRouterContainer = ()=>{
     const intialState =  useSelector(state=> state),
-        {isAuthenticated} =intialState ,
+        {isAuthenticated} = intialState,
         dispatch = useDispatch();
     console.log("%c React-Router-Container ", "background: #222; color: #bada55");
     return (

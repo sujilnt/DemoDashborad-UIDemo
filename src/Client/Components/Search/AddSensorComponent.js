@@ -1,6 +1,7 @@
 import React,{PureComponent} from "react";
 import { Drawer,Classes,Intent,Button }from "@blueprintjs/core";
 import SensorInformationForm from "./Form";
+import PropTypes from "prop-types";
 class AddSensorComponent extends PureComponent{
     state={
         isOpen: false,
@@ -53,3 +54,7 @@ class AddSensorComponent extends PureComponent{
     }
 }
 export default AddSensorComponent;
+AddSensorComponent.propTypes={
+    store: PropTypes.object,
+    forceUpdate: PropTypes.func
+};

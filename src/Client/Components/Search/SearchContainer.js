@@ -4,6 +4,7 @@ import {getToken} from "../../client-utils/utils";
 import TableComponent from "./table/Table";
 import {Icon, Intent} from "@blueprintjs/core";
 import AddSensorComponent from "./AddSensorComponent";
+import PropTypes from "prop-types";
 import {CSVLink} from "react-csv";
 
 // headers for csv
@@ -92,3 +93,6 @@ class SearchContainer extends PureComponent{
 
 }
 export default SearchContainer;
+SearchContainer.propTypes={
+    store: PropTypes.object
+};
