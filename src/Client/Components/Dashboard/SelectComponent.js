@@ -48,7 +48,7 @@ class SelectComponent extends Component{
         const {large} =this.props;
         const data = itemList;
         const name = this.state.activeItem;
-        console.log(itemList,this.state.activeItem,"namesss");
+        //console.log(itemList,this.state.activeItem,"namesss");
         return(
             <div style={{margin: 20}}>
                 <Select

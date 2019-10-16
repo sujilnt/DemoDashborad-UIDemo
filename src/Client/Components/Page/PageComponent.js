@@ -70,7 +70,7 @@ class PageComponent extends PureComponent{
     };
 
     render(){
-        console.log(this.state,"Page");
+        //console.log(this.state,"Page");
         const {icon, pageHeader,children} =this.props;
         let set_icon = icon ? icon : "chart";
         let set_pageHeader = pageHeader ? pageHeader : "pageHeader prop not passed";

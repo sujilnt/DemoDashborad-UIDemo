@@ -36,7 +36,7 @@ class DashBoardTemperature extends Component{
            await cache.put(url, storeresponse);
            if(response.status === 200){
                const d = await response.json();
-               console.log("inside lopp",d);
+               //console.log("inside lopp",d);
                this.setState(()=>{
                    return{
                        data: d,
@@ -50,7 +50,7 @@ class DashBoardTemperature extends Component{
                {cacheName: "sujil",ignoreSearch:true}
                );
            let d = await cacheddata.json();
-           console.log("d",d,`${API_URL}${sensorid}`);
+           //console.log("d",d,`${API_URL}${sensorid}`);
            this.setState(()=>{
                return{
                    data: d,
@@ -68,7 +68,7 @@ class DashBoardTemperature extends Component{
        await this.retrieveData();
    }
    render(){
-        console.log("temperature",this.state);
+        //console.log("temperature",this.state);
        const {loading} = this.state;
        return !loading?<div>loading.....</div>:(
            <Fragment>

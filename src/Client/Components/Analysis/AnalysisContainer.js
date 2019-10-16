@@ -97,7 +97,7 @@ class AnalysisContainer extends PureComponent{
     };
     render(){
         const {isloading,temperatureinformation,startDate,endDate,loadingChart}=this.state;
-        console.log("Analysis component",this.state);
+        //console.log("Analysis component",this.state);
         return isloading ? (<Loader/>) : (
             <div>
                 <Page icon={"timeline-area-chart"} pageHeader={"Analysis Report"}>

@@ -47,7 +47,7 @@ class SearchContainer extends PureComponent{
         this.getSensorInformation();
     }
     render(){
-        console.log("rerendering the sensor",this.props);
+        //console.log("rerendering the sensor",this.props);
         return(
             <Page icon={"search-template"} pageHeader={"Sensor Information"}>
                 {

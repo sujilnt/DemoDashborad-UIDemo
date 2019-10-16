@@ -11,17 +11,17 @@ export class ExtendedSelect extends Component {
 
     handleInputChanged = event => {
         this.setState({query: event.target.value});
-    }
+    };
 
     receiveInputRef = (ref) => {
         this.inputRef = ref;
-    }
+    };
 
     handlePopoverOpening = () => {
         if (this.inputRef) {
             this.inputRef.focus();
         }
-    }
+    };
 
     listRenderer = ({filteredItems, renderItem}) => {
         // Apply the supplied item renderer to the filtered list of items
@@ -37,7 +37,7 @@ export class ExtendedSelect extends Component {
                 {this.props.footer}
             </div>
         );
-    }
+    };
 
     render() {
         return (

@@ -25,7 +25,7 @@ class AnalysisTemperature extends PureComponent{
        const {token} = this.props.store.user;
        try{
            const _token_ = token ||getToken();
-           console.log(`${API_URL}${sensorid}?start=${from.toISOString()}&end=${to.toISOString()}`);
+           //console.log(`${API_URL}${sensorid}?start=${from.toISOString()}&end=${to.toISOString()}`);
            const response = await fetch(`${API_URL}${sensorid}?start=${from}&end=${to}`,{
                method: "GET",
                headers: {
@@ -53,7 +53,7 @@ class AnalysisTemperature extends PureComponent{
                {cacheName: "sujil",ignoreSearch:true}
                );
            let d = await cacheddata.json() || {};
-           console.log("d",d,`${API_URL}${sensorid}`);
+           //console.log("d",d,`${API_URL}${sensorid}`);
            this.setState(()=>{
                return{
                    data: d,
