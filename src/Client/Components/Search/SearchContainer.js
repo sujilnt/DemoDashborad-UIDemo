@@ -46,6 +46,7 @@ class SearchContainer extends PureComponent{
     }
 
     render(){
+        console.log("rpp",this.props);
         return(
             <Page icon={"search-template"} pageHeader={"Sensor Information"}>
                 {
@@ -60,7 +61,7 @@ class SearchContainer extends PureComponent{
                                      marginBottom: "20px"}}
                             >
                                 <div style={{marginRight: "20px"}}>
-                                    <AddSensorComponent />
+                                    <AddSensorComponent store={this.props.store} />
                                 </div>
                             <CSVLink
                                 data={this.state.sensors}

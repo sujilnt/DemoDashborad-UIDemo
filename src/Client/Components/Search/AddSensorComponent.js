@@ -1,5 +1,6 @@
-import React,{PureComponent,Fragment} from "react";
+import React,{PureComponent} from "react";
 import { Drawer,Classes,Intent,Button }from "@blueprintjs/core";
+import SensorInformationForm from "./Form";
 class AddSensorComponent extends PureComponent{
     state={
         isOpen: false,
@@ -17,7 +18,7 @@ class AddSensorComponent extends PureComponent{
     };
     render(){
         return(
-            <Fragment style={{position:"relative"}}>
+            <div style={{position:"relative"}}>
                 <Button
                     onClick={this.handleOpen}
                     intent={Intent.PRIMARY}
@@ -33,17 +34,17 @@ class AddSensorComponent extends PureComponent{
                 >
                     <div className={Classes.DRAWER_BODY}>
                         <div className={Classes.DIALOG_BODY}>
-                            <p>
+                            <h3>
                                 <strong>
                                    Enter the sensor information Details to the Form
                                 </strong>
-                            </p>
-                            <div>Any form component</div>
+                            </h3>
+                            <SensorInformationForm store ={this.props.store}/>
                         </div>
                     </div>
                     <div className={Classes.DRAWER_FOOTER}>Footer</div>
                 </Drawer>
-            </Fragment>
+            </div>
         );
     }
 }
