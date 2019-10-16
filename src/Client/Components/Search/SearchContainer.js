@@ -3,7 +3,9 @@ import Page from "../Page/PageComponent";
 import {getToken} from "../../client-utils/utils";
 import TableComponent from "./table/Table";
 import {Icon, Intent} from "@blueprintjs/core";
+import AddSensorComponent from "./AddSensorComponent";
 import {CSVLink} from "react-csv";
+
 // headers for csv
 let headers = [
     { label: "Sensor ID", key: "_id" },
@@ -53,9 +55,13 @@ class SearchContainer extends PureComponent{
                                 className={"flex"}
                                  style={{
                                      justifyContent:"flex-end",
+                                     alignItems: "center",
                                      marginTop: "-20",
                                      marginBottom: "20px"}}
                             >
+                                <div style={{marginRight: "20px"}}>
+                                    <AddSensorComponent />
+                                </div>
                             <CSVLink
                                 data={this.state.sensors}
                                 headers={headers}
