@@ -1,6 +1,9 @@
 # Offline featured IOT analytics tool
+ 
+Offline featured IoT dashboard from scratch where users can visualise data from the IoT sensors. The user can also generate reports and add new sensors or delete sensor information. This web application can work both on online and offline mode. The technologies I used to develop was React.js, React Blueprint UI library, CSS, webpack, node.js, express.js (REST API), mongoose (mongo DB), service-workers.js, workbox, D3.js or Recharts.js (JavaScript data Visualisation), dweet.io (Realtime Rest API library) and jsonwebtoken.js.The sesnors are taken from Distruptive Technologies. The sensor that is used is from disruptive technologies. 
 
-Offline featured IOT analytics tool is A Full stack **React and Node.js** Boilerplate that is developed using **React , Express.js Webpack4, Babel,EsLint and Jest**. The sesnors are taken from Distruptive Technologies. The sensor that is used is from disruptive technologies. 
+## linting tools
+Eslint
 
 ## Install
 
